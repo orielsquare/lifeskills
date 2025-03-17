@@ -73,6 +73,11 @@
             max-width: 900px;
             text-align: left;
         }
+        .smallprint{
+            font-family: arial, sans-serif;
+            font-size:1em;
+            color:darkgray;
+        }
         .video-container, .interaction {
             opacity: 0;
             transition: opacity 1s ease, transform 1s ease;
@@ -216,12 +221,20 @@
     </style>
 </head>
 <body>
+    <!-- Section 0: Loading page -->
+    <div class="section" id="section0">
+        <div class="content-wrapper">
+        <div class="parallax-bg" style="background-image: url('bg1.jpg');"></div>
+        <div class="text-line">Tech and content style demo<br/>Loans level 1:<br/>"borrow"<br/><br/><span class="smallprint">(This demo isn't expected to be technically robust - it should work best in a laptop browser at close to fullscreen.)</span></div>
+        <button id="first-continue" class="scroll-btn">Launch</button><!--special case because the first click is caught by a global handler-->
+        </div>
+    </div>
     <!-- Section 1: Introductory Text -->
     <div class="section" id="section1">
         <div class="content-wrapper">
         <div class="parallax-bg" style="background-image: url('bg1.jpg');"></div>
         <div class="text-line">Have you ever had one of those days?<br/>You slept in. You left half the things you needed at home.<br/><br/>It happens to everyone.<br/><br/><div class="fade-in-delayed portentuous" style="--fade-delay: 1000ms;">It happened to me...<img id="pyjamas" src="pyjamas.png"/></div></div>
-        <button id="first-continue" class="scroll-btn fade-in-delayed" style="--fade-delay: 1500ms;">go on...</button><!--special case because the first click is caught by a global handler-->
+        <button class="scroll-btn fade-in-delayed" style="--fade-delay: 1500ms;" onclick="scrollToSection('section2')">go on...</button><!--special case because the first click is caught by a global handler-->
         </div>
     </div>
 
@@ -346,7 +359,7 @@ document.addEventListener('DOMContentLoaded', () => {
         userInteracted = true;
         document.documentElement.classList.remove('no-scroll');
         document.body.classList.remove('no-scroll');
-        scrollToSection('section2');
+        scrollToSection('section1');
     }, { once: true });
 
     // Make sure all fade-in-delayed elements are initially hidden
