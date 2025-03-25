@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overdrafts: Level 3</title>
+    <style>
+        * { user-select: none; }
+        html, body { margin: 0; padding: 0; overflow-x: hidden; scroll-behavior: smooth; font-family: Chewy, sans-serif; background: white; color: black; }
+        .section { position: relative; min-height: 100vh; padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; }
+        .twocol { position: relative; min-height: 0vh; padding: 20px; display: flex; flex-direction: row; align-items: none; justify-content: none; overflow: hidden; }
+        .parallax-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-attachment: fixed; z-index: 0; }
+        .text-line, .fade-in { opacity: 0; transition: opacity 1s ease, transform 1s ease; transform: translateY(30px); font-size: 2em; max-width: 800px; text-align: center; }
+        .fade-in.visible, .text-line.visible { opacity: 1; transform: translateY(0); }
+        .answer-btn { margin: 10px; padding: 10px 20px; font-size: 1.5em; cursor: pointer; background: white; border: 2px solid black; transition: background 0.3s; }
+        .answer-btn:hover { background: lightgray; }
+        img.sticky{
+        }
+        div.floatleft{
+            width:50%;
+        }
+        div.floatright{
+            width:50%;
+        }
+        button.scroll-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 2.5em;
+            background-color: white;
+            font-family: Chewy, sans-serif;
+            animation: fadeIn 1s ease forwards;
+            animation-delay: 4s;
+            filter:drop-shadow(5px 5px);
+        }
+        button.reload-btn{
+            font-family: Chewy, sans-serif;
+            font-size:10em;
+            color:green;
+            background-color: white;
+            border:none;
+            cursor: pointer;
+            animation-delay: 4s;
+        }
+        /*video*/
+        .video-container {
+            width: 100%;
+            max-width: 800px; /* set your desired width */
+            aspect-ratio: 14 / 9; /* Match your video's original aspect ratio */
+            overflow: hidden;
+            position: relative;
+        }
+
+        .frameless-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Crop and fill container */
+            transform: translate(-50%, -50%);
+        }
+        @media (max-width: 800px) {
+            .twocol { position: relative; min-height: 100vh; padding: 20px; display: flex; flex-direction: column; align-items: none; justify-content: none; overflow: hidden; }
+        }
+    </style>
+</head>
+<body>
+    <div class="section" id="landing">
+        <div class="text-line fade-in">Overdrafts: Level 3</div>
+        <button id="first-continue" class="scroll-btn">Launch</button><!--special case because the first click is caught by a global handler-->
+        </div>
+    </div>
+
+    <div class="section" id="samAndLisa">
+        <div class="parallax-bg" style="background-image: url('talking-heads.jpg');"></div>
+        <div class="video-container">
+        <video class="frameless-video" playsinline>
+        <source src="videos/overdraft.mp4" type="video/mp4">
+        </video>
+    </div>
+        <button class="answer-btn fade-in" onclick="scrollToSection('overdraftQs')">Next</button>
+    </div>
+
+    <div class="section" id="overdraftQs">
+        <div class="text-line fade-in">What has Lisa not understood?</div>
+        <button class="answer-btn" onclick="checkAnswer('lisasOverdraft',false)">That being overdrawn is against the law</button>
+        <button class="answer-btn" onclick="checkAnswer('lisasOverdraft',false)">That a new phone can be very expensive</button>
+        <button class="answer-btn" onclick="checkAnswer('lisasOverdraft',true)">That an overdraft is borrowing from a bank</button>
+    </div>
+
+    <div class="section" id="lisasOverdraft">
+        <div class="parallax-bg" style="background-image: url('static/lisa-phone.jpg');"></div>
+        <div class="text-line fade-in">Lisa’s phone cost £650, but she only had £250 in her bank account. She owes the bank £400.</div>
+        <button class="answer-btn fade-in" onclick="scrollToSection('lisaHowMuch')">Next</button>
+    </div>
+
+    <div class="section" id="lisaHowMuch">
+        <div class="text-line fade-in">How much money is Lisa overdrawn by?</div>
+        <button class="answer-btn" onclick="checkAnswer('overdraftWeek1',true)">£400</button>
+        <button class="answer-btn" onclick="checkAnswer('retry',false)">£500</button>
+        <button class="answer-btn" onclick="checkAnswer('retry',false)">£600</button>
+    </div>
+    <div class="section" id="overdraftWeek1">
+        <div class="text-line fade-in">Lisa is overdrawn by £400. Every week that she is overdrawn, the bank charges her interest of 1%.<br/><br/>1% of £400 is £4. On the first week Lisa is overdrawn, the bank will add £4 to what she must pay back.</div>
+        <div class="text-line fade-in">How much will Lisa owe the bank after one week?</div>
+        <button class="answer-btn" onclick="checkAnswer('week1Incorrect',false)">£400</button>
+        <button class="answer-btn" onclick="checkAnswer('week1Incorrect',false)">£401</button>
+        <button class="answer-btn" onclick="checkAnswer('week4',true)">£404</button>
+        <div class="hint">To find 1% of something, you need to divide it by 100. Here, the sum is 400 ÷ 100 = 4.</hint>
+</div>
+
+    <div class="section" id="week1Incorrect">
+        <div class="text-line fade-in">After one week, Lisa will owe the bank her original £400, plus 1% interest.<br/>400 ÷ 100 = 4.<br/>So 1% of £400 is £4.<br/>We need to add these together to work out the total she owes.<br/>£400 + £4 = £404
+</div>
+        <button class="answer-btn fade-in" onclick="scrollToSection('week4')">Next</button>
+    </div>
+
+    <div class="section" id="week4">
+        <div class="twocol">
+        <div class="floatleft"><img id="lisa" src="static/lisa_thoughtful.png"/></div>
+        <div class="floatright">
+        <div class="text-line fade-in">Lisa meets Samuel four weeks after she buys the phone. How much does she owe now?</div>
+        <div class="text-line fade-in">Week 1 = £404<br>Week 2 = £408.04<br>Week 3 = £412.12<br>Week 4 = £416.24</div>
+        </div>
+    </div>
+        <button class="answer-btn fade-in" onclick="changeImageAndScroll('lisa','static/lisa_outraged.png', 'week5')">Next</button>
+    </div>
+
+    <div class="section" id="week5">
+        <div class="text-line fade-in">How much will Lisa owe the bank on Week 5?</div>
+        <button class="answer-btn" onclick="checkAnswer('aer',false)">£417.14</button>
+        <button class="answer-btn" onclick="checkAnswer('aer',true)">£420.40</button>
+        <button class="answer-btn" onclick="checkAnswer('aer',false)">£422.84</button>
+        <div class="hint">To add 1% to something, you can multiply it by 1.01.</div>
+    </div>
+
+    <div class="section" id="aer">
+        <div class="text-line fade-in">You’ve just seen how 1% interest per week adds up. Banks will tell you interest rates per year (the annual rate). But they calculate interest <b>per day</b> you are overdrawn.<br/><br/>Banks usually charge around 39% interest annually (EAR). Equivalent Annual Rate.<br/><br/>This means that if you are overdrawn by £400 for a year, at the end of the year you will owe the bank £556. The overdraft will cost you £156.<br/><br/>Usually, people pay off their overdrafts in much less than a year, so they pay less than this.</div>
+        <button class="answer-btn fade-in" onclick="scrollToSection('samuel')">Next</button>
+    </div>
+
+    <div class="section" id="samuel">
+        <div class="text-line fade-in">Samuel: I really want this new game but have only £20. Should I use my overdraft?</div>
+        <div class="text-line fade-in">Would you use your overdraft?</div>
+        <button class="answer-btn" onclick="scrollToSection('swipe')">Yes, of course!</button>
+        <button class="answer-btn" onclick="scrollToSection('swipe')">Hm, perhaps not…</button>
+    </div>
+    <div class="section" id="swipe">
+        <div class="text-line fade-in">swipe game</div>
+        <button class="answer-btn" onclick="scrollToSection('samuelcalc')">Continue</button>
+    </div>
+    <div class="section" id="samuelcalc">
+        <div class="parallax-bg" style="background-image: url('static/game-controller.jpg');"></div>
+        <div class="text-line fade-in">Samuel borrowed £40 for 7 days. Calculate his overdraft interest.</div>
+        <input id="samuelAmount" placeholder="£ borrowed" type="number" value="40">
+        <input id="samuelDays" placeholder="Days" type="number" value="7">
+        <button class="answer-btn" onclick="calculateInterest('samuelAmount','samuelDays','samuelResult')">Calculate</button>
+        <div class="text-line fade-in" id="samuelResult"></div>
+        <button class="answer-btn fade-in" onclick="scrollToSection('final')">Next</button>
+    </div>
+
+    <div class="section" id="final">
+        <div class="text-line fade-in">Finish the sentences.</div>
+        <div class="text-line fade-in">Overdrafts are intended for…</div>
+        <button class="answer-btn" onclick="alert('Incorrect')">long-term investments.</button>
+        <button class="answer-btn" onclick="alert('Correct!')">short-term loans and emergencies.</button>
+        <div class="text-line fade-in">The interest rate on overdrafts is usually about…</div>
+        <button class="answer-btn" onclick="alert('Incorrect')">25%</button>
+        <button class="answer-btn" onclick="alert('Incorrect')">30%</button>
+        <button class="answer-btn" onclick="alert('Correct!')">40%</button>
+        <button class="answer-btn fade-in" onclick="scrollToSection('sonia')">Next</button>
+    </div>
+
+    <div class="section" id="sonia">
+        <div class="text-line fade-in">Sonia uses her overdraft to pay £700 for car repairs, overdrawn for 14 days. Calculate interest.</div>
+        <input id="soniaAmount" placeholder="£ borrowed" type="number" value="700">
+        <input id="soniaDays" placeholder="Days" type="number" value="14">
+        <button class="answer-btn" onclick="calculateInterest('soniaAmount','soniaDays','soniaResult')">Calculate</button>
+        <div class="text-line fade-in" id="soniaResult"></div>
+        <button class="answer-btn fade-in" onclick="scrollToSection('end')">Finish</button>
+    </div>
+
+    <div class="section" id="end">
+        <div class="text-line fade-in">Congrats, you’ve completed this resource!</div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    /*window.scrollTo(0, 0);
+    document.documentElement.classList.add('no-scroll');
+    document.body.classList.add('no-scroll');*/
+
+    let userInteracted = false;
+    const firstContinueBtn = document.getElementById('first-continue');
+
+    firstContinueBtn.addEventListener('click', () => {
+        userInteracted = true;
+        document.documentElement.classList.remove('no-scroll');
+        document.body.classList.remove('no-scroll');
+        scrollToSection('samAndLisa');
+    }, { once: true });
+
+    // Make sure all fade-in-delayed elements are initially hidden
+    const delayedElements = document.querySelectorAll('.fade-in-delayed');
+    delayedElements.forEach(el => {
+        el.classList.remove('visible'); // Remove any pre-loaded visibility
+        el.style.opacity = "0";  // Force it hidden in case CSS didn't apply correctly
+    });
+
+    // Intersection Observer to trigger fade-in at the right moment
+    const fadeObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.classList.add('visible');
+                    entry.target.style.opacity = "1"; // Force fade-in
+                }, parseInt(entry.target.style.getPropertyValue('--fade-delay')) || 500);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3 }); // 30% of element must be visible
+
+    delayedElements.forEach(el => fadeObserver.observe(el));
+
+    // Observer for other animations (videos, interactions, etc.)
+    const animatedElements = document.querySelectorAll('.video-container, .interaction, .text-line');
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3 });
+
+    animatedElements.forEach(el => observer.observe(el));
+
+    // Autoplay videos when in view
+    const videoObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            const video = entry.target;
+            if (entry.isIntersecting && userInteracted) {
+                video.play().catch(() => {
+                    console.log("User interaction required to play sound.");
+                });
+            } else {
+                video.pause();
+            }
+        });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.frameless-video').forEach(video => {
+        videoObserver.observe(video);
+    });
+});
+        function scrollToSection(id){document.getElementById(id).scrollIntoView({behavior:'smooth'});}
+        function checkAnswer(nextSection,correct){
+            //alert(correct ? "Correct!" : "Try again.");
+            if(nextSection=="retry"){
+                //display a wrong answer and ask to try again?
+            } else{
+            scrollToSection(nextSection)};
+        }
+        // Function to handle image change and scroll
+            function changeImageAndScroll(imageId, newImageSrc, nextSectionId) {
+            const img = document.getElementById(imageId);
+            if (img) {
+                 img.src = newImageSrc;
+            }
+            setTimeout(() => scrollToSection(nextSectionId), 500);
+}
+        function calculateInterest(amountId, daysId, resultId){
+            const amount = parseFloat(document.getElementById(amountId).value);
+            const days = parseInt(document.getElementById(daysId).value);
+            const dailyRate = 0.39 / 365;
+            const total = amount * Math.pow(1 + dailyRate, days);
+            const interest = (total - amount).toFixed(2);
+            document.getElementById(resultId).innerText = `Interest cost: £${interest}`;
+        }
+        document.addEventListener('DOMContentLoaded',()=>{
+            document.querySelectorAll('.fade-in, .text-line').forEach(el=>{
+                const observer=new IntersectionObserver(entries=>{
+                    entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add('visible');});
+                },{threshold:0.2});observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
