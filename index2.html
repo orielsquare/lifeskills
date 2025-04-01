@@ -159,6 +159,51 @@ html.no-scroll, body.no-scroll {
             font-weight: bold;
         }
 /*end of calc*/
+/*rate table*/
+.interest-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: center;
+    }
+
+    .interest-table th, .interest-table td {
+      padding: 12px;
+      border-radius: 6px;
+    }
+
+    .interest-table thead th {
+      background-color: #e6e6fa;
+      font-weight: bold;
+    }
+
+    .week-label {
+      font-weight: bold;
+    }
+
+    .blue {
+      background-color: #d0e8f8;
+    }
+
+    .orange {
+      background-color: #fde3c9;
+    }
+
+    .purple {
+      background-color: #e5dbf7;
+    }
+
+    .button-cell button {
+      background: none;
+      border: none;
+      padding: 0;
+      margin: 0;
+      font: inherit;
+      color: inherit;
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+    }
+/*end of table*/
         @keyframes fadeIn {
             to { opacity: 1; }
         }
@@ -479,14 +524,6 @@ html.no-scroll, body.no-scroll {
             }
             setTimeout(() => scrollToSection(nextSectionId), 500);
 }
-        function calculateInterest(amountId, daysId, resultId){
-            const amount = parseFloat(document.getElementById(amountId).value);
-            const days = parseInt(document.getElementById(daysId).value);
-            const dailyRate = 0.39 / 365;
-            const total = amount * Math.pow(1 + dailyRate, days);
-            const interest = (total - amount).toFixed(2);
-            document.getElementById(resultId).innerText = `Interest cost: £${interest}`;
-        }
         document.addEventListener('DOMContentLoaded',()=>{
             document.querySelectorAll('.fade-in, .text-line').forEach(el=>{
                 const observer=new IntersectionObserver(entries=>{
