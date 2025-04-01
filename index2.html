@@ -126,6 +126,23 @@ html.no-scroll, body.no-scroll {
     transform: translateY(0);
     transition-delay: var(--fade-delay);
 }
+/*number input*/
+.input-group {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.prefix {
+  position: absolute;
+  left: 10px;
+  font-size: 1.2em;
+  pointer-events: none;
+  color: #555;
+}
+.input-group input.money-input {
+  padding-left: 25px;
+}
 /*Interest rate calculator*/
 .calculator-section {
             margin-bottom: 20px;
@@ -228,7 +245,8 @@ html.no-scroll, body.no-scroll {
             border:solid;
             padding:5px;
             filter:drop-shadow(3px 3px);
-
+            max-width:60%;
+            justify-self: center;
         }
         .left-btn { position: absolute;
             left:20px;
@@ -481,7 +499,7 @@ html.no-scroll, body.no-scroll {
         <button class="scroll-btn" onclick="scrollToSection('procon')">Hm, perhaps not…</button>
     </div>
     <div class="section" id="procon">
-        <div class="rubric">Sort the advantages and disadvantages of using an overdraft.<br/><br/>Drag each card left or right, or click the thumbs.</div>
+        <div class="rubric">Decide whether for each card whether it's a reason to use the overdraft, or a reason not to.<br/><br/>Drag each card left or right, or click the thumbs.</div>
         <div class="sortgame">
     <div class="card" id="card">Card Text</div>
     <img class="button left-btn" src="static/thumb.png" alt="Thumbs Down" onclick="animateSort('con')">
@@ -492,9 +510,9 @@ html.no-scroll, body.no-scroll {
 <div class="section" id="results-section">
     <div class="text-line">Here's what you decided.</div>
     <div class="sorted-list">
-        <h2>Advantages</h2>
+        <h2>Reasons Sam should use his overdraft</h2>
         <ul id="pros-list"></ul>
-        <h2>Disadvantages</h2>
+        <h2>Reasons he shouldn't</h2>
         <ul id="cons-list"></ul>
     </div>
     <button class="scroll-btn" onclick="scrollToSection('decision')">But what did Sam decide?</button>
@@ -558,7 +576,11 @@ html.no-scroll, body.no-scroll {
         <div class="parallax-bg" style="background-image: url('static/bank.jpg');"></div>
         <div id="final3Target" class="content-overlay">
         <div class="text-line fade-in">Sonia uses her overdraft to pay £700 for car repairs, overdrawn for 14 days.<br/><br/>Calculate the interest she'll need to pay.</div>
-        <button class="scroll-btn fade-in" onclick="scrollToSection('end')">Finish</button>
+        <div class="input-group">
+          <span class="prefix">£</span>
+          <input type="number" step="0.01" min="0" class="money-input" placeholder="0.00">
+        </div>
+        <!--button class="scroll-btn fade-in" onclick="scrollToSection('end')">Finish</button-->
     </div>
     </div>
 
@@ -569,8 +591,8 @@ html.no-scroll, body.no-scroll {
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-    //window.scrollTo(0, 0);
-    scrollToSection("procon")
+    window.scrollToSection("landing");
+    //scrollToSection("procon")
     //document.documentElement.classList.add('no-scroll');
     //document.body.classList.add('no-scroll');
 
@@ -644,6 +666,14 @@ html.no-scroll, body.no-scroll {
     document.querySelectorAll('.frameless-video').forEach(video => {
         videoObserver.observe(video);
     });
+    document.querySelectorAll('.money-input').forEach(input => {
+      input.addEventListener('change', () => {
+        const value = parseFloat(input.value);
+        if (!isNaN(value)) {
+          input.value = value.toFixed(2);
+        }
+      });
+    });
     //interest calculator:
     function updateResults() {
         const amount = parseFloat(overdraftInput.value);
@@ -677,11 +707,11 @@ html.no-scroll, body.no-scroll {
 });
 /*pro cons sorting*/
  const cards = [
-        "You can spend money now",
-        "You'll pay interest",
-        "You might overspend",
-        "It's helpful in emergencies",
-        "You'll incur debt"
+        "Samuel will get the game at the same time as his friends.",
+        "Samuel may see spoilers for the game during the week he doesn’t have it.",
+        "If Samuel is paid next week, he will only be overdrawn for a short time.",
+        "The game will still be available to buy next week.",
+        "Samuel will be charged interest on the amount of money he overdraws."
     ];
 
     const pros = [];
