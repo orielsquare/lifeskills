@@ -22,7 +22,7 @@ html.no-scroll, body.no-scroll {
             height: 100%;
         }
         * { user-select: none; }
-        html, body { margin: 0; padding: 0; overflow-x: hidden; scroll-behavior: smooth; font-family: Lexend, sans-serif; background: white; color: black; }
+        html, body { margin: 0; padding: 0; overflow-x: hidden; scroll-behavior: smooth; font-family: Lexend, sans-serif; background: mintcream; color: #111; }
         .section { position: relative; min-height: 100vh; padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; text-align: left;}
         .twocol { position: relative; min-height: 0vh; padding: 20px; display: flex; flex-direction: row; align-items: none; justify-content: none; overflow: hidden; }
         .parallax-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-attachment: fixed; z-index: 0; }
@@ -49,7 +49,7 @@ html.no-scroll, body.no-scroll {
             filter: drop-shadow(8px 8px 10px black);
         }
         div.content-overlay.calculator{
-            color:white;
+            color:mintcream;
             background-color: #3B3355 ;
             filter: drop-shadow(8px 8px 10px black);
             border-radius: 10px;
@@ -67,13 +67,13 @@ html.no-scroll, body.no-scroll {
             padding: 10px 20px;
             cursor: pointer;
             font-size: 2.5em;
-            background-color: white;
+            background-color: mintcream;
             font-family: Chewy, sans-serif;
             animation: fadeIn 1s ease forwards;
             animation-delay: 4s;
             filter:drop-shadow(5px 5px);
         }
-        button.answer-btn { margin: 10px; padding: 10px 20px; font-size: 1.5em; cursor: pointer; background: white; border: 2px solid black; transition: background 0.3s; font-family: Lexend, sans-serif;}
+        button.answer-btn { margin: 10px; padding: 10px 20px; font-size: 1.5em; cursor: pointer; background: mintcream; border: 2px solid black; transition: background 0.3s; font-family: Lexend, sans-serif;}
         button.answer-btn.correct{
             background:forestgreen;
             color:yellow;
@@ -86,7 +86,7 @@ html.no-scroll, body.no-scroll {
             font-family: Chewy, sans-serif;
             font-size:10em;
             color:green;
-            background-color: white;
+            background-color: mintcream;
             border:none;
             cursor: pointer;
             animation-delay: 4s;
@@ -161,20 +161,31 @@ html.no-scroll, body.no-scroll {
 /*end of calc*/
 /*rate table*/
 .interest-table {
-      width: 100%;
-      border-collapse: collapse;
-      text-align: center;
-    }
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 10px; /* creates space between cells */
+  text-align: center;
+}
 
-    .interest-table th, .interest-table td {
-      padding: 12px;
-      border-radius: 6px;
-    }
+.interest-table th,
+.interest-table td {
+  padding: 12px;
+  border-radius: 12px; /* increase for more rounding */
+}
+
 
     .interest-table thead th {
       background-color: #e6e6fa;
       font-weight: bold;
     }
+    .narrow {
+  width: 1%;
+  white-space: nowrap;
+  padding-left: 6px;
+  padding-right: 6px;
+  background-color: transparent;
+  font-weight: bold;
+}
 
     .week-label {
       font-weight: bold;
@@ -239,7 +250,15 @@ html.no-scroll, body.no-scroll {
     <div class="section" id="lisasOverdraft">
         <div class="parallax-bg" style="background-image: url('static/lisa-phone.jpg');"></div>
         <div class="content-overlay">
-        <div class="text-line fade-in">Lisa’s phone cost £650, but she only had £250 in her bank account. She owes the bank £400.</div>
+        <div class="text-line fade-in">Lisa’s phone cost £650, but she only had £250 in her bank account.<br/>She owes the bank £400.</div>
+        <table class="interest-table">
+            <thead><td class="purple" colspan="2">cost of phone<br/>£650</td></thead>
+            <tbody>    
+              <tr>
+                  <td class="blue">overdraft<br/>£?</td><td class="orange">money in bank<br/>£250</td>
+              </tr>
+          </tbody>
+        </table>
         <button class="scroll-btn fade-in" onclick="scrollToSection('lisaHowMuch')">Next</button>
         </div>
     </div>
@@ -261,8 +280,24 @@ html.no-scroll, body.no-scroll {
 </div>
     <div class="section" id="week1Incorrect">
         <div>
-            <div class="text-line fade-in">That's not it: let's take a look...</div><br/>
-            <div class="text-line fade-in">After one week, Lisa will owe the bank her original £400, plus 1% interest.<br/><br/>400 ÷ 100 = 4.<br/>So 1% of £400 is £4.<br/><br/>We need to add these together to work out the total she owes.<br/><br/>£400 + £4 = £404</div>
+            <div class="text-line fade-in">Not quite! Let’s take a look.</div><br/>
+            <div class="text-line fade-in">After one week, Lisa will owe the bank her original £400, plus 1% interest.<br/><br/>We need to add these together to work out the total she owes.</div>
+             <table class="interest-table">
+    <tbody>
+      <tr>
+          <td class="blue">Lisa's<br/>overdraft</td>
+          <td class="narrow">+</td>
+          <td class="orange">1%<br/>interest</td>
+          <td class="narrow">=</td>
+          <td class="purple">total<br/>owed</td>
+        </tr>
+    <tr>
+        <td class="blue">£400.00</td>
+        <td class="narrow">+</td>
+        <td class="orange">£4.00</td>
+        <td class="narrow">=</td>
+        <td class="purple">£404.00</td>
+    </tr></tbody></table>
         </div>
         <button class="answer-btn fade-in" onclick="scrollToSection('week4')">Next</button>
     </div>
@@ -272,24 +307,121 @@ html.no-scroll, body.no-scroll {
         <div class="floatleft"><img id="lisa" src="static/lisa_thoughtful.png"/></div>
         <div class="floatright">
             <div class="text-line fade-in">Lisa meets Samuel four weeks after she buys the phone. How much does she owe now?</div><br/>
-            <div class="text-line fade-in">Week 1 = £404</div>
-            <div class="text-line fade-in-delayed" style="--fade-delay: 1500ms;">Week 2 = £408.04</div>
-            <div class="text-line fade-in-delayed" style="--fade-delay: 2500ms;">Week 3 = £412.12</div>
-            <div class="text-line fade-in-delayed" style="--fade-delay: 3500ms;">Week 4 = £416.24</div>
+     <table class="interest-table">
+    <tbody>
+      <tr>
+          <td class="week-label"></td>
+          <td class="blue">Lisa's<br/>overdraft</td>
+          <td class="narrow">+</td>
+          <td class="orange">1%<br/>interest</td>
+          <td class="narrow">=</td>
+          <td class="purple">total<br/>owed</td>
+        </tr>
+    <tr>
+        <td class="week-label">Week 1</td>
+        <td class="blue">£400.00</td>
+        <td class="narrow">+</td>
+        <td class="orange">£4.00</td>
+        <td class="narrow">=</td>
+        <td class="purple">£404.00</td>
+    </tr>
+      <tr>
+        <td class="week-label">Week 2</td>
+        <td class="blue">£404.00</td>
+        <td class="narrow">+</td>
+        <td class="orange">£4.04</td>
+        <td class="narrow">=</td>
+        <td class="purple">£408.04</td>
+      </tr>
+      <tr>
+        <td class="week-label">Week 3</td>
+        <td class="blue">£408.04</td>
+        <td class="narrow">+</td>
+        <td class="orange">£4.08</td>
+        <td class="narrow">=</td>
+        <td class="purple">£412.12</td>
+      </tr>
+      <tr>
+        <td class="week-label">Week 4</td>
+        <td class="blue">£412.12</td>
+        <td class="narrow">+</td>
+        <td class="orange">£4.12</td>
+        <td class="narrow">=</td>
+        <td class="purple">£416.24</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="text-line fade-in">The 1% interest is charged on the full amount Lisa owes. Every week the interest added is a little more than the week before.</div>
         </div>
     </div>
         <button class="scroll-btn fade-in-delayed" style="--fade-delay: 4500ms;" onclick="changeImageAndScroll('lisa','static/lisa_outraged.png', 'week5')">Next</button>
     </div>
 
     <div class="section" id="week5">
-        <div class="text-line fade-in">In Week 4, Lisa owes £416.24.<br/><br/>How much will she owe the bank on Week 5?</div>
-        <button class="answer-btn" onclick="checkAnswer(this, 'retry',false)">£417.14</button>
+        <div class="text-line fade-in">At the end of Week 4, Lisa owes £416.24.<br/><br/>How much will she owe the bank at the end of Week 5?</div>
+        <button class="answer-btn" onclick="checkAnswer(this, 'week5Incorrect',false)">£417.14</button>
         <button class="answer-btn" onclick="checkAnswer(this, 'aer',true)">£420.40</button>
-        <button class="answer-btn" onclick="checkAnswer(this, 'retry',false)">£422.84</button>
+        <button class="answer-btn" onclick="checkAnswer(this, 'week5Incorrect',false)">£422.84</button>
         <br/>
-        <div class="hint">hint: To add 1% to something, you can multiply it by 1.01.</div>
     </div>
-
+    <div class="section" id="week5Incorrect">
+        <div>
+            <div class="text-line fade-in">Not quite! Let’s take a look.</div><br/>
+            <table class="interest-table">
+    <tbody>
+      <tr>
+          <td class="week-label"></td>
+          <td class="blue">Lisa's<br/>overdraft</td>
+          <td class="narrow">+</td>
+          <td class="orange">1%<br/>interest</td>
+          <td class="narrow">=</td>
+          <td class="purple">total<br/>owed</td>
+        </tr>
+    <tr>
+        <td class="week-label">Week 1</td>
+        <td class="blue">£400.00</td>
+        <td class="narrow">+</td>
+        <td class="orange">£4.00</td>
+        <td class="narrow">=</td>
+        <td class="purple">£404.00</td>
+    </tr>
+      <tr>
+        <td class="week-label">Week 2</td>
+        <td class="blue">£404.00</td>
+        <td class="narrow">+</td>
+        <td class="orange">£4.04</td>
+        <td class="narrow">=</td>
+        <td class="purple">£408.04</td>
+      </tr>
+      <tr>
+        <td class="week-label">Week 3</td>
+        <td class="blue">£408.04</td>
+        <td class="narrow">+</td>
+        <td class="orange">£4.08</td>
+        <td class="narrow">=</td>
+        <td class="purple">£412.12</td>
+      </tr>
+      <tr>
+        <td class="week-label">Week 4</td>
+        <td class="blue">£412.12</td>
+        <td class="narrow">+</td>
+        <td class="orange">£4.12</td>
+        <td class="narrow">=</td>
+        <td class="purple">£416.24</td>
+      </tr>
+      <tr>
+        <td class="week-label"><strong>Week 5</strong></td>
+        <td class="blue">£416.24</td>
+        <td class="narrow">+</td>
+        <td class="orange">£4.16</td>
+        <td class="narrow">=</td>
+        <td class="purple"><strong>£420.40</strong></td>
+      </tr>
+    </tbody>
+  </table>
+        </div>
+        <button class="answer-btn fade-in" onclick="scrollToSection('aer')">Next</button>
+    </div>
     <div class="section" id="aer">
         <div class="text-line fade-in">You’ve just seen how 1% interest per week quickly adds up. Banks will tell you interest rates per year (the annual rate). But they calculate interest <b>per day</b> you are overdrawn.</div><br/><div class="text-line fade-in-delayed" style="--fade-delay: 2500ms;">Banks usually charge around 39% interest annually (EAR). EAR stands for <i>Equivalent Annual Rate</i>.</div><br/><div class="text-line fade-in-delayed" style="--fade-delay: 5000ms;">This means that if you are overdrawn by £400 for a year, at the end of the year you will owe the bank £556. The overdraft will cost you £156.</div><br/><div class="text-line fade-in-delayed" style="--fade-delay: 7500ms;">Usually, people pay off their overdrafts in much less than a year, so they pay less than this.</div>
         <button class="scroll-btn fade-in" onclick="scrollToSection('samuel')">Next</button>
@@ -379,9 +511,9 @@ html.no-scroll, body.no-scroll {
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-    window.scrollTo(0, 0);
-    document.documentElement.classList.add('no-scroll');
-    document.body.classList.add('no-scroll');
+    //window.scrollTo(0, 0);
+    //document.documentElement.classList.add('no-scroll');
+    //document.body.classList.add('no-scroll');
 
     let userInteracted = false;
     const firstContinueBtn = document.getElementById('first-continue');
