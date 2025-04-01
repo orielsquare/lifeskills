@@ -136,12 +136,15 @@ html.no-scroll, body.no-scroll {
 .prefix {
   position: absolute;
   left: 10px;
-  font-size: 1.2em;
   pointer-events: none;
   color: #555;
+  font-family: Lexend;
+  font-size: 1.2em;
 }
 .input-group input.money-input {
   padding-left: 25px;
+  font-size: 1.2em;
+  font-family: Lexend;
 }
 /*Interest rate calculator*/
 .calculator-section {
@@ -536,7 +539,10 @@ html.no-scroll, body.no-scroll {
     <div id="interestCalculator" class="content-overlay calculator right">
             <div class="calculator-section">
                 <label for="overdraft">How big is your overdraft?</label>
-                <input type="number" id="overdraft" value="10" min="0" max="750" step="5">
+                <div class="input-group">
+                      <span class="prefix">£</span>
+                      <input id="overdraft" type="number" class="money-input" value="10" min="0" max="750" step="5" placeholder="0">
+                </div>
                 <input type="range" id="overdraftRange" value="10" min="0" max="750" step="5">
             </div>
             <div class="calculator-section">
@@ -575,12 +581,12 @@ html.no-scroll, body.no-scroll {
     <div class="section" id="final3">
         <div class="parallax-bg" style="background-image: url('static/bank.jpg');"></div>
         <div id="final3Target" class="content-overlay">
-        <div class="text-line fade-in">Sonia uses her overdraft to pay £700 for car repairs, overdrawn for 14 days.<br/><br/>Calculate the interest she'll need to pay.</div>
+        <div class="text-line fade-in">Sonia uses her overdraft to pay £700 for car repairs, overdrawn for 14 days.<br/><br/>Calculate the interest she'll need to pay.</div></br>
         <div class="input-group">
           <span class="prefix">£</span>
-          <input type="number" step="0.01" min="0" class="money-input" placeholder="0.00">
+          <input id="final3_answer" type="number" step="0.01" min="0" class="money-input showPennies" placeholder="0.00">
         </div>
-        <!--button class="scroll-btn fade-in" onclick="scrollToSection('end')">Finish</button-->
+        <button class="answer-btn" onclick="checkAnswer(this,'end',document.getElementById('final3_answer').value==7.88)">Submit</button-->
     </div>
     </div>
 
@@ -666,7 +672,7 @@ html.no-scroll, body.no-scroll {
     document.querySelectorAll('.frameless-video').forEach(video => {
         videoObserver.observe(video);
     });
-    document.querySelectorAll('.money-input').forEach(input => {
+    document.querySelectorAll('.showPennies').forEach(input => {
       input.addEventListener('change', () => {
         const value = parseFloat(input.value);
         if (!isNaN(value)) {
