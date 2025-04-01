@@ -203,8 +203,8 @@ html.no-scroll, body.no-scroll {
       background-color: #e5dbf7;
     }
 
-    .button-cell button {
-      background: none;
+    .button-cell {
+    filter: drop-shadow(5px 5px);
       border: none;
       padding: 0;
       margin: 0;
@@ -224,12 +224,18 @@ html.no-scroll, body.no-scroll {
     </style>
 </head>
 <body>
-    <div class="section" id="landing">
-        <div class="text-line title">Overdrafts: Level 3</div><br/><div class="text-line">Clear up Lisa's misunderstanding about overdrafts; and help Sam decide what to do when he's short of cash.<br/><br/>You'll learn to calculate interest, and use an interest calculator to work out how much an overdraft will cost.</div><br/>
-        <button id="first-continue" class="scroll-btn">Let's go!</button><!--special case because the first click is caught by a global handler-->
+    <div class="section" id="recap">
+        <div class="text-line title">Recap: Overdrafts Level 2</div><br/><div class="text-line">Here’s a reminder of what you learnt at Level 2:<br/><ul><li class="fade-in-delayed" style="--fade-delay: 500ms">An overdraft is a form of borrowing from your bank.</li><li class="fade-in-delayed" style="--fade-delay: 1000ms">If you have less than £0 in your account, you are overdrawn.</li><li class="fade-in-delayed" style="--fade-delay: 1500ms">Banks charge interest on the amount you are overdrawn, and the interest rate is high.</li><li class="fade-in-delayed" style="--fade-delay: 2000ms">Overdrafts can be arranged or unarranged.</li><li class="fade-in-delayed" style="--fade-delay: 2500ms">Overdrafts are meant for short-term or emergency use.</li><li class="fade-in-delayed" style="--fade-delay: 3000ms">You must be aged 18 or over to have an overdraft.</li></ul>
+</div><br/>
+        <button class="scroll-btn fade-in" onclick="scrollToSection('landing')">Got it!</button>
         </div>
     </div>
-
+    <div class="section" id="landing">
+        <div class="text-line title">Overdrafts: Level 3</div><br/><div class="text-line">Clear up Lisa's misunderstanding about overdrafts; and help Sam decide what to do when he's short of cash.<br/><br/>You'll learn to calculate interest, and use an interest calculator to work out how much an overdraft will cost.</div><br/>
+        <button class="scroll-btn" onclick="scrollToSection('recap')">Recap</button>
+        <button  id="first-continue" class="scroll-btn">Let's go!</button><!--special case because the first click is caught by a global handler-->
+        </div>
+    </div>
     <div class="section" id="samAndLisa">
         <div class="parallax-bg" style="background-image: url('talking-heads.jpg');"></div>
         <div class="video-container">
@@ -251,24 +257,24 @@ html.no-scroll, body.no-scroll {
         <div class="parallax-bg" style="background-image: url('static/lisa-phone.jpg');"></div>
         <div class="content-overlay">
         <div class="text-line fade-in">Lisa’s phone cost £650, but she only had £250 in her bank account.<br/>She owes the bank £400.</div>
-        <table class="interest-table">
+        <table class="interest-table fade-in">
             <thead><td class="purple" colspan="2">cost of phone<br/>£650</td></thead>
             <tbody>    
               <tr>
-                  <td class="blue">overdraft<br/>£?</td><td class="orange">money in bank<br/>£250</td>
+                  <td class="blue">overdraft<br/>£400</td><td class="orange">money in bank<br/>£250</td>
               </tr>
           </tbody>
         </table>
-        <button class="scroll-btn fade-in" onclick="scrollToSection('lisaHowMuch')">Next</button>
+        <button class="scroll-btn fade-in" onclick="scrollToSection('overdraftWeek1')">Next</button>
         </div>
     </div>
 
-    <div class="section" id="lisaHowMuch">
+    <!--div class="section" id="lisaHowMuch">
         <div class="text-line fade-in">How much money is Lisa overdrawn by?</div>
         <button class="answer-btn" onclick="checkAnswer(this, 'overdraftWeek1',true)">£400</button>
         <button class="answer-btn" onclick="checkAnswer(this, 'retry',false)">£500</button>
         <button class="answer-btn" onclick="checkAnswer(this, 'retry',false)">£600</button>
-    </div>
+    </div-->
     <div class="section" id="overdraftWeek1">
         <div class="text-line fade-in">Lisa is overdrawn by £400. Every week that she is overdrawn, the bank charges her interest of 1%.<br/><br/>1% of £400 is £4. On the first week Lisa is overdrawn, the bank will add £4 to what she must pay back.<br/><br/>How much will Lisa owe the bank after <b>one</b> week?</div>
         <button class="answer-btn" onclick="checkAnswer(this, 'week1Incorrect',false)">£400</button>
@@ -420,7 +426,7 @@ html.no-scroll, body.no-scroll {
     </tbody>
   </table>
         </div>
-        <button class="answer-btn fade-in" onclick="scrollToSection('aer')">Next</button>
+        <button class="scroll-btn fade-in-delayed" style="--fade-delay: 5000ms" onclick="scrollToSection('aer')">Next</button>
     </div>
     <div class="section" id="aer">
         <div class="text-line fade-in">You’ve just seen how 1% interest per week quickly adds up. Banks will tell you interest rates per year (the annual rate). But they calculate interest <b>per day</b> you are overdrawn.</div><br/><div class="text-line fade-in-delayed" style="--fade-delay: 2500ms;">Banks usually charge around 39% interest annually (EAR). EAR stands for <i>Equivalent Annual Rate</i>.</div><br/><div class="text-line fade-in-delayed" style="--fade-delay: 5000ms;">This means that if you are overdrawn by £400 for a year, at the end of the year you will owe the bank £556. The overdraft will cost you £156.</div><br/><div class="text-line fade-in-delayed" style="--fade-delay: 7500ms;">Usually, people pay off their overdrafts in much less than a year, so they pay less than this.</div>
@@ -512,6 +518,7 @@ html.no-scroll, body.no-scroll {
     <script>
         document.addEventListener('DOMContentLoaded', () => {
     //window.scrollTo(0, 0);
+    scrollToSection("landing")
     //document.documentElement.classList.add('no-scroll');
     //document.body.classList.add('no-scroll');
 
