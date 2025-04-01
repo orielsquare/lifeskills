@@ -243,6 +243,7 @@ html.no-scroll, body.no-scroll {
             top:60px;
         }
         .card{
+            cursor:pointer;
             font-family:lexend;
             font-size:2em;
             border:solid;
@@ -596,12 +597,11 @@ html.no-scroll, body.no-scroll {
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-    window.scrollToSection("landing");
+    document.addEventListener('DOMContentLoaded', () => {
     //scrollToSection("procon")
-    //document.documentElement.classList.add('no-scroll');
-    //document.body.classList.add('no-scroll');
-
+    document.documentElement.classList.add('no-scroll');
+    document.body.classList.add('no-scroll');
+    scrollToSection("landing");
     let userInteracted = false;
     const firstContinueBtn = document.getElementById('first-continue');
     //interest calculator
