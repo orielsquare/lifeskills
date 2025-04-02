@@ -203,9 +203,7 @@ html.no-scroll, body.no-scroll {
   white-space: nowrap;
   padding-left: 6px;
   padding-right: 6px;
-  background-color: transparent;
-  font-weight: bold;
-}
+  background-color: transparent;}
 
     .week-label {
       font-weight: bold;
@@ -373,7 +371,7 @@ html.no-scroll, body.no-scroll {
             <div class="text-line fade-in">Lisa meets Sam four weeks after she buys the phone. How much does she owe now?</div><br/>
      <table class="interest-table">
     <tbody>
-      <tr class="week-label fade-in-delayed" style="--fade-delay: 0ms">
+      <tr class="fade-in-delayed" style="--fade-delay: 0ms">
           <td class="week-label"></td>
           <td class="blue">Lisa's<br/>overdraft</td>
           <td class="narrow">+</td>
@@ -381,7 +379,7 @@ html.no-scroll, body.no-scroll {
           <td class="narrow">=</td>
           <td class="purple">total<br/>owed</td>
         </tr>
-    <tr class="week-label fade-in-delayed" style="--fade-delay: 1000ms">
+    <tr class="fade-in-delayed" style="--fade-delay: 1000ms">
         <td class="week-label">Week 1</td>
         <td class="blue">£400.00</td>
         <td class="narrow">+</td>
@@ -389,7 +387,7 @@ html.no-scroll, body.no-scroll {
         <td class="narrow">=</td>
         <td class="purple">£404.00</td>
     </tr>
-      <tr class="week-label fade-in-delayed" style="--fade-delay: 2000ms">
+      <tr class="fade-in-delayed" style="--fade-delay: 2000ms">
         <td class="week-label">Week 2</td>
         <td class="blue">£404.00</td>
         <td class="narrow">+</td>
@@ -397,7 +395,7 @@ html.no-scroll, body.no-scroll {
         <td class="narrow">=</td>
         <td class="purple">£408.04</td>
       </tr>
-      <tr class="week-label fade-in-delayed" style="--fade-delay: 3000ms">
+      <tr class="fade-in-delayed" style="--fade-delay: 3000ms">
         <td class="week-label">Week 3</td>
         <td class="blue">£408.04</td>
         <td class="narrow">+</td>
@@ -405,13 +403,13 @@ html.no-scroll, body.no-scroll {
         <td class="narrow">=</td>
         <td class="purple">£412.12</td>
       </tr>
-      <tr class="week-label fade-in-delayed" style="--fade-delay: 4000ms">
+      <tr class="fade-in-delayed" style="--fade-delay: 4000ms">
         <td class="week-label">Week 4</td>
         <td class="blue">£412.12</td>
         <td class="narrow">+</td>
         <td class="orange">£4.12</td>
         <td class="narrow">=</td>
-        <td class="purple">£416.24</td>
+        <td class="purple"><strong>£416.24</strong></td>
       </tr>
     </tbody>
   </table>
@@ -441,7 +439,7 @@ html.no-scroll, body.no-scroll {
           <td class="narrow">=</td>
           <td class="purple">total<br/>owed</td>
         </tr>
-    <tr class="week-label fade-in-delayed" style="--fade-delay: 1000ms">
+    <tr class="fade-in-delayed" style="--fade-delay: 1000ms">
         <td class="week-label">Week 1</td>
         <td class="blue">£400.00</td>
         <td class="narrow">+</td>
@@ -449,7 +447,7 @@ html.no-scroll, body.no-scroll {
         <td class="narrow">=</td>
         <td class="purple">£404.00</td>
     </tr>
-      <tr class="week-label fade-in-delayed" style="--fade-delay: 2000ms">
+      <tr class="fade-in-delayed" style="--fade-delay: 2000ms">
         <td class="week-label">Week 2</td>
         <td class="blue">£404.00</td>
         <td class="narrow">+</td>
@@ -457,7 +455,7 @@ html.no-scroll, body.no-scroll {
         <td class="narrow">=</td>
         <td class="purple">£408.04</td>
       </tr>
-      <tr class="week-label fade-in-delayed" style="--fade-delay: 3000ms">
+      <tr class="fade-in-delayed" style="--fade-delay: 3000ms">
         <td class="week-label">Week 3</td>
         <td class="blue">£408.04</td>
         <td class="narrow">+</td>
@@ -465,7 +463,7 @@ html.no-scroll, body.no-scroll {
         <td class="narrow">=</td>
         <td class="purple">£412.12</td>
       </tr>
-      <tr class="week-label fade-in-delayed" style="--fade-delay: 4000ms">
+      <tr class="fade-in-delayed" style="--fade-delay: 4000ms">
         <td class="week-label">Week 4</td>
         <td class="blue">£412.12</td>
         <td class="narrow">+</td>
@@ -473,8 +471,8 @@ html.no-scroll, body.no-scroll {
         <td class="narrow">=</td>
         <td class="purple">£416.24</td>
       </tr>
-      <tr class="week-label fade-in-delayed" style="--fade-delay: 5000ms">
-        <td class="week-label"><strong>Week 5</strong></td>
+      <tr class="fade-in-delayed" style="--fade-delay: 5000ms">
+        <td class="week-label">Week 5</td>
         <td class="blue">£416.24</td>
         <td class="narrow">+</td>
         <td class="orange">£4.16</td>
@@ -541,7 +539,11 @@ html.no-scroll, body.no-scroll {
         <div class="text-line fade-in">Seven days later, Sam gets paid into his bank. He is no longer overdrawn.</div><br/>
         <div class="text-line fade-in">Sam borrowed £40 for 7 days. Use the Overdraft Calculator to work out how much interest he'll pay.</div>
         <br/>
-        <button class="scroll-btn fade-in" onclick="scrollToSection('worth_it')">Next</button>
+        <div class="input-group">
+          <span class="prefix">£</span>
+          <input id="Samcalc_answer" type="number" step="0.01" min="0" class="money-input showPennies" placeholder="0.00">
+        </div>
+        <button class="answer-btn" onclick="checkAnswer(this,'end',document.getElementById('Samcalc_answer').value==0.22)">Submit</button-->
     </div>
     <div id="interestCalculator" class="content-overlay calculator right">
             <div class="calculator-section">
