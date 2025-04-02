@@ -316,11 +316,11 @@ html.no-scroll, body.no-scroll {
         <div class="parallax-bg" style="background-image: url('static/lisa-phone.jpg');"></div>
         <div class="content-overlay">
         <div class="text-line fade-in">Lisa’s phone cost £650, but she only had £250 in her bank account.<br/>She owes the bank £400.</div>
-        <table class="interest-table fade-in">
+        <table class="interest-table fade-in" style="table-layout: fixed; width:100%">
             <thead><td class="purple" colspan="2">cost of phone<br/>£650</td></thead>
             <tbody>    
               <tr>
-                  <td class="blue">overdraft<br/>£400</td><td class="orange">money in bank<br/>£250</td>
+                  <td class="blue" style="width:70%">overdraft £400</td><td class="orange" style="width:30%">money in bank<br/>£250</td>
               </tr>
           </tbody>
         </table>
@@ -335,12 +335,11 @@ html.no-scroll, body.no-scroll {
         <button class="answer-btn" onclick="checkAnswer(this, 'retry',false)">£600</button>
     </div-->
     <div class="section" id="overdraftWeek1">
-        <div class="text-line fade-in">Lisa is overdrawn by £400. Every week that she is overdrawn, the bank charges her interest of 1%.<br/><br/>1% of £400 is £4. On the first week Lisa is overdrawn, the bank will add £4 to what she must pay back.<br/><br/>How much will Lisa owe the bank after <b>one</b> week?</div>
+        <div class="text-line fade-in">Lisa is overdrawn by £400. Every week that she is overdrawn, the bank charges her interest of 1%.<br/><br/>To find 1% of something, you need to divide it by 100. Here, the sum is 400 ÷ 100 = 4.<br/><br/>So 1% of £400 is £4.<br/><br/>On the first week Lisa is overdrawn, the bank will add £4 to what she must pay back.<br/><br/>How much will Lisa owe the bank after <b>one</b> week?</div>
         <button class="answer-btn" onclick="checkAnswer(this, 'week1Incorrect',false)">£400</button>
         <button class="answer-btn" onclick="checkAnswer(this, 'week1Incorrect',false)">£401</button>
         <button class="answer-btn" onclick="checkAnswer(this, 'week4',true)">£404</button>
         <br/>
-        <div class="hint">hint: To find 1% of something, you need to divide it by 100. Here, the sum is 400 ÷ 100 = 4.</hint>
 </div>
 </div>
     <div class="section" id="week1Incorrect">
@@ -539,7 +538,7 @@ html.no-scroll, body.no-scroll {
     </div>
     <div id="interestCalculator" class="content-overlay calculator right">
             <div class="calculator-section">
-                <label for="overdraft">How big is your overdraft?</label>
+                <label for="overdraft">Amount borrowed</label>
                 <div class="input-group">
                       <span class="prefix">£</span>
                       <input id="overdraft" type="number" class="money-input" value="10" min="0" max="750" step="5" placeholder="0">
