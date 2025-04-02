@@ -22,7 +22,7 @@ html.no-scroll, body.no-scroll {
             height: 100%;
         }
         * { user-select: none; }
-        html, body { margin: 0; padding: 0; overflow-x: hidden; scroll-behavior: smooth; font-family: Lexend, sans-serif; background: mintcream; color: #111; }
+        html, body { margin: 0; padding: 0; overflow-x: hidden; scroll-behavior: smooth; font-family: Lexend, sans-serif; background: #FEFCFD; color: #111; }
         .section { position: relative; min-height: 100vh; padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; text-align: left;}
         .twocol { position: relative; min-height: 0vh; padding: 20px; display: flex; flex-direction: row; align-items: none; justify-content: none; overflow: hidden; }
         .parallax-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-attachment: fixed; z-index: 0; }
@@ -49,7 +49,7 @@ html.no-scroll, body.no-scroll {
             filter: drop-shadow(8px 8px 10px black);
         }
         div.content-overlay.calculator{
-            color:mintcream;
+            color:#FEFCFD;
             background-color: #3B3355 ;
             filter: drop-shadow(8px 8px 10px black);
             border-radius: 10px;
@@ -67,13 +67,13 @@ html.no-scroll, body.no-scroll {
             padding: 10px 20px;
             cursor: pointer;
             font-size: 2.5em;
-            background-color: mintcream;
+            background-color: #FEFCFD;
             font-family: Chewy, sans-serif;
             animation: fadeIn 1s ease forwards;
             animation-delay: 4s;
             filter:drop-shadow(5px 5px);
         }
-        button.answer-btn { margin: 10px; padding: 10px 20px; font-size: 1.5em; cursor: pointer; background: mintcream; border: 2px solid black; transition: background 0.3s; font-family: Lexend, sans-serif;}
+        button.answer-btn { margin: 10px; padding: 10px 20px; font-size: 1.5em; cursor: pointer; background: #FEFCFD; border: 2px solid black; transition: background 0.3s; font-family: Lexend, sans-serif;}
         button.answer-btn.correct{
             background:forestgreen;
             color:yellow;
@@ -86,7 +86,7 @@ html.no-scroll, body.no-scroll {
             font-family: Chewy, sans-serif;
             font-size:10em;
             color:green;
-            background-color: mintcream;
+            background-color: #FEFCFD;
             border:none;
             cursor: pointer;
             animation-delay: 4s;
@@ -95,7 +95,7 @@ html.no-scroll, body.no-scroll {
         .video-container {
             width: 100%;
             max-width: 800px; /* set your desired width */
-            aspect-ratio: 14 / 9;
+            aspect-ratio: 852/480;
             overflow: hidden;
             position: relative;
         }
@@ -272,7 +272,7 @@ html.no-scroll, body.no-scroll {
         .sorted-list { margin-top: 20px; }
         .sorted-list h2 { margin-bottom: 10px; }
         .sorted-list ul { list-style: none; padding: 0; }
-        .sorted-list li { background: #fff; margin: 5px 0; padding: 10px; border-radius: 4px; }
+        .sorted-list li { background: #FEFCFD; margin: 5px 0; padding: 10px; border-radius: 4px; }
 /*end of sorting*/
         @keyframes fadeIn {
             to { opacity: 1; }
@@ -335,7 +335,7 @@ html.no-scroll, body.no-scroll {
         <button class="answer-btn" onclick="checkAnswer(this, 'retry',false)">£600</button>
     </div-->
     <div class="section" id="overdraftWeek1">
-        <div class="text-line fade-in">Lisa is overdrawn by £400. Every week that she is overdrawn, the bank charges her interest of 1%.<br/><br/>To find 1% of something, you need to divide it by 100. Here, the sum is 400 ÷ 100 = 4.<br/><br/>So 1% of £400 is £4.<br/><br/>On the first week Lisa is overdrawn, the bank will add £4 to what she must pay back.<br/><br/>How much will Lisa owe the bank after <b>one</b> week?</div>
+        <div class="text-line fade-in">Lisa is overdrawn by £400. Every week that she is overdrawn, the bank charges her interest of 1%.<br/><br/>To find 1% of something, you need to divide it by 100. Here, the maths is 400 ÷ 100 = 4.<br/><br/>So 1% of £400 is £4.<br/><br/>On the first week Lisa is overdrawn, the bank will add £4 to what she must pay back.<br/><br/>How much will Lisa owe the bank after <b>one</b> week?</div>
         <button class="answer-btn" onclick="checkAnswer(this, 'week1Incorrect',false)">£400</button>
         <button class="answer-btn" onclick="checkAnswer(this, 'week1Incorrect',false)">£401</button>
         <button class="answer-btn" onclick="checkAnswer(this, 'week4',true)">£404</button>
@@ -370,7 +370,7 @@ html.no-scroll, body.no-scroll {
         <div class="twocol">
         <div class="floatleft"><img id="lisa" src="static/lisa_thoughtful.png"/></div>
         <div class="floatright">
-            <div class="text-line fade-in">Lisa meets Samuel four weeks after she buys the phone. How much does she owe now?</div><br/>
+            <div class="text-line fade-in">Lisa meets Sam four weeks after she buys the phone. How much does she owe now?</div><br/>
      <table class="interest-table">
     <tbody>
       <tr class="week-label fade-in-delayed" style="--fade-delay: 0ms">
@@ -487,11 +487,18 @@ html.no-scroll, body.no-scroll {
         <button class="scroll-btn fade-in-delayed" style="--fade-delay: 5000ms" onclick="scrollToSection('aer')">Next</button>
     </div>
     <div class="section" id="aer">
-        <div class="text-line fade-in">You’ve just seen how 1% interest per week quickly adds up. Banks will tell you interest rates per year (the annual rate). But they calculate interest <b>per day</b> you are overdrawn.</div><br/><div class="text-line fade-in-delayed" style="--fade-delay: 2500ms;">Banks usually charge around 39% interest annually (EAR). EAR stands for <i>Equivalent Annual Rate</i>.</div><br/><div class="text-line fade-in-delayed" style="--fade-delay: 5000ms;">This means that if you are overdrawn by £400 for a year, at the end of the year you will owe the bank £556. The overdraft will cost you £156.</div><br/><div class="text-line fade-in-delayed" style="--fade-delay: 7500ms;">Usually, people pay off their overdrafts in much less than a year, so they pay less than this.</div>
-        <button class="scroll-btn fade-in" onclick="scrollToSection('samuel')">Next</button>
+        <div class="text-line fade-in">You’ve just seen how 1% interest per week quickly adds up. Banks will tell you interest rates per year (the annual rate). But they calculate interest <b>per day</b> you are overdrawn.</div><br/><div class="text-line fade-in-delayed" style="--fade-delay: 2500ms;">Banks usually charge around 40% interest annually (EAR). EAR stands for <i>Equivalent Annual Rate</i>.</div>
+        <button class="scroll-btn fade-in" onclick="scrollToSection('Pennydrop')">Next</button>
     </div>
-
-    <div class="section" id="samuel">
+    <div class="section" id="Pennydrop">
+        <div class="video-container">
+        <video class="frameless-video" playsinline>
+        <source src="videos/thepennydrops.mp4" type="video/mp4">
+        </video>
+        </div>
+        <button class="scroll-btn" onclick="scrollToSection('Sam')">How should I decide?</button>
+    </div>
+    <div class="section" id="Sam">
         <div class="video-container">
         <video class="frameless-video" playsinline>
         <source src="videos/cafe.mp4" type="video/mp4">
@@ -502,7 +509,7 @@ html.no-scroll, body.no-scroll {
         <button class="scroll-btn" onclick="scrollToSection('procon')">Hm, perhaps not…</button>
     </div>
     <div class="section" id="procon">
-        <div class="rubric">Decide whether for each card whether it's a reason to use the overdraft, or a reason not to.<br/><br/>Drag each card left or right, or click the thumbs.</div>
+        <div class="rubric">Decide for each card whether it's a reason to use the overdraft, or a reason not to.<br/><br/>Drag each card left or right, or click the thumbs.</div>
         <div class="sortgame">
     <div class="card" id="card">Card Text</div>
     <img class="button left-btn" src="static/thumb.png" alt="Thumbs Down" onclick="animateSort('con')">
@@ -526,13 +533,13 @@ html.no-scroll, body.no-scroll {
         <source src="videos/solution.mp4" type="video/mp4">
         </video>
         </div>
-        <button class="scroll-btn" onclick="scrollToSection('samuelcalc')">Continue</button>
+        <button class="scroll-btn" onclick="scrollToSection('Samcalc')">Continue</button>
     </div>
-    <div class="section" id="samuelcalc">
+    <div class="section" id="Samcalc">
         <div class="parallax-bg" style="background-image: url('static/game-controller.jpg');"></div>
-        <div id="samuelCalcTarget" class="content-overlay contrast">
-        <div class="text-line fade-in">Seven days later, Samuel gets paid into his bank. He is no longer overdrawn.</div><br/>
-        <div class="text-line fade-in">Samuel borrowed £40 for 7 days. Use the Overdraft Calculator to work out how much interest he'll pay.</div>
+        <div id="SamCalcTarget" class="content-overlay contrast">
+        <div class="text-line fade-in">Seven days later, Sam gets paid into his bank. He is no longer overdrawn.</div><br/>
+        <div class="text-line fade-in">Sam borrowed £40 for 7 days. Use the Overdraft Calculator to work out how much interest he'll pay.</div>
         <br/>
         <button class="scroll-btn fade-in" onclick="scrollToSection('worth_it')">Next</button>
     </div>
@@ -712,11 +719,11 @@ html.no-scroll, body.no-scroll {
 });
 /*pro cons sorting*/
  const cards = [
-        "Samuel will get the game at the same time as his friends.",
-        "Samuel may see spoilers for the game during the week he doesn’t have it.",
-        "If Samuel is paid next week, he will only be overdrawn for a short time.",
+        "Sam will get the game at the same time as his friends.",
+        "Sam may see spoilers for the game during the week he doesn’t have it.",
+        "If Sam is paid next week, he will only be overdrawn for a short time.",
         "The game will still be available to buy next week.",
-        "Samuel will be charged interest on the amount of money he overdraws."
+        "Sam will be charged interest on the amount of money he overdraws."
     ];
 
     const pros = [];
@@ -729,7 +736,7 @@ html.no-scroll, body.no-scroll {
         if (currentCard < cards.length) {
             cardElem.textContent = cards[currentCard];
             cardElem.style.transform = 'translateX(0)';
-            cardElem.style.backgroundColor = '#fff';
+            cardElem.style.backgroundColor = '#FEFCFD';
             cardElem.style.opacity = '1';
             cardElem.style.display = 'block';
         } else {
@@ -810,7 +817,7 @@ html.no-scroll, body.no-scroll {
             animateSort('con');
         } else {
             cardElem.style.transform = 'translateX(0)';
-            cardElem.style.backgroundColor = '#fff';
+            cardElem.style.backgroundColor = '#FEFCFD';
         }
     });
 
@@ -819,9 +826,9 @@ html.no-scroll, body.no-scroll {
         function scrollToSection(id){
             //special cases:
             switch(id){
-                case "samuelCalc":
+                case "SamCalc":
                    var calculator = document.getElementById('interestCalculator');
-                   var target = document.getElementById('samuelCalcTarget');
+                   var target = document.getElementById('SamCalcTarget');
                     target.insertAdjacentElement('afterend', calculator);
 
                 break;
