@@ -421,9 +421,9 @@ html.no-scroll, body.no-scroll {
 
     <div class="section" id="week5">
         <div class="text-line fade-in">At the end of Week 4, Lisa owes £416.24.<br/><br/>How much will she owe the bank at the end of Week 5?</div>
-        <button class="answer-btn" onclick="checkAnswer(this, 'week5Incorrect',false)">£417.14</button>
-        <button class="answer-btn" onclick="checkAnswer(this, 'aer',true)">£420.40</button>
-        <button class="answer-btn" onclick="checkAnswer(this, 'week5Incorrect',false)">£422.84</button>
+        <button class="answer-btn" onclick="checkAnswer(this, 'week5Incorrect',false)">1% interest will be about £1, so £417.14</button>
+        <button class="answer-btn" onclick="checkAnswer(this, 'aer',true)">1% interest will be about £4, so £420.40</button>
+        <button class="answer-btn" onclick="checkAnswer(this, 'week5Incorrect',false)">1% interest will be about £6, so £422.84</button>
         <br/>
     </div>
     <div class="section" id="week5Incorrect">
@@ -561,7 +561,7 @@ html.no-scroll, body.no-scroll {
                 <div class="results" id="results">Total interest: £0.00</div>
             </div>
             <div class="calculator-section">
-                <label for="days">Interest rate (AER)</label>
+                <label for="days">Interest rate (EAR)</label>
                 <input disabled id="aer" value="40%">
             </div>
         </div>
@@ -569,7 +569,7 @@ html.no-scroll, body.no-scroll {
     <div class="section" id="SamcalcIncorrect">
 <div class="text-line fade-in">Not quite!<br/>
 Samuel is borrowing £40, so his ‘overdraft amount’ is £40.<br/>
-He is borrowing it for 7 days, so his ‘number of days’ is 7.<br/>
+He is borrowing it for 6 days, so his ‘number of days’ is 6.<br/>
 The calculator shows you how much interest he will be charged.<br/>
 </div>
  <button class="scroll-btn" onclick="scrollToSection('Samcalc')">OK, I'll try again</button>
@@ -608,7 +608,7 @@ The calculator shows you how much interest he will be charged.<br/>
           <span class="prefix">£</span>
           <input id="final3_answer" type="number" step="0.01" min="0" class="money-input showPennies" placeholder="0.00">
         </div>
-        <button class="answer-btn" onclick="checkAnswer(this,'end',document.getElementById('final3_answer').value==7.88)">Submit</button-->
+        <button class="answer-btn" onclick="checkAnswer(this,'end',document.getElementById('final3_answer').value==9.09)">Submit</button-->
     </div>
     </div>
 
@@ -620,8 +620,8 @@ The calculator shows you how much interest he will be charged.<br/>
     <script>
     document.addEventListener('DOMContentLoaded', () => {
     //scrollToSection("procon")
-    document.documentElement.classList.add('no-scroll');
-    document.body.classList.add('no-scroll');
+   // document.documentElement.classList.add('no-scroll');
+   // document.body.classList.add('no-scroll');
     scrollToSection("landing");
     let userInteracted = false;
     const firstContinueBtn = document.getElementById('first-continue');
