@@ -485,8 +485,8 @@ html.no-scroll, body.no-scroll {
         <button class="scroll-btn fade-in-delayed" style="--fade-delay: 5000ms" onclick="scrollToSection('aer')">Next</button>
     </div>
     <div class="section" id="aer">
-        <div class="text-line fade-in">You’ve just seen how 1% interest per week quickly adds up. Banks will tell you interest rates per year (the annual rate). But they calculate interest <b>per day</b> you are overdrawn.</div><br/><div class="text-line fade-in-delayed" style="--fade-delay: 2500ms;">Banks usually charge around 40% interest annually (EAR). EAR stands for <i>Equivalent Annual Rate</i>.</div>
-        <button class="scroll-btn fade-in" onclick="scrollToSection('Pennydrop')">Next</button>
+        <div class="text-line fade-in">You’ve just seen how 1% interest per week quickly adds up. Banks will tell you interest rates per year (the annual rate). But they calculate interest <b>per day</b> you are overdrawn.</div><br/><div class="text-line fade-in-delayed" style="--fade-delay: 2500ms;">Banks usually charge around 40% interest on overdrafts per year (annually). Banks call this EAR: <i>Equivalent Annual Rate</i>.</div>
+        <button class="scroll-btn fade-in-delayed" style="--fade-delay: 2500ms;" onclick="scrollToSection('Pennydrop')">Next</button>
     </div>
     <div class="section" id="Pennydrop">
         <div class="video-container">
@@ -536,14 +536,14 @@ html.no-scroll, body.no-scroll {
     <div class="section" id="Samcalc">
         <div class="parallax-bg" style="background-image: url('static/game-controller.jpg');"></div>
         <div id="SamCalcTarget" class="content-overlay contrast">
-        <div class="text-line fade-in">Seven days later, Sam gets paid into his bank. He is no longer overdrawn.</div><br/>
-        <div class="text-line fade-in">Sam borrowed £40 for 7 days. Use the Overdraft Calculator to work out how much interest he'll pay.</div>
+        <div class="text-line fade-in">Seven days later, Sam gets his wages paid into his bank. He is no longer overdrawn.</div><br/>
+        <div class="text-line fade-in">Sam borrowed £40 for 7 days. Use the Overdraft Calculator to work out how much interest he is charged.</div>
         <br/>
         <div class="input-group">
           <span class="prefix">£</span>
           <input id="Samcalc_answer" type="number" step="0.01" min="0" class="money-input showPennies" placeholder="0.00">
         </div>
-        <button class="answer-btn" onclick="checkAnswer(this,'end',document.getElementById('Samcalc_answer').value==0.22)">Submit</button-->
+        <button class="answer-btn" onclick="checkAnswer(this,'worth_it',document.getElementById('Samcalc_answer').value==0.22,'SamcalcIncorrect')">Submit</button-->
     </div>
     <div id="interestCalculator" class="content-overlay calculator right">
             <div class="calculator-section">
@@ -560,8 +560,21 @@ html.no-scroll, body.no-scroll {
                 <input type="range" id="daysRange" value="0" min="0" max="28">
                 <div class="results" id="results">Total interest: £0.00</div>
             </div>
+            <div class="calculator-section">
+                <label for="days">Interest rate (AER)</label>
+                <input disabled id="aer" value="40%">
+            </div>
         </div>
     </div>
+    <div class="section" id="SamcalcIncorrect">
+<div class="text-line fade-in">Not quite!<br/>
+Samuel is borrowing £40, so his ‘overdraft amount’ is £40.<br/>
+He is borrowing it for 7 days, so his ‘number of days’ is 7.<br/>
+The calculator shows you how much interest he will be charged.<br/>
+</div>
+ <button class="scroll-btn" onclick="scrollToSection('Samcalc')">OK, I'll try again</button>
+</div>
+
     <div class="section" id="worth_it">
         <div class="video-container square">
         <video class="frameless-video" playsinline>
@@ -618,7 +631,7 @@ html.no-scroll, body.no-scroll {
     const daysInput = document.getElementById('days');
     const daysRange = document.getElementById('daysRange');
     const resultsBox = document.getElementById('results');
-    const interestRate = 1.0008;
+    const interestRate = 1.00092226677;
 
     firstContinueBtn.addEventListener('click', () => {
         userInteracted = true;
@@ -844,17 +857,21 @@ html.no-scroll, body.no-scroll {
 
 
         }
-        function checkAnswer(button, nextSection,correct){
+        function checkAnswer(button, nextSection,correct,incorrectSection){
+            var destination;
             if(correct){
+                button.classList.remove("incorrect");
                 button.classList.add("correct");
+                destination = nextSection;
             } else{
                 button.classList.add("incorrect");
+                destination = incorrectSection || nextSection;
             }
             //alert(correct ? "Correct!" : "Try again.");
             if(nextSection=="retry"){
                 //display a wrong answer and ask to try again?
             } else{
-            setTimeout(function(){scrollToSection(nextSection)},500);
+            setTimeout(function(){scrollToSection(destination)},500);
             }
         }
         // Function to handle image change and scroll
