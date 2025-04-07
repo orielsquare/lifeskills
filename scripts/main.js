@@ -43,7 +43,6 @@ const chime = document.getElementById("chime-sound");
   /*end of timeline code*/
     document.documentElement.classList.add('no-scroll');
     document.body.classList.add('no-scroll');
-    scrollToSection("landing");
     let userInteracted = false;
     const firstContinueBtn = document.getElementById('first-continue');
     //interest calculator
