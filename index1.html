@@ -9,317 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Overdrafts: Level 1</title>
-    <style>
-
-.lexend-<uniquifier> {
-  font-family: "Lexend", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: <weight>;
-  font-style: normal;
-}
-html.no-scroll, body.no-scroll {
-            overflow: hidden !important;
-            height: 100%;
-        }
-        * { user-select: none; }
-        html, body { margin: 0; padding: 0; overflow-x: hidden; scroll-behavior: smooth; font-family: Lexend, sans-serif; background: #FEFCFD; color: #111; }
-        .section { position: relative; min-height: 100vh; padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; text-align: left;}
-        .twocol { position: relative; min-height: 0vh; padding: 20px; display: flex; flex-direction: row; align-items: none; justify-content: none; overflow: hidden; }
-        .parallax-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-attachment: fixed; z-index: 0; }
-        .text-line, .fade-in { opacity: 0; transition: opacity 1s ease, transform 1s ease; transform: translateY(30px); font-size: 2em; max-width: 800px;}
-        .fade-in.visible, .text-line.visible { opacity: 1; transform: translateY(0); }
-        .answer-btn:hover { background: lightgray; }
-        .hint{color:darkgray;}
-        .title{font-family: chewy; font-size:3.5em}
-        div.content-overlay{
-            left:10%;
-            padding:30px;
-            width:33%;
-            height:auto;
-            background-color: rgba(191,205,208,0.8);
-            position:absolute;
-            filter: drop-shadow(8px 8px 10px gray);
-        }
-        div.content-overlay.right{
-            right:10%;
-            left:unset;
-        }
-        div.content-overlay.contrast{
-            background-color: rgba(191,205,208,0.6);
-            filter: drop-shadow(8px 8px 10px black);
-        }
-        div.content-overlay.calculator{
-            color:#FEFCFD;
-            background-color: #3B3355 ;
-            filter: drop-shadow(8px 8px 10px black);
-            border-radius: 10px;
-        }
-        img.sticky{
-        }
-        div.floatleft{
-            width:50%;
-        }
-        div.floatright{
-            width:50%;
-        }
-        button.scroll-btn {
-            margin-top: 20px;
-            padding: 10px 20px;
-            cursor: pointer;
-            font-size: 2.5em;
-            background-color: #FEFCFD;
-            font-family: Chewy, sans-serif;
-            animation: fadeIn 1s ease forwards;
-            animation-delay: 4s;
-            filter:drop-shadow(5px 5px);
-        }
-        button.scroll-btn:active {
-            filter:none;
-            transform:translate(2px,2px);
-        }
-        button.answer-btn { margin: 10px; padding: 10px 20px; font-size: 1.5em; cursor: pointer; background: #FEFCFD; border: 2px solid black; transition: background 0.3s; font-family: Lexend, sans-serif;}
-        button.answer-btn.correct{
-            background:forestgreen;
-            color:yellow;
-            position: relative;
-            border:yellow;
-            filter:drop-shadow(0px 0px 50px yellow);
-        }
-
-/* Add sparkle as a pseudo-element */
-button.answer-btn.correct::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 60px; /* adjust as needed */
-    height: 60px;
-    transform: translate(-50%, -50%);
-    background: url('static/sparkle.png') no-repeat center center;
-    background-size: contain;
-    pointer-events: none; /* Don't block clicks */
-    animation: sparkleFade 1s ease-out forwards;
-}
-
-/* animation to fade out the sparkle */
-@keyframes sparkleFade {
-    0% {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
-    }
-    100% {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(1.5);
-    }
-}
-
-        button.answer-btn.incorrect{
-            /*background:orangered;
-            color:yellow;*/
-        }
-        button.reload-btn{
-            font-family: Chewy, sans-serif;
-            font-size:10em;
-            color:green;
-            background-color: #FEFCFD;
-            border:none;
-            cursor: pointer;
-            animation-delay: 4s;
-        }
-        button:hover{
-            background-color: #EDEBEC;
-        }
-        button.reload-btn:hover{
-            background-color: #FEFCFD;
-        }
-        /*video*/
-        .video-container {
-            width: 100%;
-            max-width: 800px; /* set your desired width */
-            aspect-ratio: 852/480;
-            overflow: hidden;
-            position: relative;
-        }
-        .video-container.square {
-            aspect-ratio: 1 / 1;
-            max-width:400px;
-            width: 100%;
-        }
-        .frameless-video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Crop and fill container */
-            transform: translate(-50%, -50%);
-        }
-        /*animations*/
-        .fade-in-delayed {
-    opacity: 0 !important; /* Ensure fully hidden */
-    transition: opacity 1s ease, transform 1s ease;
-    transform: translateY(20px); /* Start slightly offset */
-    --fade-delay: 500ms; /* Default delay */
-}
-
-.fade-in-delayed.visible {
-    opacity: 1 !important; /* Ensures visibility is controlled */
-    transform: translateY(0);
-    transition-delay: var(--fade-delay);
-}
-/*number input*/
-.input-group {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-}
-
-.prefix {
-  position: absolute;
-  left: 10px;
-  pointer-events: none;
-  color: #555;
-  font-family: Lexend;
-  font-size: 1.2em;
-}
-.input-group input.money-input {
-  padding-left: 25px;
-  font-size: 1.2em;
-  font-family: Lexend;
-}
-/*Interest rate calculator*/
-.calculator-section {
-            margin-bottom: 20px;
-        }
-        label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
-        input[type="number"] {
-            width: 100%;
-            padding: 10px;
-            box-sizing: border-box;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-        }
-        input[type="range"] {
-            width: 100%;
-            margin-top: 10px;
-            accent-color: #7a5af5;
-        }
-        .results {
-            color:black;
-            margin-top: 30px;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            background-color: #f8f8f8;
-            font-size: 18px;
-            font-weight: bold;
-        }
-/*end of calc*/
-/*rate table*/
-.interest-table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 10px; /* creates space between cells */
-  text-align: center;
-}
-
-.interest-table th,
-.interest-table td {
-  padding: 12px;
-  border-radius: 12px; /* increase for more rounding */
-}
-
-
-    .interest-table thead th {
-      background-color: #e6e6fa;
-      font-weight: bold;
-    }
-    .narrow {
-  width: 1%;
-  white-space: nowrap;
-  padding-left: 6px;
-  padding-right: 6px;
-  background-color: transparent;}
-
-    .week-label {
-      font-weight: bold;
-    }
-
-    .blue {
-      background-color: #d0e8f8;
-    }
-
-    .orange {
-      background-color: #fde3c9;
-    }
-
-    .purple {
-      background-color: #e5dbf7;
-    }
-
-    .button-cell {
-    filter: drop-shadow(5px 5px);
-      border: none;
-      padding: 0;
-      margin: 0;
-      font: inherit;
-      color: inherit;
-      cursor: pointer;
-      width: 100%;
-      height: 100%;
-    }
-/*end of table*/
-/*sorting*/
-        div.rubric{
-            font-size: 2em; max-width: 800px;
-            width:50%;
-            position:absolute;
-            top:60px;
-        }
-        .card{
-            cursor:pointer;
-            font-family:lexend;
-            font-size:2em;
-            border:solid;
-            padding:5px;
-            filter:drop-shadow(3px 3px);
-            max-width:60%;
-            justify-self: center;
-        }
-        .left-btn { position: absolute;
-            left:20px;
-            top: 50%;
-            cursor: pointer;
-            width: 20%;
-            height: auto;
-            transform: translateY(-50%) rotateZ(180deg);
-            transform-origin:center;
-        }
-        .right-btn {
-            position:absolute;
-                right:20px;
-                top: 50%;
-                transform: translateY(-50%);
-                cursor: pointer;
-                width: 20%;
-                height: auto;}
-        .sorted-list { margin-top: 20px; }
-        .sorted-list h2 { margin-bottom: 10px; }
-        .sorted-list ul { list-style: none; padding: 0; }
-        .sorted-list li { background: #FEFCFD; margin: 5px 0; padding: 10px; border-radius: 4px; }
-/*end of sorting*/
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
-        @media (max-width: 800px) {
-            .twocol { position: relative; min-height: 100vh; padding: 20px; display: flex; flex-direction: column; align-items: none; justify-content: none; overflow: hidden; }
-        }
-    </style>
+    <link rel="stylesheet" href="static/main.css">
 </head>
 <body>
     <audio id="chime-sound" src="static/chime.mp3" preload="auto"></audio>
@@ -327,12 +17,12 @@ button.answer-btn.correct::after {
         <div class="text-line title">Recap: Overdrafts Level 1</div><br/><div class="text-line">This is the first lesson about <strong>overdrafts</strong>.<br/>To think about overdrafts, we need to think about what it means to <strong>lend</strong> or <strong>borrow</strong> money, and especially what it means if you borrow money from a bank.</div>
         <button class="scroll-btn" onclick="scrollToSection('landing')">Got it!</button>
         </div>
-    <div class="section" id="landing">
+    <div class="section timeline-anchor" id="landing" data-title="Landing page">
         <div class="text-line title">Overdrafts: Level 1</div><div class="text-line fade-in">We're going to look at the words 'borrow', 'lend' and 'owe', and think about what it means to borrow or lend money.<br/></div><br/>
         <button class="scroll-btn" onclick="scrollToSection('recap')">Recap</button>
         <button  id="first-continue" class="scroll-btn">Let's go!</button><!--special case because the first click is caught by a global handler-->
         </div>
-    <div class="section" id="borrow1">
+    <div class="section timeline-anchor" id="screen2" data-title="Ania wants to borrow a bike">
         <div class="parallax-bg" style="background-image: url('talking-heads.jpg');"></div>
         <div class="video-container">
         <video class="frameless-video" playsinline>
@@ -342,7 +32,7 @@ button.answer-btn.correct::after {
         <div class="text-line fade-in-delayed" style="--fade-delay: 5000ms" onclick="scrollToSection('borrow2')">Would you lend Ania your bike?</div>
         <div class = "fade-in-delayed" style="display: flex; gap: 1em; --fade-delay: 5000ms"><button class="scroll-btn" onclick="scrollToSection('borrow2')">Yes, of course</button><button class="scroll-btn" onclick="scrollToSection('borrow2')">I'm not sure</button></div>
     </div>
-    <div class="section" id="borrow2">
+    <div class="section timeline-anchor" id="borrow2" data-title="Darek lends his bike">
         <div class="parallax-bg" style="background-image: url('talking-heads.jpg');"></div>
         <div class="video-container">
         <video class="frameless-video" playsinline>
@@ -352,7 +42,7 @@ button.answer-btn.correct::after {
         <div class="text-line fade-in-delayed" style="--fade-delay: 5000ms" onclick="scrollToSection('borrow2')">Is Darek offering Ania a fair deal?</div>
         <div class = "fade-in-delayed" style="display: flex; gap: 1em; --fade-delay: 5000ms"><button class="scroll-btn" onclick="scrollToSection('borrow3')">Yes, he deserves something</button><button class="scroll-btn" onclick="scrollToSection('borrow3')">No, why should Ania get him anything?</button></div>
     </div>
-    <div class="section" id="borrow3">
+    <div class="section timeline-anchor" id="borrow3" data-title="Kiran owes Ania money">
         <div class="parallax-bg" style="background-image: url('talking-heads.jpg');"></div>
         <div class="video-container">
         <video class="frameless-video" playsinline>
@@ -361,7 +51,7 @@ button.answer-btn.correct::after {
     </div>
         <button class="scroll-btn fade-in-delayed" style="--fade-delay: 5000ms" onclick="scrollToSection('final1')">Go on</button>
     </div>
-    <div class="section" id="final1">
+    <div class="section timeline-anchor" id="final1"  data-title="Question 1">
         <div class="parallax-bg" style="background-image: url('static/bike.png');"></div>
         <div class="content-overlay">
         <div class="text-line fade-in">Why does Kiran owe Ania money?</div>
@@ -370,16 +60,16 @@ button.answer-btn.correct::after {
         <button class="answer-btn" onclick="checkAnswer(this, 'final2',false)">Ania stole Kiran's pocket money</button>
     </div>
 </div>
-    <div class="section" id="final2">
+    <div class="section timeline-anchor" id="final2"  data-title="Question 2">
         <div class="parallax-bg" style="background-image: url('static/bike.png');"></div>
         <div class="content-overlay right">
         <div class="text-line fade-in">The cinema ticket cost £8.00. Kiran has paid back £5.00 to Ania. How much does she still owe?</div>
-        <button class="answer-btn" onclick="checkAnswer(this, 'final3',false)">£8.00</button>
-        <button class="answer-btn" onclick="checkAnswer(this, 'final3',true)">£3.00</button>
-        <button class="answer-btn" onclick="checkAnswer(this, 'final3',false)">£5.00</button>
+        <button class="answer-btn" onclick="checkAnswer(this, 'q3',false)">£8.00</button>
+        <button class="answer-btn" onclick="checkAnswer(this, 'q3',true)">£3.00</button>
+        <button class="answer-btn" onclick="checkAnswer(this, 'q3',false)">£5.00</button>
     </div>
 </div>
-    <div class="section" id="final3">
+    <div class="section timeline-anchor" id="q3"  data-title="Question 3">
         <div class="parallax-bg" style="background-image: url('static/bike.png');"></div>
         <div class="content-overlay">
         <div class="text-line fade-in">You borrow £10 from a friend and pay them back £2 every week. How long will it take you to pay them back?</div></br>
@@ -393,311 +83,9 @@ button.answer-btn.correct::after {
         <div class="text-line fade-in">You've reached the end of this lesson!</div>
         <div><button class="reload-btn fade-in-delayed" onclick="location.reload()">↺</button></div>
     </div>
-
-    <script>
-    const chime = document.getElementById("chime-sound");
-    document.addEventListener('DOMContentLoaded', () => {
-    //scrollToSection("procon")
-    document.documentElement.classList.add('no-scroll');
-    document.body.classList.add('no-scroll');
-    scrollToSection("landing");
-    let userInteracted = false;
-    const firstContinueBtn = document.getElementById('first-continue');
-    //interest calculator
-    const overdraftInput = document.getElementById('overdraft');
-    const overdraftRange = document.getElementById('overdraftRange');
-    const daysInput = document.getElementById('days');
-    const daysRange = document.getElementById('daysRange');
-    const resultsBox = document.getElementById('results');
-    const interestRate = 1.00092226677;
-
-    firstContinueBtn.addEventListener('click', () => {
-        userInteracted = true;
-        //document.documentElement.classList.remove('no-scroll');
-        //document.body.classList.remove('no-scroll');
-        scrollToSection('borrow1');
-    }, { once: true });
-
-    // Make sure all fade-in-delayed elements are initially hidden
-    const delayedElements = document.querySelectorAll('.fade-in-delayed');
-    delayedElements.forEach(el => {
-        el.classList.remove('visible'); // Remove any pre-loaded visibility
-        el.style.opacity = "0";  // Force it hidden in case CSS didn't apply correctly
-    });
-
-    // Intersection Observer to trigger fade-in at the right moment
-    const fadeObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                setTimeout(() => {
-                    entry.target.classList.add('visible');
-                    entry.target.style.opacity = "1"; // Force fade-in
-                }, parseInt(entry.target.style.getPropertyValue('--fade-delay')) || 500);
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.3 }); // 30% of element must be visible
-
-    delayedElements.forEach(el => fadeObserver.observe(el));
-
-    // Observer for other animations (videos, interactions, etc.)
-    const animatedElements = document.querySelectorAll('.video-container, .interaction, .text-line');
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.3 });
-
-    animatedElements.forEach(el => observer.observe(el));
-
-    // Autoplay videos when in view
-    const videoObserver = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            const video = entry.target;
-            if (entry.isIntersecting && userInteracted) {
-                video.play().catch(() => {
-                    console.log("User interaction required to play sound.");
-                });
-            } else {
-                video.pause();
-            }
-        });
-    }, { threshold: 0.5 });
-
-    document.querySelectorAll('.frameless-video').forEach(video => {
-        videoObserver.observe(video);
-    });
-    document.querySelectorAll('.showPennies').forEach(input => {
-      input.addEventListener('change', () => {
-        const value = parseFloat(input.value);
-        if (!isNaN(value)) {
-          input.value = value.toFixed(2);
-        }
-      });
-    });
-    //interest calculator:
-    function updateResults() {
-        const amount = parseFloat(overdraftInput.value);
-        const days = parseInt(daysInput.value);
-        const total = amount * Math.pow(interestRate,days) - amount;
-        resultsBox.textContent = `Total interest: £${total.toFixed(2)}`;
-    }
-
-    overdraftInput.addEventListener('input', () => {
-        overdraftRange.value = overdraftInput.value;
-        updateResults();
-    });
-
-    overdraftRange.addEventListener('input', () => {
-        overdraftInput.value = overdraftRange.value;
-        updateResults();
-    });
-
-    daysInput.addEventListener('input', () => {
-        daysRange.value = daysInput.value;
-        updateResults();
-    });
-
-    daysRange.addEventListener('input', () => {
-        daysInput.value = daysRange.value;
-        updateResults();
-    });
-
-    // Initial results update
-    updateResults();
-});
-/*pro cons sorting*/
- const cards = [
-        "Sam will get the game at the same time as his friends.",
-        "Sam may see spoilers for the game during the week he doesn’t have it.",
-        "If Sam is paid next week, he will only be overdrawn for a short time.",
-        "The game will still be available to buy next week.",
-        "Sam will be charged interest on the amount of money he overdraws."
-    ];
-
-    const pros = [];
-    const cons = [];
-
-    let currentCard = 0;
-    const cardElem = document.getElementById('card');
-
-    function updateCard() {
-        if (currentCard < cards.length) {
-            cardElem.textContent = cards[currentCard];
-            cardElem.style.transform = 'translateX(0)';
-            cardElem.style.backgroundColor = '#FEFCFD';
-            cardElem.style.opacity = '1';
-            cardElem.style.display = 'block';
-        } else {
-            cardElem.style.display = 'none';
-            document.getElementById('procon').style.display = 'none';
-            displayResults();
-        }
-    }
-
-    function animateSort(type) {
-        cardElem.style.transition = 'transform 0.5s ease-out, background-color 0.5s ease-out';
-        if (type === 'pro') {
-            cardElem.style.transform = 'translateX(600px)';
-            cardElem.style.backgroundColor = '#c8e6c9';
-            pros.push(cards[currentCard]);
-        } else {
-            cardElem.style.transform = 'translateX(-600px)';
-            cardElem.style.backgroundColor = '#ffccbc';
-            cons.push(cards[currentCard]);
-        }
-        currentCard++;
-        setTimeout(() => {
-            cardElem.style.transition = '';
-            if (currentCard >= cards.length) {
-                cardElem.style.display = 'none';
-                document.getElementById('procon').style.display = 'none';
-                displayResults();
-            } else {
-                updateCard();
-            }
-        }, 500);
-    }
-
-    function displayResults() {
-        const prosList = document.getElementById('pros-list');
-        const consList = document.getElementById('cons-list');
-
-        pros.forEach(pro => {
-            const li = document.createElement('li');
-            li.textContent = pro;
-            prosList.appendChild(li);
-        });
-
-        cons.forEach(con => {
-            const li = document.createElement('li');
-            li.textContent = con;
-            consList.appendChild(li);
-        });
-
-        document.getElementById('results-section').scrollIntoView({ behavior: 'smooth' });
-    }
-
-    let isDragging = false;
-    let startX;
-
-    cardElem.addEventListener('mousedown', (e) => {
-        isDragging = true;
-        startX = e.clientX;
-        cardElem.style.cursor = 'grabbing';
-    });
-
-    document.addEventListener('mousemove', (e) => {
-        if (!isDragging) return;
-        const deltaX = e.clientX - startX;
-        cardElem.style.transform = `translateX(${deltaX}px)`;
-        const intensity = Math.min(Math.abs(deltaX) / 150, 1);
-        cardElem.style.backgroundColor = deltaX > 0 ? `rgba(200,230,201,${intensity})` : `rgba(255,204,188,${intensity})`;
-    });
-
-    document.addEventListener('mouseup', (e) => {
-        if (!isDragging) return;
-        isDragging = false;
-        cardElem.style.cursor = 'grab';
-        const deltaX = e.clientX - startX;
-        if (deltaX > 150) {
-            animateSort('pro');
-        } else if (deltaX < -150) {
-            animateSort('con');
-        } else {
-            cardElem.style.transform = 'translateX(0)';
-            cardElem.style.backgroundColor = '#FEFCFD';
-        }
-    });
-
-    updateCard();
-/*end of pro cons sorting*/
-        function scrollToSection(id){
-            //special cases:
-            document.getElementById(id).scrollIntoView({behavior:'smooth'});
-
-
-        }
-        function checkAnswer(button, nextSection,correct,incorrectSection){
-            var destination;
-            var delay = correct?1000:500;
-            if(correct){
-                chime.currentTime = 0; // rewind to start
-                chime.play();
-                button.classList.remove("incorrect");
-                button.classList.add("correct");
-                destination = nextSection;
-            } else{
-                button.classList.add("incorrect");
-                destination = incorrectSection || nextSection;
-            }
-            //alert(correct ? "Correct!" : "Try again.");
-            if(nextSection=="retry"){
-                //display a wrong answer and ask to try again?
-            } else{
-            setTimeout(function(){scrollToSection(destination)},500);
-            }
-        }
-        // Function to handle image change and scroll
-            function changeImageAndScroll(imageId, newImageSrc, nextSectionId) {
-            const img = document.getElementById(imageId);
-            if (img) {
-                 img.src = newImageSrc;
-            }
-            setTimeout(() => scrollToSection(nextSectionId), 500);
-}
-        document.addEventListener('DOMContentLoaded',()=>{
-            document.querySelectorAll('.fade-in, .text-line').forEach(el=>{
-                const observer=new IntersectionObserver(entries=>{
-                    entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add('visible');});
-                },{threshold:0.2});observer.observe(el);
-            });
-        });
-        //scaling:
-        /*
-function scaleSections() {
-  const viewportHeight = window.innerHeight;
-  document.querySelectorAll('.section').forEach(section => {
-    const content = section;//.querySelector('.content-wrapper');
-    
-    // Reset transform to measure natural height
-    content.style.transform = 'scale(1) translateY(0)';
-    const contentHeight = content.offsetHeight;
-    
-    // Calculate scale factor if content is taller than the viewport
-    let scaleFactor = 1;
-    if (contentHeight > viewportHeight) {
-      scaleFactor = viewportHeight / contentHeight;
-    }
-    
-    // Calculate the height of the content after scaling
-    const scaledHeight = contentHeight * scaleFactor;
-    // Compute vertical offset to center the scaled content within the viewport
-    const verticalOffset = (viewportHeight - scaledHeight)/2;
-    
-    // Apply the scaling and vertical offset
-    content.style.transform = `scale(${scaleFactor}) translateY(${verticalOffset}px)`;
-    // Ensure each section takes up the full viewport height
-    //section.style.height = `${viewportHeight}px`;
-  });
-}
-
-window.addEventListener('resize', scaleSections);
-window.addEventListener('load', () => {
-  scaleSections();
-  if (document.fonts) {
-    document.fonts.ready.then(scaleSections);
-  }
-});
-
-// Run on initial load and on window resize
-window.addEventListener('resize', scaleSections);
-*/
-    
-    </script>
+    <div id="timeline">
+        <!-- Dots will be generated here -->
+    </div>
+    <script src="scripts/main.js"></script>
 </body>
 </html>

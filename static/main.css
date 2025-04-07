@@ -1,0 +1,365 @@
+.lexend-<uniquifier> {
+  font-family: "Lexend", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+html.no-scroll, body.no-scroll {
+            overflow: hidden !important;
+            height: 100%;
+        }
+        * { user-select: none; }
+        html, body { margin: 0; padding: 0; overflow-x: hidden; scroll-behavior: smooth; font-family: Lexend, sans-serif; background: #FEFCFD; color: #111; }
+        .section { position: relative; min-height: 100vh; padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; text-align: left;}
+        .twocol { position: relative; min-height: 0vh; padding: 20px; display: flex; flex-direction: row; align-items: none; justify-content: none; overflow: hidden; }
+        .parallax-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-attachment: fixed; z-index: 0; }
+        .text-line, .fade-in { opacity: 0; transition: opacity 1s ease, transform 1s ease; transform: translateY(30px); font-size: 2em; max-width: 800px;}
+        .fade-in.visible, .text-line.visible { opacity: 1; transform: translateY(0); }
+        .answer-btn:hover { background: lightgray; }
+        .hint{color:darkgray;}
+        .title{font-family: chewy; font-size:3.5em}
+        div.content-overlay{
+            left:10%;
+            top:5%;
+            padding:30px;
+            width:33%;
+            height:auto;
+            background-color: rgba(191,205,208,0.8);
+            position:absolute;
+            filter: drop-shadow(8px 8px 10px gray);
+        }
+        div.content-overlay.right{
+            right:10%;
+            left:unset;
+        }
+        div.content-overlay.contrast{
+            background-color: rgba(191,205,208,0.6);
+            filter: drop-shadow(8px 8px 10px black);
+        }
+        div.bottom-box{
+            left:unset;
+            top:unset;
+            bottom:10%;
+            display: flex;
+            gap: 1em;
+        }
+        div.content-overlay.calculator{
+            color:#FEFCFD;
+            background-color: #3B3355 ;
+            filter: drop-shadow(8px 8px 10px black);
+            border-radius: 10px;
+        }
+        img.sticky{
+        }
+        div.floatleft{
+            width:50%;
+        }
+        div.floatright{
+            width:50%;
+        }
+        button.scroll-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 2.5em;
+            background-color: #FEFCFD;
+            font-family: Chewy, sans-serif;
+            animation: fadeIn 1s ease forwards;
+            animation-delay: 4s;
+            filter:drop-shadow(5px 5px);
+        }
+        button.answer-btn { margin: 10px; padding: 10px 20px; font-size: 1.5em; cursor: pointer; background: #FEFCFD; border: 2px solid black; transition: background 0.3s; font-family: Lexend, sans-serif;}
+        button.answer-btn.correct{
+            background:forestgreen;
+            color:yellow;
+            position: relative;
+            border:yellow;
+            filter:drop-shadow(0px 0px 50px yellow);
+        }
+
+/* Add sparkle as a pseudo-element */
+button.answer-btn.correct::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60px; /* adjust as needed */
+    height: 60px;
+    transform: translate(-50%, -50%);
+    background: url('sparkle.png') no-repeat center center;
+    background-size: contain;
+    pointer-events: none; /* Don't block clicks */
+    animation: sparkleFade 1s ease-out forwards;
+}
+
+/* animation to fade out the sparkle */
+@keyframes sparkleFade {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(1.5);
+    }
+}
+        button.scroll-btn:active {
+            filter:none;
+            transform:translate(2px,2px);
+        }
+        button.answer-btn.incorrect{
+            /*background:orangered;
+            color:yellow;*/
+        }
+        button.reload-btn{
+            font-family: Chewy, sans-serif;
+            font-size:10em;
+            color:green;
+            background-color: #FEFCFD;
+            border:none;
+            cursor: pointer;
+            animation-delay: 4s;
+        }
+        button:hover{
+            background-color: #EDEBEC;
+        }
+        button.reload-btn:hover{
+            background-color: #FEFCFD;
+        }
+        /*video*/
+        .video-container {
+            width: 100%;
+            max-width: 800px; /* set your desired width */
+            aspect-ratio: 852/480;
+            overflow: hidden;
+            position: relative;
+        }
+        .video-container.square {
+            aspect-ratio: 1 / 1;
+            max-width:400px;
+            width: 100%;
+        }
+        .frameless-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Crop and fill container */
+            transform: translate(-50%, -50%);
+        }
+        /*animations*/
+        .fade-in-delayed {
+    opacity: 0 !important; /* Ensure fully hidden */
+    transition: opacity 1s ease, transform 1s ease;
+    transform: translateY(20px); /* Start slightly offset */
+    --fade-delay: 500ms; /* Default delay */
+}
+
+.fade-in-delayed.visible {
+    opacity: 1 !important; /* Ensures visibility is controlled */
+    transform: translateY(0);
+    transition-delay: var(--fade-delay);
+}
+/*number input*/
+.input-group {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.prefix {
+  position: absolute;
+  left: 10px;
+  pointer-events: none;
+  color: #555;
+  font-family: Lexend;
+  font-size: 1.2em;
+}
+.input-group input.money-input {
+  padding-left: 25px;
+  font-size: 1.2em;
+  font-family: Lexend;
+}
+/*Interest rate calculator*/
+.calculator-section {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+        input[type="range"] {
+            width: 100%;
+            margin-top: 10px;
+            accent-color: #7a5af5;
+        }
+        .results {
+            color:black;
+            margin-top: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background-color: #f8f8f8;
+            font-size: 18px;
+            font-weight: bold;
+        }
+/*end of calc*/
+/*rate table*/
+.interest-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 10px; /* creates space between cells */
+  text-align: center;
+}
+
+.interest-table th,
+.interest-table td {
+  padding: 12px;
+  border-radius: 12px; /* increase for more rounding */
+}
+
+
+    .interest-table thead th {
+      background-color: #e6e6fa;
+      font-weight: bold;
+    }
+    .narrow {
+  width: 1%;
+  white-space: nowrap;
+  padding-left: 6px;
+  padding-right: 6px;
+  background-color: transparent;}
+
+    .week-label {
+      font-weight: bold;
+    }
+
+    .blue {
+      background-color: #d0e8f8;
+    }
+
+    .orange {
+      background-color: #fde3c9;
+    }
+
+    .purple {
+      background-color: #e5dbf7;
+    }
+
+    .button-cell {
+    filter: drop-shadow(5px 5px);
+      border: none;
+      padding: 0;
+      margin: 0;
+      font: inherit;
+      color: inherit;
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+    }
+/*end of table*/
+/*sorting*/
+        div.rubric{
+            font-size: 2em; max-width: 800px;
+            width:50%;
+            position:absolute;
+            top:60px;
+        }
+        .card{
+            cursor:pointer;
+            font-family:lexend;
+            font-size:2em;
+            border:solid;
+            padding:5px;
+            filter:drop-shadow(3px 3px);
+            max-width:60%;
+            justify-self: center;
+        }
+        .left-btn { position: absolute;
+            left:20px;
+            top: 50%;
+            cursor: pointer;
+            width: 20%;
+            height: auto;
+            transform: translateY(-50%) rotateZ(180deg);
+            transform-origin:center;
+        }
+        .right-btn {
+            position:absolute;
+                right:20px;
+                top: 50%;
+                transform: translateY(-50%);
+                cursor: pointer;
+                width: 20%;
+                height: auto;}
+        .sorted-list { margin-top: 20px; }
+        .sorted-list h2 { margin-bottom: 10px; }
+        .sorted-list ul { list-style: none; padding: 0; }
+        .sorted-list li { background: #FEFCFD; margin: 5px 0; padding: 10px; border-radius: 4px; }
+/*end of sorting*/
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        @media (max-width: 800px) {
+            .twocol { position: relative; min-height: 100vh; padding: 20px; display: flex; flex-direction: column; align-items: none; justify-content: none; overflow: hidden; }
+        }
+/*timeline*/
+#timeline {
+  position: fixed;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1000;
+  background-color: rgba(191,205,208,0.6);
+  border-radius:5px;
+}
+
+.timeline-dot {
+  width: 14px;
+  height: 14px;
+  margin: 8px 0;
+  border-radius: 50%;
+  background-color: #ccc;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.3s;
+  border: 2px solid white;
+  cursor:default;
+}
+
+.timeline-dot.live {
+  background-color: #444;
+  cursor:pointer;
+}
+.timeline-dot.current {
+  border: 2px solid yellow;
+  cursor:default;
+}
+.timeline-dot:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #333;
+  color: #fff;
+  padding: 3px 6px;
+  border-radius: 3px;
+  white-space: nowrap;
+  font-size: 0.75em;
+  pointer-events: none;
+  z-index: 10;
+}
