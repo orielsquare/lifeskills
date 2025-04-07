@@ -105,7 +105,7 @@ button.answer-btn.correct::after {
     animation: sparkleFade 1s ease-out forwards;
 }
 
-/* Optional animation to fade out the sparkle */
+/* animation to fade out the sparkle */
 @keyframes sparkleFade {
     0% {
         opacity: 1;
@@ -116,7 +116,10 @@ button.answer-btn.correct::after {
         transform: translate(-50%, -50%) scale(1.5);
     }
 }
-
+        button.scroll-btn:active {
+            filter:none;
+            transform:translate(2px,2px);
+        }
         button.answer-btn.incorrect{
             /*background:orangered;
             color:yellow;*/
@@ -129,6 +132,12 @@ button.answer-btn.correct::after {
             border:none;
             cursor: pointer;
             animation-delay: 4s;
+        }
+        button:hover{
+            background-color: #EDEBEC;
+        }
+        button.reload-btn:hover{
+            background-color: #FEFCFD;
         }
         /*video*/
         .video-container {
@@ -646,7 +655,7 @@ The calculator shows you how much interest he will be charged.<br/>
     <div class="section" id="final3">
         <div class="parallax-bg" style="background-image: url('static/bank.jpg');"></div>
         <div id="final3Target" class="content-overlay">
-        <div class="text-line fade-in">Sonia uses her overdraft to pay £700 for car repairs, overdrawn for 14 days.<br/><br/>How much interest will Sonia pay?<bf/><br/>Use the Overdraft Calculator, similar to many you can find online, to work the answer out.</div>
+        <div class="text-line fade-in">Sonia uses her overdraft to pay £700 for car repairs, overdrawn for 14 days.<br/><br/>How much interest will Sonia pay?<bf/><br/>Use the Overdraft Calculator to work the answer out.</div>
     </div>
     <div class="content-overlay bottom-box" id="calcanswer2">
         <div class="text-line">Total interest</div><div class="input-group">

@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Overdrafts: Level 3</title>
+    <title>Overdrafts: Level 1</title>
     <style>
 
 .lexend-<uniquifier> {
@@ -73,14 +73,49 @@ html.no-scroll, body.no-scroll {
             animation-delay: 4s;
             filter:drop-shadow(5px 5px);
         }
+        button.scroll-btn:active {
+            filter:none;
+            transform:translate(2px,2px);
+        }
         button.answer-btn { margin: 10px; padding: 10px 20px; font-size: 1.5em; cursor: pointer; background: #FEFCFD; border: 2px solid black; transition: background 0.3s; font-family: Lexend, sans-serif;}
         button.answer-btn.correct{
             background:forestgreen;
             color:yellow;
+            position: relative;
+            border:yellow;
+            filter:drop-shadow(0px 0px 50px yellow);
         }
+
+/* Add sparkle as a pseudo-element */
+button.answer-btn.correct::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60px; /* adjust as needed */
+    height: 60px;
+    transform: translate(-50%, -50%);
+    background: url('static/sparkle.png') no-repeat center center;
+    background-size: contain;
+    pointer-events: none; /* Don't block clicks */
+    animation: sparkleFade 1s ease-out forwards;
+}
+
+/* animation to fade out the sparkle */
+@keyframes sparkleFade {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(1.5);
+    }
+}
+
         button.answer-btn.incorrect{
-            background:orangered;
-            color:yellow;
+            /*background:orangered;
+            color:yellow;*/
         }
         button.reload-btn{
             font-family: Chewy, sans-serif;
@@ -90,6 +125,12 @@ html.no-scroll, body.no-scroll {
             border:none;
             cursor: pointer;
             animation-delay: 4s;
+        }
+        button:hover{
+            background-color: #EDEBEC;
+        }
+        button.reload-btn:hover{
+            background-color: #FEFCFD;
         }
         /*video*/
         .video-container {
@@ -281,6 +322,7 @@ html.no-scroll, body.no-scroll {
     </style>
 </head>
 <body>
+    <audio id="chime-sound" src="static/chime.mp3" preload="auto"></audio>
     <div class="section" id="recap">
         <div class="text-line title">Recap: Overdrafts Level 1</div><br/><div class="text-line">This is the first lesson about <strong>overdrafts</strong>.<br/>To think about overdrafts, we need to think about what it means to <strong>lend</strong> or <strong>borrow</strong> money, and especially what it means if you borrow money from a bank.</div>
         <button class="scroll-btn" onclick="scrollToSection('landing')">Got it!</button>
@@ -353,6 +395,7 @@ html.no-scroll, body.no-scroll {
     </div>
 
     <script>
+    const chime = document.getElementById("chime-sound");
     document.addEventListener('DOMContentLoaded', () => {
     //scrollToSection("procon")
     document.documentElement.classList.add('no-scroll');
@@ -581,7 +624,10 @@ html.no-scroll, body.no-scroll {
         }
         function checkAnswer(button, nextSection,correct,incorrectSection){
             var destination;
+            var delay = correct?1000:500;
             if(correct){
+                chime.currentTime = 0; // rewind to start
+                chime.play();
                 button.classList.remove("incorrect");
                 button.classList.add("correct");
                 destination = nextSection;
