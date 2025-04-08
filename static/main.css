@@ -16,7 +16,9 @@ html.no-scroll, body.no-scroll {
         .text-line, .fade-in { opacity: 0; transition: opacity 1s ease, transform 1s ease; transform: translateY(30px); font-size: 2em; max-width: 800px;}
         .fade-in.visible, .text-line.visible { opacity: 1; transform: translateY(0); }
         .answer-btn:hover { background: lightgray; }
-        .hint{color:darkgray;}
+        .hint{color:skyblue;display:none}
+        .hint.showing{color:skyblue;display:none;display:inherit;}
+        .hint.contrast{color:#000099}
         .title{font-family: chewy; font-size:3.5em}
         div.content-overlay{
             left:10%;
@@ -75,7 +77,6 @@ html.no-scroll, body.no-scroll {
             position: relative;
             border-color:forestgreen;
             filter:drop-shadow(0px 0px 50px yellow);
-            disabled;
             cursor:default;
         }
 
@@ -112,7 +113,6 @@ button.answer-btn.correct::after {
         button.answer-btn.incorrect{
             background-color: #EDEBEC;
             color:#222222;
-            disabled;
             cursor:default;
             border-color:#aaaaaa;
 

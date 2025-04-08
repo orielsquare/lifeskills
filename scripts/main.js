@@ -8,10 +8,12 @@ const chime = document.getElementById("chime-sound");
     const dot = document.createElement("div");
     dot.className = "timeline-dot";
     dot.dataset.index = index;
+    dot.id=section.id;
     dot.dataset.tooltip = section.dataset.title || `Section ${index + 1}`;
 
     dot.addEventListener("click", () => {
         if(dot.classList.contains("live")){
+            updateScreenOnScrollTo(dot.id)
         section.scrollIntoView({ behavior: "smooth" });
        updateCurrentDot(dot);
     }
@@ -50,7 +52,7 @@ const chime = document.getElementById("chime-sound");
     const overdraftRange = document.getElementById('overdraftRange');
     const daysInput = document.getElementById('days');
     const daysRange = document.getElementById('daysRange');
-    const resultsBox = document.getElementById('results');
+    const resultsBox = document.getElementById('calculatorResult');
     const interestRate = 1.00092226677;
 
     firstContinueBtn.addEventListener('click', () => {
@@ -128,7 +130,7 @@ const chime = document.getElementById("chime-sound");
         const amount = parseFloat(overdraftInput.value);
         const days = parseInt(daysInput.value);
         const total = amount * Math.pow(interestRate,days) - amount;
-        resultsBox.textContent = `Total interest: £${total.toFixed(2)}`;
+        resultsBox.textContent = `£${total.toFixed(2)}`;
     }
 
     overdraftInput.addEventListener('input', () => {
@@ -260,24 +262,38 @@ const chime = document.getElementById("chime-sound");
 
     updateCard();
 /*end of pro cons sorting*/
+    function showHints(){
+        document.querySelectorAll(".hint").forEach(hint =>{hint.classList.add("showing")});
+    }
+    function hideHints(){
+        document.querySelectorAll(".hint").forEach(hint =>{hint.classList.remove("showing")});
+
+    }
         function scrollToSection(id){
+            updateScreenOnScrollTo(id)
+            document.getElementById(id).scrollIntoView({behavior:'smooth'});
+        }
+        function updateScreenOnScrollTo(id){
             //special cases:
             switch(id){
-                case "SamCalc":
-                   var calculator = document.getElementById('interestCalculator');
-                   var target = document.getElementById('SamCalcTarget');
+                case "screen16":
+                    var calculator = document.getElementById('interestCalculator');
+                    var target = document.getElementById('SamCalcTarget');
                     target.insertAdjacentElement('afterend', calculator);
 
                 break;
+                case "screen17":
+                    showHints();
+                break;
+                case "screen18":
+                    hideHints();
+                    break;
                 case "final3":
                     var calculator = document.getElementById('interestCalculator');
                     var target = document.getElementById('final3Target');
                     target.insertAdjacentElement('afterend', calculator);
                 break;
             }
-            document.getElementById(id).scrollIntoView({behavior:'smooth'});
-
-
         }
         function checkAnswer(button, nextSection,correct,incorrectSection){
             var destination;
@@ -289,7 +305,9 @@ const chime = document.getElementById("chime-sound");
                 button.classList.add("correct");
                 destination = nextSection;
             } else{
+                if(!button.classList.contains("reusable")){
                 button.classList.add("incorrect");
+            }
                 destination = incorrectSection || nextSection;
             }
             //alert(correct ? "Correct!" : "Try again.");
@@ -298,6 +316,7 @@ const chime = document.getElementById("chime-sound");
             } else{
             setTimeout(function(){scrollToSection(destination)},delay);
             }
+            button.disabled = correct || !button.classList.contains("reusable");
         }
         // Function to handle image change and scroll
             function changeImageAndScroll(imageId, newImageSrc, nextSectionId) {
