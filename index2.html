@@ -95,7 +95,7 @@
         <td class="purple">£404.00</td>
     </tr></tbody></table>
         </div>
-        <button class="scroll-btn fade-in" onclick="scrollToSection('screen7')">Next</button>
+        <button class="scroll-btn fade-in" onclick="scrollToSection('screen5')">OK, I'll try again</button>
     </div>
 
     <div class="section timeline-anchor" id="screen7" data-title="After four weeks">
@@ -216,7 +216,7 @@
     </tbody>
   </table>
         </div>
-        <button class="scroll-btn fade-in-delayed" style="--fade-delay: 5000ms" onclick="scrollToSection('screen10')">Next</button>
+        <button class="scroll-btn fade-in-delayed" style="--fade-delay: 1000ms" onclick="scrollToSection('screen8')">OK, I'll try again</button>
     </div>
     <div class="section timeline-anchor" id="screen10" data-title="Typical interest rates">
         <div class="text-line fade-in">You’ve just seen how 1% interest per week quickly adds up. Banks will tell you interest rates per year (the annual rate). But they calculate interest <b>per day</b> you are overdrawn.</div><br/><div class="text-line fade-in-delayed" style="--fade-delay: 2500ms;">Banks usually charge around 40% interest on overdrafts per year (annually). Banks call this EAR: <i>Equivalent Annual Rate</i>.</div>
@@ -293,7 +293,7 @@
                 <input disabled id="aer" value="40%">
             </div>
         </div>
-        <div class="content-overlay bottom-box" id="calcanswer1">
+        <div class="content-overlay bottom-box contrast" id="calcanswer1">
         <div class="text-line">Total interest</div><div class="input-group">
           <span class="prefix">£</span>
           <input id="Samcalc_answer" type="number" step="0.01" min="0" class="money-input showPennies" placeholder="0.00">
@@ -322,7 +322,7 @@ The calculator shows you how much interest he will be charged.<br/>
         <div class="parallax-bg" style="background-image: url('static/bank.jpg');"></div>
         <div class="content-overlay">
         <div class="text-line fade-in">Overdrafts are intended for…</div>
-        <button class="answer-btn" onclick="checkAnswer(this, 'final2',false)">long-term investments.</button>
+        <button class="answer-btn" onclick="checkAnswer(this, 'retry',false)">long-term investments.</button>
         <button class="answer-btn" onclick="checkAnswer(this, 'final2',true)">short-term loans and emergencies.</button>
     </div>
 </div>
@@ -330,8 +330,8 @@ The calculator shows you how much interest he will be charged.<br/>
         <div class="parallax-bg" style="background-image: url('static/bank.jpg');"></div>
         <div class="content-overlay right">
         <div class="text-line fade-in">The interest rate on overdrafts is usually about…</div>
-        <button class="answer-btn" onclick="checkAnswer(this, 'final3',false)">25%</button>
-        <button class="answer-btn" onclick="checkAnswer(this, 'final3',false)">30%</button>
+        <button class="answer-btn" onclick="checkAnswer(this, 'retry',false)">25%</button>
+        <button class="answer-btn" onclick="checkAnswer(this, 'retry',false)">30%</button>
         <button class="answer-btn" onclick="checkAnswer(this, 'final3',true)">40%</button>
     </div>
 </div>

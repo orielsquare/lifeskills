@@ -15,7 +15,7 @@
     <audio id="chime-sound" src="static/chime.mp3" preload="auto"></audio>
     <div class="section" id="recap">
         <div class="text-line title">Recap: Overdrafts Level 1</div><br/><div class="text-line">This is the first lesson about <strong>overdrafts</strong>.<br/>To think about overdrafts, we need to think about what it means to <strong>lend</strong> or <strong>borrow</strong> money, and especially what it means if you borrow money from a bank.</div>
-        <button class="scroll-btn" onclick="scrollToSection('landing')">Got it!</button>
+        <button class="scroll-btn" onclick="scrollToSection('landing')">OK</button>
         </div>
     <div class="section timeline-anchor" id="landing" data-title="Landing page">
         <div class="text-line title">Overdrafts: Level 1</div><div class="text-line fade-in">We're going to look at the words 'borrow', 'lend' and 'owe', and think about what it means to borrow or lend money.<br/></div><br/>
@@ -56,17 +56,17 @@
         <div class="content-overlay">
         <div class="text-line fade-in">Why does Kiran owe Ania money?</div>
         <button class="answer-btn" onclick="checkAnswer(this, 'final2',true)">Ania bought Kiran a cinema ticket</button>
-        <button class="answer-btn" onclick="checkAnswer(this, 'final2',false)">Kiran bought Ania a cinema ticket</button>
-        <button class="answer-btn" onclick="checkAnswer(this, 'final2',false)">Ania stole Kiran's pocket money</button>
+        <button class="answer-btn" onclick="checkAnswer(this, 'retry',false)">Kiran bought Ania a cinema ticket</button>
+        <button class="answer-btn" onclick="checkAnswer(this, 'retry',false)">Ania stole Kiran's pocket money</button>
     </div>
 </div>
     <div class="section timeline-anchor" id="final2"  data-title="Question 2">
         <div class="parallax-bg" style="background-image: url('static/bike.png');"></div>
         <div class="content-overlay right">
         <div class="text-line fade-in">The cinema ticket cost £8.00. Kiran has paid back £5.00 to Ania. How much does she still owe?</div>
-        <button class="answer-btn" onclick="checkAnswer(this, 'q3',false)">£8.00</button>
+        <button class="answer-btn" onclick="checkAnswer(this, 'retry',false)">£8.00</button>
         <button class="answer-btn" onclick="checkAnswer(this, 'q3',true)">£3.00</button>
-        <button class="answer-btn" onclick="checkAnswer(this, 'q3',false)">£5.00</button>
+        <button class="answer-btn" onclick="checkAnswer(this, 'retry',false)">£5.00</button>
     </div>
 </div>
     <div class="section timeline-anchor" id="q3"  data-title="Question 3">
@@ -74,13 +74,16 @@
         <div class="content-overlay">
         <div class="text-line fade-in">You borrow £10 from a friend and pay them back £2 every week. How long will it take you to pay them back?</div></br>
         <button class="answer-btn" onclick="checkAnswer(this, 'end',true)">5 weeks</button>
-        <button class="answer-btn" onclick="checkAnswer(this, 'end',false)">10 weeks</button>
-        <button class="answer-btn" onclick="checkAnswer(this, 'end',false)">20 weeks</button>
+        <button class="answer-btn" onclick="checkAnswer(this, 'retry',false)">10 weeks</button>
+        <button class="answer-btn" onclick="checkAnswer(this, 'retry',false)">20 weeks</button>
     </div>
     </div>
 
     <div class="section" id="end">
-        <div class="text-line fade-in">You've reached the end of this lesson!</div>
+        <div class="text-line title">Summary</div>
+        <div class="text-line">When Ania needed to get to Kiran's house, she asked Darek whether she could <strong>borrow</strong> his bike.</div>
+        <div class="text-line">Darek agreed to <strong>lend</strong> her his bike. But he didn't do it for free - Ania agreed she would pay him back with a chocloate bar.</div><br/>
+        <div class="text-line">Kiran remembered that she <strong>owed</strong> Ania £8.00. She <strong>paid back</strong> £5.00, so she still owes Ania £3.00.</div>
         <div><button class="reload-btn fade-in-delayed" onclick="location.reload()">↺</button></div>
     </div>
     <div id="timeline">

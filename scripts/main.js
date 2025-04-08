@@ -281,7 +281,7 @@ const chime = document.getElementById("chime-sound");
         }
         function checkAnswer(button, nextSection,correct,incorrectSection){
             var destination;
-            var delay = correct?1000:500;
+            var delay = correct?750:500;
             if(correct){
                 chime.currentTime = 0; // rewind to start
                 chime.play();

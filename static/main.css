@@ -12,7 +12,7 @@ html.no-scroll, body.no-scroll {
         html, body { margin: 0; padding: 0; overflow-x: hidden; scroll-behavior: smooth; font-family: Lexend, sans-serif; background: #FEFCFD; color: #111; }
         .section { position: relative; min-height: 100vh; padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; text-align: left;}
         .twocol { position: relative; min-height: 0vh; padding: 20px; display: flex; flex-direction: row; align-items: none; justify-content: none; overflow: hidden; }
-        .parallax-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-attachment: fixed; z-index: 0; }
+        .parallax-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-attachment: fixed; z-index: 0; opacity: 0.4}
         .text-line, .fade-in { opacity: 0; transition: opacity 1s ease, transform 1s ease; transform: translateY(30px); font-size: 2em; max-width: 800px;}
         .fade-in.visible, .text-line.visible { opacity: 1; transform: translateY(0); }
         .answer-btn:hover { background: lightgray; }
@@ -24,7 +24,7 @@ html.no-scroll, body.no-scroll {
             padding:30px;
             width:33%;
             height:auto;
-            background-color: rgba(191,205,208,0.8);
+            background-color: rgba(208,208,208,0.8);
             position:absolute;
             filter: drop-shadow(8px 8px 10px gray);
         }
@@ -33,7 +33,7 @@ html.no-scroll, body.no-scroll {
             left:unset;
         }
         div.content-overlay.contrast{
-            background-color: rgba(191,205,208,0.6);
+            background-color: rgba(240,240,240,0.8);
             filter: drop-shadow(8px 8px 10px black);
         }
         div.bottom-box{
@@ -73,8 +73,10 @@ html.no-scroll, body.no-scroll {
             background:forestgreen;
             color:yellow;
             position: relative;
-            border:yellow;
+            border-color:forestgreen;
             filter:drop-shadow(0px 0px 50px yellow);
+            disabled;
+            cursor:default;
         }
 
 /* Add sparkle as a pseudo-element */
@@ -108,8 +110,12 @@ button.answer-btn.correct::after {
             transform:translate(2px,2px);
         }
         button.answer-btn.incorrect{
-            /*background:orangered;
-            color:yellow;*/
+            background-color: #EDEBEC;
+            color:#222222;
+            disabled;
+            cursor:default;
+            border-color:#aaaaaa;
+
         }
         button.reload-btn{
             font-family: Chewy, sans-serif;
@@ -336,16 +342,17 @@ button.answer-btn.correct::after {
   cursor: pointer;
   position: relative;
   transition: background-color 0.3s;
-  border: 2px solid white;
+  border: 2px solid;
+  border-color: rgba(191,205,208,0.6);
   cursor:default;
 }
 
 .timeline-dot.live {
-  background-color: #444;
+  background-image: radial-gradient(#00ffad, #179c71);
   cursor:pointer;
 }
 .timeline-dot.current {
-  border: 2px solid yellow;
+  border: 2px solid green;
   cursor:default;
 }
 .timeline-dot:hover::after {
