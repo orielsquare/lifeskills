@@ -16,7 +16,7 @@
     <div class="section" id="recap">
         <div class="text-line title">Recap: Overdrafts Level 2</div><br/><div class="text-line">Here’s a reminder of what you learnt at Level 2:<br/><ul><li class="fade-in-delayed" style="--fade-delay: 500ms">An overdraft is a form of borrowing from your bank.</li><li class="fade-in-delayed" style="--fade-delay: 1000ms">If you have less than £0 in your account, you are overdrawn.</li><li class="fade-in-delayed" style="--fade-delay: 1500ms">Banks charge interest on the amount you are overdrawn, and the interest rate is high.</li><li class="fade-in-delayed" style="--fade-delay: 2000ms">Overdrafts can be arranged or unarranged.</li><li class="fade-in-delayed" style="--fade-delay: 2500ms">Overdrafts are meant for short-term or emergency use.</li><li class="fade-in-delayed" style="--fade-delay: 3000ms">You must be aged 18 or over to have an overdraft.</li></ul>
 </div><br/>
-        <button class="scroll-btn fade-in" onclick="scrollToSection('landing')">Got it!</button>
+        <button class="scroll-btn fade-in" onclick="scrollToSection('landing')">OK</button>
         </div>
     </div>
     <div class="section timeline-anchor" id="landing" data-title="Landing page">
@@ -157,15 +157,15 @@
     </div>
 
     <div class="section" id="screen8">
-        <div class="text-line fade-in">At the end of Week 4, Lisa owes £416.24.<br/><br/>How much will she owe the bank at the end of Week 5?</div>
-        <button class="answer-btn" onclick="checkAnswer(this, 'screen9',false)">1% interest will be about £1, so £417.14</button>
-        <button class="answer-btn" onclick="checkAnswer(this, 'screen10',true)">1% interest will be about £4, so £420.40</button>
-        <button class="answer-btn" onclick="checkAnswer(this, 'screen9',false)">1% interest will be about £6, so £422.84</button>
+        <div class="text-line fade-in">At the end of Week 4, Lisa owes £416.24.<br/><br/>She doesn't pay back any of her overdraft. Roughly how much will she owe the bank at the end of Week 5?</div>
+        <button class="answer-btn" onclick="checkAnswer(this, 'screen9',false)">1% interest is about £1, so £417</button>
+        <button class="answer-btn" onclick="checkAnswer(this, 'screen10',true)">1% interest is about £4, so £420</button>
+        <button class="answer-btn" onclick="checkAnswer(this, 'screen9',false)">1% interest is about £6, so £422</button>
         <br/>
     </div>
     <div class="section" id="screen9">
         <div>
-            <div class="text-line fade-in">Let's work through it together.<br/>At the end of Week 4, Lisa owed 416.24,</div><br/>
+            <div class="text-line fade-in">Let's work through it together.</div><br/>
             <table class="interest-table">
     <tbody>
       <tr class="fade-in-delayed" style="--fade-delay: 0ms">
@@ -175,6 +175,14 @@
           <td class="orange">1%<br/>interest</td>
           <td class="narrow">=</td>
           <td class="purple">total<br/>owed</td>
+        </tr>
+        <tr class="fade-in-delayed" style="--fade-delay: 0ms">
+          <td class="week-label">Week 5</td>
+          <td class="blue">£416.24</td>
+          <td class="narrow">+</td>
+          <td class="orange">£4.16</td>
+          <td class="narrow">=</td>
+          <td class="purple">£420.40</td>
         </tr>
     <!--tr class="fade-in-delayed" style="--fade-delay: 1000ms">
         <td class="week-label">Week 1</td>
@@ -279,8 +287,8 @@
     <div class="section timeline-anchor" id="screen16"  data-title="Overdraft calculator">
         <div class="parallax-bg" style="background-image: url('static/game-controller.jpg');"></div>
         <div id="SamCalcTarget" class="content-overlay contrast">
-        <div class="text-line fade-in">Six days later, Samuel gets his wages paid into his bank. He is no longer overdrawn.</div><br/>
-        <div class="text-line fade-in">Samuel borrowed £40 for 6 days. Use the Overdraft Calculator, similar to many you can find online, to work out how much interest he is charged.</div>
+        <div class="text-line fade-in">Six days later, Samuel gets £140 wages from his part-time job paid into his bank. He is no longer overdrawn.</div><br/>
+        <div class="text-line fade-in">Samuel borrowed £40 for 6 days.<br/><br/>Use the Overdraft Calculator, similar to many you can find online, to work out how much interest he is charged.</div>
     </div>
     <div id="interestCalculator" class="content-overlay calculator right">
             <div class="calculator-section">
@@ -359,7 +367,12 @@ Type that answer into the answer box.
     </div>
     </div>
     <div class="section" id="end">
-        <div class="text-line fade-in">You've reached the end of this lesson!</div>
+        <div class="text-line title">In this lesson:</div>
+        <div class="text-line"><ul>
+<li>Lisa learnt that her bank charges her interest when she uses her overdraft, because she is borrowing money.</li>
+<li>Sam used his overdraft to buy a video game. He paid it off after 6 days, when he got paid from his part-time job.</li>
+<li>You learnt how to use an overdraft calculator to work out how much interest you might be charged on an overdraft.</li></ul>
+</div>
         <div><button class="reload-btn fade-in-delayed" onclick="location.reload()">↺</button></div>
     </div>
     <div id="timeline">
