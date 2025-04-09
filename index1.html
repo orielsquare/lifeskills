@@ -93,6 +93,79 @@
     <script>
     document.addEventListener("DOMContentLoaded", () => {
         scrollToSection("landing");
+
+    //sorting
+        const sortCards = [
+  "Samuel will get the game at the same time as his friends.",
+  "Samuel may see spoilers for the game during the week he doesn’t have it.",
+  "If Samuel is paid next week, he will only be overdrawn for a short time.",
+  "The game will still be available to buy next week.",
+  "Samuel will be charged interest on the amount of money he overdraws."
+];
+
+let currentCardIndex = 0;
+const card = document.getElementById('card');
+const prosList = document.getElementById('pros-list');
+const consList = document.getElementById('cons-list');
+
+function showNextCard() {
+  if (currentCardIndex < sortCards.length) {
+    card.textContent = sortCards[currentCardIndex];
+    card.style.display = 'block';
+  } else {
+    card.style.display = 'none';
+  }
+}
+
+function placeCard(side) {
+  if (currentCardIndex >= sortCards.length) return;
+
+  const li = document.createElement('li');
+  li.textContent = sortCards[currentCardIndex];
+
+  if (side === 'pro') {
+    prosList.appendChild(li);
+  } else {
+    consList.appendChild(li);
+  }
+
+  currentCardIndex++;
+  showNextCard();
+}
+
+card.addEventListener('mousedown', (e) => {
+  let startX = e.clientX;
+  let startY = e.clientY;
+
+  function onMouseMove(e) {
+    const dx = e.clientX - startX;
+    const dy = e.clientY - startY;
+    card.style.transform = `translate(${dx}px, ${dy}px)`;
+    card.classList.add('dragging');
+  }
+
+  function onMouseUp(e) {
+    const dx = e.clientX - startX;
+
+    card.style.transform = '';
+    card.classList.remove('dragging');
+
+    if (dx < -100) {
+      placeCard('con');
+    } else if (dx > 100) {
+      placeCard('pro');
+    }
+
+    document.removeEventListener('mousemove', onMouseMove);
+    document.removeEventListener('mouseup', onMouseUp);
+  }
+
+  document.addEventListener('mousemove', onMouseMove);
+  document.addEventListener('mouseup', onMouseUp);
+});
+
+document.addEventListener('DOMContentLoaded', showNextCard);
+
     });
     </script>
 </body>

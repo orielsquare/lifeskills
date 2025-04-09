@@ -156,7 +156,7 @@ const chime = document.getElementById("chime-sound");
     // Initial results update
     updateResults();
 });
-/*pro cons sorting*/
+/*pro cons sorting
  const cards = [
         "Samuel will get the game at the same time as his friends.",
         "Samuel may see spoilers for the game during the week he doesn’t have it.",

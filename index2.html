@@ -240,25 +240,31 @@
         <button class="scroll-btn" onclick="scrollToSection('screen13')">Yes, of course!</button>
         <button class="scroll-btn" onclick="scrollToSection('screen13')">Hm, perhaps not…</button>
     </div>
-    <div class="section timeline-anchor" id="screen13" data-title="Pros and cons">
-        <div class="rubric">Decide for each card whether it’s a reason for Samuel to use his overdraft, or a reason for him not to.<br/><br/>Drag each card left or right, or click the thumbs.</div>
-        <div class="sortgame">
-    <div class="card" id="card">Card Text</div>
-    <img class="button left-btn" src="static/thumb.png" alt="Thumbs Down" onclick="animateSort('con')">
-    <img class="button right-btn" src="static/thumb.png" alt="Thumbs Up" onclick="animateSort('pro')">
-</div>
-    </div>
+<div class="section timeline-anchor" id="screen13" data-title="Pros and cons">
+    <div class="content-overlay rubric">
+    Decide for each card whether it’s a reason for Samuel to use his overdraft, or a reason for him not to.<br/><br/>
+    Drag each card left or right (or down to skip), or click a side to choose.
+  </div>
 
-<div class="section" id="screen14">
-    <div class="text-line">Here's what you decided.</div>
-    <div class="sorted-list">
-        <h2>Reasons Samuel should use his overdraft</h2>
-        <ul id="pros-list"></ul>
-        <h2>Reasons he shouldn't</h2>
-        <ul id="cons-list"></ul>
+  <div class="content-overlay right sortgame-fullscreen">
+    <div class="active-card-area" style="display: flex; justify-content: center; align-items: center; margin-bottom: 2rem; position: relative; z-index: 1;">
+      <div class="card draggable" id="card">Card Text</div>
+      <button class="scroll-btn fade-in" id="sort-finish-btn" onclick="scrollToSection('screen15')" style="display: none; margin-top: 2rem;">Finished!</button>
     </div>
-    <button class="scroll-btn" onclick="scrollToSection('screen15')">So what did Samuel decide?</button>
+    <div class="sort-columns" style="display: flex; justify-content: center; gap: 2rem; align-items: flex-start; position: relative; z-index: 0;">
+        <div class="dropzone" id="cons-zone" onclick="placeCard('con')" style="flex: 1; max-width: 300px; background-color: #fff0f0; padding: 1rem; border-radius: 10px; min-height: 300px;">
+        <h3 style="text-align: center; margin-bottom: 10px;">Cons</h3>
+        <ul id="cons-list" style="list-style: none; padding: 0; margin: 0;"></ul>
+      </div>
+      <div class="dropzone" id="pros-zone" onclick="placeCard('pro')" style="flex: 1; max-width: 300px; background-color: #f0f8ff; padding: 1rem; border-radius: 10px; min-height: 300px;">
+        <h3 style="text-align: center; margin-bottom: 10px;">Pros</h3>
+        <ul id="pros-list" style="list-style: none; padding: 0; margin: 0;"></ul>
+      </div>
+    </div>
+  </div>
 </div>
+
+
     <div class="section timeline-anchor" id="screen15"  data-title="Samuel's decision">
         <div class="video-container square">
         <video class="frameless-video" playsinline>
@@ -359,8 +365,94 @@ Type that answer into the answer box.
     <script src="scripts/main.js"></script>
     <script>
     document.addEventListener("DOMContentLoaded", () => {
-        scrollToSection("landing");
+        scrollToSection("screen13");
     });
+        //sortdrag
+    const cards = [
+  "Samuel will get the game at the same time as his friends.",
+  "Samuel may see spoilers for the game during the week he doesn’t have it.",
+  "If Samuel is paid next week, he will only be overdrawn for a short time.",
+  "The game will still be available to buy next week.",
+  "Samuel will be charged interest on the amount of money he overdraws."
+];
+
+let currentCard = 0;
+const cardElem = document.getElementById('card');
+const prosList = document.getElementById('pros-list');
+const consList = document.getElementById('cons-list');
+
+function showNextCard() {
+  if (currentCard < cards.length) {
+    cardElem.textContent = cards[currentCard];
+    cardElem.style.display = 'block';
+    cardElem.style.transition = 'none';
+    cardElem.style.transform = 'translate(0, 0)';
+    cardElem.style.backgroundColor = '#fff';
+
+    // Fade effect setup
+    cardElem.classList.remove('visible'); // start hidden
+    void cardElem.offsetWidth; // force reflow
+    setTimeout(() => {
+      cardElem.classList.add('visible');
+    }, 300); // adjust if you want longer delay
+  } else {
+    cardElem.style.display = 'none';
+    document.getElementById('sort-finish-btn').style.display = 'block';
+  }
+}
+
+
+
+// Make available globally so HTML onclick works
+window.placeCard = function(type) {
+  if (currentCard >= cards.length) return;
+
+  const li = document.createElement('li');
+  li.textContent = cards[currentCard];
+
+  if (type === 'pro') {
+    prosList.appendChild(li);
+  } else {
+    consList.appendChild(li);
+  }
+
+  currentCard++;
+  showNextCard();
+};
+
+// Drag-and-drop support
+cardElem.addEventListener('mousedown', (e) => {
+  let startX = e.clientX;
+  let startY = e.clientY;
+
+  function onMouseMove(e) {
+    const dx = e.clientX - startX;
+    const dy = e.clientY - startY;
+    cardElem.style.transform = `translate(${dx}px, ${dy}px)`;
+    cardElem.classList.add('dragging');
+  }
+
+  function onMouseUp(e) {
+    const dx = e.clientX - startX;
+    cardElem.classList.remove('dragging');
+    cardElem.style.transform = '';
+
+    if (dx > 100) {
+      placeCard('pro');
+    } else if (dx < -100) {
+      placeCard('con');
+    }
+    document.removeEventListener('mousemove', onMouseMove);
+    document.removeEventListener('mouseup', onMouseUp);
+  }
+
+  document.addEventListener('mousemove', onMouseMove);
+  document.addEventListener('mouseup', onMouseUp);
+});
+
+document.addEventListener('DOMContentLoaded', showNextCard);
+
+
     </script>
 </body>
 </html>
