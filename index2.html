@@ -46,7 +46,7 @@
         <div class="parallax-bg" style="background-image: url('static/lisa-phone.jpg');"></div>
         <div class="content-overlay" style="min-width:50%">
         <div class="text-line fade-in">Lisa’s phone cost £650, but she only had £250 in her bank account.<br/><br/>She owes the bank £400.</div><br/>
-        <table class="interest-table fade-in" style=" width:100%">
+        <table class="interest-table" style=" width:100%">
             <thead><td class="purple" colspan="2">cost of phone<br/>£650</td></thead>
             <tbody>    
               <tr>
@@ -66,7 +66,7 @@
         <button class="answer-btn" onclick="checkAnswer(this, 'retry',false)">£600</button>
     </div-->
     <div class="section timeline-anchor" id="screen5" data-title="Lisa's interest">
-        <div class="text-line fade-in">Lisa is overdrawn by £400. Every week that she is overdrawn, the bank charges her interest of 1%.<br/><br/>To find 1% of something, you can divide it by 100. Here, the maths is 400 ÷ 100 = 4.<br/><br/>So 1% of £400 is £4.<br/><br/>On the first week Lisa is overdrawn, the bank will add £4 to what she must pay back.<br/><br/>How much will Lisa owe the bank after <b>one</b> week?</div>
+        <div class="text-line fade-in">Lisa is overdrawn by £400. Every week that she is overdrawn, the bank charges her interest of 1%.<br/><br/>To find 1% of something, you can divide it by 100. Here, the maths is 400 ÷ 100 = 4.<br/><br/>So 1% of £400 is £4.<br/><br/>On the first week Lisa is overdrawn, the bank will add £4 to what she must pay back.<br/><br/>How much will Lisa owe the bank after <b>one</b> week?</div><br/>
         <div style="display: flex; gap: 1em;">
             <button class="answer-btn" onclick="checkAnswer(this, 'screen6',false)">£400</button>
         <button class="answer-btn" onclick="checkAnswer(this, 'screen6',false)">£401</button>
@@ -89,11 +89,11 @@
           <td class="purple">total<br/>owed</td>
         </tr>
     <tr>
-        <td class="blue">£400.00</td>
+        <td class="blue">£400</td>
         <td class="narrow">+</td>
-        <td class="orange">£4.00</td>
+        <td class="orange">£4</td>
         <td class="narrow">=</td>
-        <td class="purple">£404.00</td>
+        <td class="purple">£404</td>
     </tr></tbody></table>
         </div>
         <button class="scroll-btn fade-in" onclick="scrollToSection('screen5')">OK, I'll try again</button>
@@ -157,7 +157,7 @@
     </div>
 
     <div class="section" id="screen8">
-        <div class="text-line fade-in">At the end of Week 4, Lisa owes £416.24.<br/><br/>She doesn't pay back any of her overdraft. Roughly how much will she owe the bank at the end of Week 5?</div>
+        <div class="text-line fade-in">At the end of Week 4, Lisa owes £416.24.<br/><br/>She doesn't pay back any of her overdraft.<br/><br/>Roughly how much will she owe the bank at the end of Week 5?</div>
         <button class="answer-btn" onclick="checkAnswer(this, 'screen9',false)">1% interest is about £1, so £417</button>
         <button class="answer-btn" onclick="checkAnswer(this, 'screen10',true)">1% interest is about £4, so £420</button>
         <button class="answer-btn" onclick="checkAnswer(this, 'screen9',false)">1% interest is about £6, so £422</button>
@@ -165,8 +165,8 @@
     </div>
     <div class="section" id="screen9">
         <div class="twocol" style="display: flex; gap: 2rem; align-items: flex-start;">
-  <div class="left-col" style="min-width:350px;">
-    <div class="video-container">
+  <div class="left-col" style="width:350px;height:350px;">
+    <div class="video-container"style="width:350px;height:350px;">
         <video class="frameless-video" playsinline>
         <source src="videos/explanation.mp4" type="video/mp4">
         </video>
@@ -224,7 +224,7 @@
 <div class="section timeline-anchor" id="screen13" data-title="Pros and cons">
     <div class="content-overlay rubric">
     Decide for each card whether it’s a reason for Samuel to use his overdraft, or a reason for him not to.<br/><br/>
-    Drag each card left or right (or down to skip), or click a side to choose.
+    Drag each card left or right, or click a side to choose.
   </div>
 
   <div class="content-overlay right sortgame-fullscreen">
@@ -234,11 +234,11 @@
     </div>
     <div class="sort-columns" style="display: flex; justify-content: center; gap: 2rem; align-items: flex-start; position: relative; z-index: 0;">
         <div class="dropzone" id="cons-zone" onclick="placeCard('con')" style="flex: 1; max-width: 300px; background-color: #fff0f0; padding: 1rem; border-radius: 10px; min-height: 300px;">
-        <h3 style="text-align: center; margin-bottom: 10px;">Cons</h3>
+        <h3 style="text-align: center; margin-bottom: 10px;">Reasons <strong>to</strong> use</h3>
         <ul id="cons-list" style="list-style: none; padding: 0; margin: 0;"></ul>
       </div>
       <div class="dropzone" id="pros-zone" onclick="placeCard('pro')" style="flex: 1; max-width: 300px; background-color: #f0f8ff; padding: 1rem; border-radius: 10px; min-height: 300px;">
-        <h3 style="text-align: center; margin-bottom: 10px;">Pros</h3>
+        <h3 style="text-align: center; margin-bottom: 10px;">Reasons <strong>not</strong> to use</h3>
         <ul id="pros-list" style="list-style: none; padding: 0; margin: 0;"></ul>
       </div>
     </div>
@@ -336,7 +336,7 @@ Type that answer into the answer box.
         <button class="answer-btn" onclick="checkAnswer(this,'end',document.getElementById('final3_answer').value==9.09)">Submit</button>
     </div>
     </div>
-    <div class="section" id="end">
+    <div class="section timeline-anchor" id="end" data-title="Summary">
         <div class="text-line title">In this lesson:</div>
         <div class="text-line"><ul>
 <li>Lisa learnt that her bank charges her interest when she uses her overdraft, because she is borrowing money.</li>

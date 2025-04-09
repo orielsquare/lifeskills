@@ -23,7 +23,7 @@ html.no-scroll, body.no-scroll {
         div.content-overlay{
             left:10%;
             top:5%;
-            padding:30px;
+            padding:10px;
             width:33%;
             height:auto;
             background-color: rgba(208,208,208,0.8);
@@ -228,10 +228,15 @@ button.answer-btn.correct::after {
   text-align: center;
 }
 
-.interest-table th,
-.interest-table td {
+.interest-table th
+{
   padding: 12px;
   border-radius: 12px; /* increase for more rounding */
+}
+.interest-table td {
+  padding: 2px;
+  border-radius: 12px; /* increase for more rounding */
+  font-size: 2em;
 }
 
 
