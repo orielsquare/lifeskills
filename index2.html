@@ -164,7 +164,15 @@
         <br/>
     </div>
     <div class="section" id="screen9">
-        <div>
+        <div class="twocol" style="display: flex; gap: 2rem; align-items: flex-start;">
+  <div class="left-col" style="min-width:350px;">
+    <div class="video-container">
+        <video class="frameless-video" playsinline>
+        <source src="videos/explanation.mp4" type="video/mp4">
+        </video>
+        </div>
+  </div>
+  <div class="right-col" style="flex: 1;">
             <div class="text-line fade-in">Let's work through it together.</div><br/>
             <table class="interest-table">
     <tbody>
@@ -184,51 +192,13 @@
           <td class="narrow">=</td>
           <td class="purple">£420.40</td>
         </tr>
-    <!--tr class="fade-in-delayed" style="--fade-delay: 1000ms">
-        <td class="week-label">Week 1</td>
-        <td class="blue">£400.00</td>
-        <td class="narrow">+</td>
-        <td class="orange">£4.00</td>
-        <td class="narrow">=</td>
-        <td class="purple">£404.00</td>
-    </tr>
-      <tr class="fade-in-delayed" style="--fade-delay: 2000ms">
-        <td class="week-label">Week 2</td>
-        <td class="blue">£404.00</td>
-        <td class="narrow">+</td>
-        <td class="orange">£4.04</td>
-        <td class="narrow">=</td>
-        <td class="purple">£408.04</td>
-      </tr>
-      <tr class="fade-in-delayed" style="--fade-delay: 3000ms">
-        <td class="week-label">Week 3</td>
-        <td class="blue">£408.04</td>
-        <td class="narrow">+</td>
-        <td class="orange">£4.08</td>
-        <td class="narrow">=</td>
-        <td class="purple">£412.12</td>
-      </tr>
-      <tr class="fade-in-delayed" style="--fade-delay: 4000ms">
-        <td class="week-label">Week 4</td>
-        <td class="blue">£412.12</td>
-        <td class="narrow">+</td>
-        <td class="orange">£4.12</td>
-        <td class="narrow">=</td>
-        <td class="purple">£416.24</td>
-      </tr-->
-      <tr class="fade-in-delayed" style="--fade-delay: 5000ms">
-        <td class="week-label">Week 5</td>
-        <td class="blue">£416.24</td>
-        <td class="narrow">+</td>
-        <td class="orange">£4.16</td>
-        <td class="narrow">=</td>
-        <td class="purple"><strong>£420.40</strong></td>
-      </tr>
+    
     </tbody>
   </table>
-        </div>
-        <button class="scroll-btn fade-in-delayed" style="--fade-delay: 1000ms" onclick="scrollToSection('screen8')">OK, I'll try again</button>
+        </div>  
     </div>
+    <button class="scroll-btn fade-in-delayed" style="--fade-delay: 1000ms" onclick="scrollToSection('screen8')">OK, I'll try again</button>
+</div>
     <div class="section timeline-anchor" id="screen10" data-title="Typical interest rates">
         <div class="text-line fade-in">You’ve just seen how 1% interest per week quickly adds up. Banks will tell you interest rates per year (the annual rate). But they calculate interest <b>per day</b> you are overdrawn.</div><br/><div class="text-line fade-in-delayed" style="--fade-delay: 2500ms;">Banks usually charge around 40% interest on overdrafts per year (annually). Banks call this EAR: <i>Equivalent Annual Rate</i>.</div>
         <button class="scroll-btn fade-in-delayed" style="--fade-delay: 2500ms;" onclick="scrollToSection('screen11')">Next</button>
