@@ -2,8 +2,9 @@ const chime = document.getElementById("chime-sound");
     document.addEventListener('DOMContentLoaded', () => {
         //timeline
   const sections = document.querySelectorAll(".timeline-anchor");
-  const timeline = document.getElementById("timeline");
+  const timelineDotsContainer = document.getElementById("timeline-dots");
   var currentDot;
+  var liveDotCount = 0;
   var currentSectionId = null;
   sections.forEach((section, index) => {
     const dot = document.createElement("div");
@@ -19,7 +20,7 @@ const chime = document.getElementById("chime-sound");
        updateCurrentDot(dot);
     }
     });
-    timeline.appendChild(dot);
+    timelineDotsContainer.appendChild(dot);
   });
   function updateCurrentDot(dot){
     liveDot.classList.remove("current")
@@ -33,14 +34,59 @@ const chime = document.getElementById("chime-sound");
       if (entry.isIntersecting) {
         const index = [...sections].indexOf(entry.target);
         if (index !== -1) {
-          dots[index].classList.add("live");
+          if(dots[index].classList.contains("live")){
+            //no change to live status
+          } else{
+            //another dot unlocked
+            dots[index].classList.add("live");
           updateCurrentDot(dots[index]);
+          liveDotCount++;
+      }
         }
       }
     });
   }, {
     threshold: 0.3
   });
+  let activeDotIndex = -1;
+const timelineDots = document.querySelectorAll('.timeline-dot');
+const timelineAnchors = document.querySelectorAll('.timeline-anchor');
+
+function scrollToDot(index) {
+  if (liveDotCount>index && index >= 0 && index < timelineAnchors.length) {
+    timelineAnchors[index].scrollIntoView({ behavior: 'smooth' });
+    activeDotIndex = index;
+  updateCurrentDot(dots[index])
+    }
+}
+
+// Assign up/down buttons
+document.getElementById('timeline-up').addEventListener('click', () => {
+  scrollToDot(activeDotIndex - 1);
+});
+document.getElementById('timeline-down').addEventListener('click', () => {
+  scrollToDot(activeDotIndex + 1);
+});
+
+// Watch which section is in view to update activeDotIndex
+const updateObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      activeDotIndex = [...timelineAnchors].indexOf(entry.target);
+    }
+  });
+}, { threshold: 0.5 });
+
+timelineAnchors.forEach(section => updateObserver.observe(section));
+
+// Keyboard control
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+    scrollToDot(activeDotIndex - 1);
+  } else if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+    scrollToDot(activeDotIndex + 1);
+  }
+});
 
   sections.forEach(section => tlObserver.observe(section));
   /*end of timeline code*/
@@ -327,6 +373,7 @@ const chime = document.getElementById("chime-sound");
                  img.src = newImageSrc;
             }
             setTimeout(() => scrollToSection(nextSectionId), 500);
+
 }
         document.addEventListener('DOMContentLoaded',()=>{
             document.querySelectorAll('.fade-in, .text-line').forEach(el=>{
@@ -339,18 +386,20 @@ const chime = document.getElementById("chime-sound");
         /**/
 function scaleAllSections() {
   document.querySelectorAll('.section').forEach(section => {
-    const content = section.querySelector('.sortgame-fullscreen, .section-content, .section-inner');
-    if (!content) return;
-
-    content.style.transform = 'scale(1)';
-    content.style.transformOrigin = 'top center';
+    const content = section.querySelector('.video-container');
+    //if (!content) return;
+    //content.style.transform = 'scale(1)';
+    //content.style.transformOrigin = 'top center';
 
     const available = section.clientHeight;
-    const actual = content.scrollHeight;
+    const actual = section.scrollHeight+100;
 
     if (actual > available) {
       const scale = available / actual;
-      content.style.transform = `scale(${scale})`;
+      section.style.transform = `scale(${scale})`;
+      if(content){
+        content.style.transform = `scale(${scale})`;
+        }
     }
   });
 

@@ -52,8 +52,14 @@
         <button class="scroll-btn fade-in-delayed" style="--fade-delay: 5000ms" onclick="scrollToSection('question1')">Go on</button>
     </div>
     <div class="section timeline-anchor" id="question1"  data-title="Why does Kiran owe money?">
-        <div class="floatimage left"style="background-image: url('static/kiran.png');">Kiran</div>
-        <div class="floatimage right"style="background-image: url('static/ania.png');">Ania</div>
+        <div class="pocket-image centre-left">
+            <div class="image-frame" style="background-image: url('static/kiran.png');"></div>
+            <div class="caption">Kiran</div>
+        </div>
+        <div class="pocket-image centre-right">
+            <div class="image-frame" style="background-image: url('static/ania.png');"></div>
+            <div class="caption">Ania</div>
+        </div>
         <div class="text-line fade-in">Why does Kiran owe Ania money?</div>
         <br/>
         <button class="answer-btn" onclick="checkAnswer(this, 'question2',true)">Ania bought Kiran a cinema ticket</button>
@@ -66,7 +72,7 @@
         <br/>
         <div style="display: flex; gap: 1em;">
         <button class="answer-btn" onclick="checkAnswer(this, 'feedback2',false)">£8.00</button>
-        <button class="answer-btn" onclick="checkAnswer(this, 'question3',true)">£3.00</button>
+        <button class="answer-btn" onclick="checkAnswer(this, 'payback_teaching',true)">£3.00</button>
         <button class="answer-btn" onclick="checkAnswer(this, 'feedback2',false)">£5.00</button>
     </div>
 </div>
@@ -84,7 +90,12 @@
 </div>
 <br/><button class="scroll-btn fade-in" onclick="scrollToSection('question2')">OK, I'll try again</button>
 </div>
-    <div class="section timeline-anchor" id="question3"  data-title="paying back over time">
+<div class="section timeline-anchor" id="payback_teaching" data-title="paying back over time">
+    <br/><br/><br/><br/><br/>
+    <div class="text-line">to do - teaching acticity for paying back over time</div>
+<br/><br/><br/><br/><br/><br/><button class="scroll-btn" onclick="scrollToSection('question3')">Next</button>
+</div>
+    <div class="section" id="question3">
         <div class="text-line fade-in">You borrow £10 from a friend and pay them back £2 every week. How long will it take you to pay them back?</div></br>
         <div style="display: flex; gap: 1em;">
         <button class="answer-btn" onclick="checkAnswer(this, 'summative1',true)">5 weeks</button>
@@ -93,7 +104,7 @@
     </div>
     </div>
     <div class="section" id="feedback3">
-    <div class="text-line fade-in">You borrowed £10. In the first week, you pay back £2, and you still owe £8.<br/<br/>Look at how this changes over time as you keep paying back £2 each week.
+    <div class="text-line fade-in">You borrowed £10. In the first week, you pay back £2, and you still owe £8.<br/><br/>Look at how this changes over time as you keep paying back £2 each week.
 <br/><br/>
         <table class="interest-table fade-in" style="font-size: 0.5em;">
             <thead><td class="week-label"></td><td class="blue" colspan="5"><strong>£10.00 owed</strong></td></thead>
@@ -128,8 +139,17 @@
 <br/><button class="scroll-btn fade-in" onclick="scrollToSection('question3')">OK, I'll try again</button>
 </div>
 <div class="section timeline-anchor" id="summative1"  data-title="Question 1">
+       
         <div class="parallax-bg" style="background-image: url('static/smoothies.jpg');"></div>
-        <div class="content-overlay">
+        <div class="pocket-image bottom-left">
+            <div class="image-frame" style="background-image: url('static/kiran.png');"></div>
+            <div class="caption">Kiran</div>
+        </div>
+        <div class="pocket-image bottom-right">
+            <div class="image-frame" style="background-image: url('static/ania.png');"></div>
+            <div class="caption">Ania</div>
+        </div>
+        <div class="content-overlay centre">
         <div class="text-line fade-in">Ania forgets her purse when she and Kiran go out. Kiran buys Ania a smoothie and a snack, which costs £6.00 in total.<br/><br/>Ania has…
 </div>
         <button class="answer-btn" onclick="checkAnswer(this, 'retry',false)">lent £6.00 to Kiran</button>
@@ -161,12 +181,14 @@
         <div class="text-line"><ul>
 <li>Ania’s brother Darek lent her his bike. To pay him back, she agreed to pump up the tyres and buy him a chocolate bar.</li>
 <li>Kiran borrowed money from Ania for a cinema ticket, and paid her back some of the money.</li>
-<li>You learnt about how long it takes to pay someone back each week if you borrow money from them.</li></ul>
+<li>You learnt about how long it takes to pay someone back if you pay them a little bit each week.</li></ul>
 </div>
         <div><button class="reload-btn fade-in-delayed" onclick="location.reload()">↺</button></div>
     </div>
     <div id="timeline">
-        <!-- Dots will be generated here -->
+      <div id="timeline-up" class="timeline-arrow">&#9650;</div>
+      <div id="timeline-dots"></div> <!-- ⬅️ dots will go here -->
+      <div id="timeline-down" class="timeline-arrow">&#9660;</div>
     </div>
     <script src="scripts/main.js"></script>
     <script>

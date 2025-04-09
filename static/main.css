@@ -10,8 +10,8 @@ html.no-scroll, body.no-scroll {
         }
         * { user-select: none; }
         html, body { margin: 0; padding: 0; overflow-x: hidden; scroll-behavior: smooth; font-family: Lexend, sans-serif; background: #FEFCFD; color: #111; }
-        .section { position: relative; height: 100vh; padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; text-align: left;}
-        .twocol { position: relative; min-height: 0vh; padding: 20px; display: flex; flex-direction: row; align-items: none; justify-content: none; overflow: hidden; }
+        .section { position: relative; height: 100vh; padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; /*overflow: hidden;*/ text-align: left;}
+        .twocol { position: relative; min-height: 0vh; padding: 20px; display: flex; flex-direction: row; align-items: none; justify-content: none; /*overflow: hidden;*/ }
         .parallax-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-attachment: fixed; z-index: 0; opacity: 0.4}
         .text-line, .fade-in { opacity: 0; transition: opacity 1s ease, transform 1s ease; transform: translateY(30px); font-size: 2em; max-width: 800px;}
         .fade-in.visible, .text-line.visible { opacity: 1; transform: translateY(0); }
@@ -33,6 +33,9 @@ html.no-scroll, body.no-scroll {
         div.content-overlay.right{
             right:10%;
             left:unset;
+        }
+         div.content-overlay.centre{
+            left:33%;
         }
         div.content-overlay.contrast{
             background-color: #FEFCFD;
@@ -149,10 +152,16 @@ button.answer-btn.correct::after {
             position: absolute;
             top: 50%;
             left: 50%;
-            width: 100%;
+            /*width: 100%;*/
             height: 100%;
             object-fit: cover; /* Crop and fill container */
             transform: translate(-50%, -50%);
+        }
+        .video-outline {
+          position: absolute;
+          border: 1px solid red; /* adjust thickness/color as needed */
+          pointer-events: none;    /* ensures clicks go through */
+          z-index: 10;
         }
         /*animations*/
         .fade-in-delayed {
@@ -447,6 +456,59 @@ button.answer-btn.correct::after {
   pointer-events: none;
   z-index: 10;
 }
+.timeline-arrow {
+  font-size: 1.2em;
+  color: #888;
+  cursor: pointer;
+  margin: 6px 0;
+  user-select: none;
+}
+.timeline-arrow:hover {
+  color: #333;
+}
+
+div.pocket-image{
+    width:250px;
+    height:250px;
+    position:absolute;
+    color:black;
+}
+div.pocket-image.centre-left{
+    left:10%;
+}
+div.pocket-image.centre-right{
+    right:10%;
+}div.pocket-image.upper-right{
+    right:10%;
+    top:10%;
+}
+div.pocket-image.lower-right{
+    right:10%;
+    bottom:20%;
+}
+div.pocket-image.bottom-right{
+    right:10%;
+    bottom:10%;
+}
+div.pocket-image.bottom-left{
+    left:10%;
+    bottom:10%;
+}
+div.pocket-image>div.image-frame{
+    width:100%;
+    height:100%;
+    background-size:cover;
+    position:relative;
+    display:block;
+}
+div.pocket-image>div.caption{
+    bottom:0px;
+    position:relative;
+    display:block;
+    text-align: center;
+    font-family:chewy;
+    font-size:2em;
+}
 /*incidental images*/
 div.floatimage{
     position: absolute;
@@ -461,4 +523,17 @@ div.floatimage.left{
 }
 div.floatimage.right{
     right:50px;
+}
+/*misc settings*/
+/*Remove number spinners from input boxes*/
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }

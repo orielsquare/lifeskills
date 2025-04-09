@@ -26,7 +26,6 @@
         </div>
     </div>
     <div class="section timeline-anchor" id="screen2" data-title="Samuel and Lisa">
-        <div class="parallax-bg" style="background-image: url('talking-heads.jpg');"></div>
         <div class="video-container">
         <video class="frameless-video" playsinline>
         <source src="videos/overdraft.mp4" type="video/mp4">
@@ -217,9 +216,12 @@
         <source src="videos/cafe.mp4" type="video/mp4">
         </video>
         </div>
+        <br/>
         <div class="text-line fade-in">Would you use your overdraft?</div>
+        <div style="display: flex; gap: 1em;">
         <button class="scroll-btn" onclick="scrollToSection('screen13')">Yes, of course!</button>
         <button class="scroll-btn" onclick="scrollToSection('screen13')">Hm, perhaps not…</button>
+        </div>
     </div>
 <div class="section timeline-anchor" id="screen13" data-title="Pros and cons">
     <div class="content-overlay rubric">
@@ -346,7 +348,9 @@ Type that answer into the answer box.
         <div><button class="reload-btn fade-in-delayed" onclick="location.reload()">↺</button></div>
     </div>
     <div id="timeline">
-        <!-- Dots will be generated here -->
+      <div id="timeline-up" class="timeline-arrow">&#9650;</div>
+      <div id="timeline-dots"></div> <!-- ⬅️ dots will go here -->
+      <div id="timeline-down" class="timeline-arrow">&#9660;</div>
     </div>
     <script src="scripts/main.js"></script>
     <script>
