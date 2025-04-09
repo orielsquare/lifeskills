@@ -334,42 +334,39 @@ const chime = document.getElementById("chime-sound");
             });
         });
         //scaling:
-        /*
+        /**/
 function scaleSections() {
   const viewportHeight = window.innerHeight;
+
   document.querySelectorAll('.section').forEach(section => {
-    const content = section;//.querySelector('.content-wrapper');
-    
+    const content = section;
+
     // Reset transform to measure natural height
     content.style.transform = 'scale(1) translateY(0)';
     const contentHeight = content.offsetHeight;
-    
+
     // Calculate scale factor if content is taller than the viewport
     let scaleFactor = 1;
     if (contentHeight > viewportHeight) {
       scaleFactor = viewportHeight / contentHeight;
     }
-    
+
     // Calculate the height of the content after scaling
     const scaledHeight = contentHeight * scaleFactor;
-    // Compute vertical offset to center the scaled content within the viewport
-    const verticalOffset = (viewportHeight - scaledHeight)/2;
-    
+    const verticalOffset = (viewportHeight - scaledHeight) / 2;
+
     // Apply the scaling and vertical offset
     content.style.transform = `scale(${scaleFactor}) translateY(${verticalOffset}px)`;
-    // Ensure each section takes up the full viewport height
-    //section.style.height = `${viewportHeight}px`;
   });
 }
 
-window.addEventListener('resize', scaleSections);
-window.addEventListener('load', () => {
-  scaleSections();
-  if (document.fonts) {
-    document.fonts.ready.then(scaleSections);
-  }
-});
+// Run after fonts and window are ready
+Promise.all([
+  new Promise(resolve => window.addEventListener('load', resolve)),
+  document.fonts?.ready || Promise.resolve()
+]).then(scaleSections);
 
-// Run on initial load and on window resize
+// Run on resize
 window.addEventListener('resize', scaleSections);
-*/
+
+/**/
