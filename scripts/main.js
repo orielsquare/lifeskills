@@ -4,6 +4,7 @@ const chime = document.getElementById("chime-sound");
   const sections = document.querySelectorAll(".timeline-anchor");
   const timeline = document.getElementById("timeline");
   var currentDot;
+  var currentSectionId = null;
   sections.forEach((section, index) => {
     const dot = document.createElement("div");
     dot.className = "timeline-dot";
@@ -274,6 +275,7 @@ const chime = document.getElementById("chime-sound");
             document.getElementById(id).scrollIntoView({behavior:'smooth'});
         }
         function updateScreenOnScrollTo(id){
+            currentSectionId = id;
             //special cases:
             switch(id){
                 case "screen16":
@@ -335,38 +337,38 @@ const chime = document.getElementById("chime-sound");
         });
         //scaling:
         /**/
-function scaleSections() {
-  const viewportHeight = window.innerHeight;
-
+function scaleAllSections() {
   document.querySelectorAll('.section').forEach(section => {
-    const content = section;
+    const content = section.querySelector('.sortgame-fullscreen, .section-content, .section-inner');
+    if (!content) return;
 
-    // Reset transform to measure natural height
-    content.style.transform = 'scale(1) translateY(0)';
-    const contentHeight = content.offsetHeight;
+    content.style.transform = 'scale(1)';
+    content.style.transformOrigin = 'top center';
 
-    // Calculate scale factor if content is taller than the viewport
-    let scaleFactor = 1;
-    if (contentHeight > viewportHeight) {
-      scaleFactor = viewportHeight / contentHeight;
+    const available = section.clientHeight;
+    const actual = content.scrollHeight;
+
+    if (actual > available) {
+      const scale = available / actual;
+      content.style.transform = `scale(${scale})`;
     }
-
-    // Calculate the height of the content after scaling
-    const scaledHeight = contentHeight * scaleFactor;
-    const verticalOffset = (viewportHeight - scaledHeight) / 2;
-
-    // Apply the scaling and vertical offset
-    content.style.transform = `scale(${scaleFactor}) translateY(${verticalOffset}px)`;
   });
+
+  // Scroll back to current section after scaling
+  if (currentSectionId) {
+    const target = document.getElementById(currentSectionId);
+    if (target) {
+      target.scrollIntoView({ behavior: 'auto' });
+    }
+  }
 }
 
-// Run after fonts and window are ready
 Promise.all([
-  new Promise(resolve => window.addEventListener('load', resolve)),
-  document.fonts?.ready || Promise.resolve()
-]).then(scaleSections);
+  document.fonts.ready,
+  new Promise(resolve => window.addEventListener('load', resolve))
+]).then(scaleAllSections);
 
-// Run on resize
-window.addEventListener('resize', scaleSections);
+window.addEventListener('resize', scaleAllSections);
+
 
 /**/
