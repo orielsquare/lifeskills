@@ -26,7 +26,7 @@ html.no-scroll, body.no-scroll {
             padding:10px;
             width:33%;
             height:auto;
-            background-color: rgba(208,208,208,0.8);
+            background-color: #FEFCFD;
             position:absolute;
             filter: drop-shadow(8px 8px 10px gray);
         }
@@ -35,7 +35,7 @@ html.no-scroll, body.no-scroll {
             left:unset;
         }
         div.content-overlay.contrast{
-            background-color: rgba(240,240,240,0.8);
+            background-color: #FEFCFD;
             filter: drop-shadow(8px 8px 10px black);
         }
         div.bottom-box{
@@ -446,4 +446,19 @@ button.answer-btn.correct::after {
   font-size: 0.75em;
   pointer-events: none;
   z-index: 10;
+}
+/*incidental images*/
+div.floatimage{
+    position: absolute;
+    width:200px;
+    height:200px;
+    top:50px;
+    background-size:cover;
+}
+div.floatimage.left{
+    left:50px;
+    text-align: right;
+}
+div.floatimage.right{
+    right:50px;
 }
