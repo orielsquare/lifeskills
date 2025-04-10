@@ -10,13 +10,13 @@ html.no-scroll, body.no-scroll {
         }
         * { user-select: none; }
         html, body { margin: 0; padding: 0; overflow-x: hidden; scroll-behavior: smooth; font-family: Lexend, sans-serif; background: #FEFCFD; color: #111; }
-        .section { position: relative;}
-        .scalable { position: relative; height: 100vh; padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; /*overflow: hidden;*/ text-align: left;}
+        .section { position: relative;margin:0px;padding:0px;}
+        .scalable { transform-origin:top;position: relative; height: 100vh; padding: 20px; padding-top:40px; margin:0px; display: flex; flex-direction: column; align-items: center; justify-content: center; /*overflow: hidden;*/ text-align: left;}
         .scalable.top{justify-content: unset;}
         .twocol { position: relative; min-height: 0vh; padding: 20px; display: flex; flex-direction: row; align-items: none; justify-content: none; /*overflow: hidden;*/ }
         .parallax-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-attachment: fixed; z-index: 0; opacity: 0.4}
-        .text-line, .fade-in { opacity: 0; transition: opacity 1s ease, transform 1s ease; transform: translateY(30px); font-size: 2em; max-width: 800px;}
-        .fade-in.visible, .text-line.visible { opacity: 1; transform: translateY(0); }
+        .text-line, .fade-in { opacity: 0; transition: opacity 1s ease, transform 1s ease; font-size: 2em; max-width: 800px;}
+        .fade-in.visible, .text-line.visible { opacity: 1}
         .answer-btn:hover { background: lightgray; }
         .hint{color:skyblue;display:none}
         .hint.showing{color:skyblue;display:none;display:inherit;}
@@ -175,13 +175,11 @@ button.answer-btn.correct::after {
         .fade-in-delayed {
     opacity: 0 !important; /* Ensure fully hidden */
     transition: opacity 1s ease, transform 1s ease;
-    transform: translateY(20px); /* Start slightly offset */
     --fade-delay: 500ms; /* Default delay */
 }
 
 .fade-in-delayed.visible {
     opacity: 1 !important; /* Ensures visibility is controlled */
-    transform: translateY(0);
     transition-delay: var(--fade-delay);
 }
 /*number input*/
