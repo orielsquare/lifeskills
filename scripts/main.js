@@ -347,10 +347,13 @@ document.addEventListener('keydown', (e) => {
             var destination;
             var delay = correct?750:500;
             if(correct){
-                chime.currentTime = 0; // rewind to start
-                chime.play();
-                button.classList.remove("incorrect");
-                button.classList.add("correct");
+                if(!button.classList.contains("correct")){
+                    //we only reward a correct button once
+                    chime.currentTime = 0; // rewind to start
+                    chime.play();
+                    button.classList.remove("incorrect");
+                    button.classList.add("correct");
+                }
                 destination = nextSection;
             } else{
                 if(!button.classList.contains("reusable")){
@@ -364,7 +367,7 @@ document.addEventListener('keydown', (e) => {
             } else{
             setTimeout(function(){scrollToSection(destination)},delay);
             }
-            button.disabled = correct || !button.classList.contains("reusable");
+            button.disabled = !correct && !button.classList.contains("reusable");
         }
         // Function to handle image change and scroll
             function changeImageAndScroll(imageId, newImageSrc, nextSectionId) {

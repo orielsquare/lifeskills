@@ -118,7 +118,7 @@
     <div class="text-line fade-in">Kiran owed Ania £8, and then she paid back £5.<br/>£8.00 – £5.00 = £3.00<br/><br/>So Kiran still owes Ania £3.00.<br/><br/>
     </div>
     <div>
-        <table class="interest-table fade-in" style=" max-width:80%;font-size: 1em;">
+        <table class="interest-table fade-in nogaps noweeks" style=" max-width:80%;font-size: 1em;">
             <thead><td class="blue" colspan="2">£8.00 owed</td></thead>
             <tbody>    
               <tr>
@@ -151,18 +151,20 @@
 If she gives Ania £1 every week, it will take her 3 weeks to pay her back.<br/><br/>Drag or click the coins from Kiran to Ania.</div>
 <br/><br/>
     <div style="width:50%">
-        <table class="interest-table" style="font-size: 0.5em;">
+        <table class="interest-table nogaps" style="font-size: 0.5em;">
             <thead><td class="week-label"></td><td class="blue" colspan="4"><strong>£3.00 owed</strong></td></thead>
             <tbody>    
               <tr id="coindrag_week1" class="hidden">
                 <td class="week-label">Week 1</td>
-                <td class="blue" colspan="2" style="width:50%">£2.00 owed</td>
                 <td class="orange" colspan="1" style="width:25%;">£1.00 paid back</td>
+                <td class="blue" colspan="2" style="width:50%">£2.00 owed</td>
+                
               </tr>
               <tr id="coindrag_week2" class="hidden">
                 <td class="week-label">Week 2</td>
-                <td class="blue" colspan="1" style="width:25%">£1.00 owed</td>
                 <td class="orange" colspan="2">£2.00 paid back</td>
+                <td class="blue" colspan="1" style="width:25%">£1.00 owed</td>
+                
               </tr>
               <tr id="coindrag_week3" class="hidden">
                 <td class="week-label">Week 3</td>
@@ -184,28 +186,31 @@ If she gives Ania £1 every week, it will take her 3 weeks to pay her back.<br/>
     <div class="section" id="feedback3">
     <div class="text-line fade-in">You borrowed £10. In the first week, you pay back £2, and you still owe £8.<br/><br/>Look at how this changes over time as you keep paying back £2 each week.</div>
 <br/><br/>
-        <table class="interest-table fade-in" style="font-size: 0.5em;">
+        <table class="interest-table fade-in nogaps" style="font-size: 0.5em;">
             <thead><td class="week-label"></td><td class="blue" colspan="5"><strong>£10.00 owed</strong></td></thead>
             <tbody>    
               <tr>
                 <td class="week-label">Week 1</td>
-                <td class="blue" colspan="4" style="width:68%">£8.00 owed</td>
                 <td class="orange" colspan="1" style="width:16%;">£2.00 paid back</td>
+                <td class="blue" colspan="4" style="width:68%">£8.00 owed</td>
               </tr>
               <tr>
                 <td class="week-label">Week 2</td>
-                <td class="blue" colspan="3" style="width:52%">£6.00 owed</td>
                 <td class="orange" colspan="2">£4.00 paid back</td>
+                <td class="blue" colspan="3" style="width:52%">£6.00 owed</td>
+                
               </tr>
               <tr>
                 <td class="week-label">Week 3</td>
-                <td class="blue" colspan="2" style="width:36%">£4.00 owed</td>
                 <td class="orange" colspan="3">£6.00 paid back</td>
+                <td class="blue" colspan="2" style="width:36%">£4.00 owed</td>
+                
               </tr>
               <tr>
                 <td class="week-label">Week 4</td>
-                <td class="blue" colspan="1" style="width:20%">£2.00 owed</td>
                 <td class="orange" colspan="4">£8.00 paid back</td>
+                <td class="blue" colspan="1" style="width:20%">£2.00 owed</td>
+                
               </tr>
               <tr>
                 <td class="week-label">Week 5</td>
@@ -343,7 +348,7 @@ ania.addEventListener('click', deliverCoin);
   }
 });
     document.addEventListener("DOMContentLoaded", () => {
-        scrollToSection("landing");
+        scrollToSection("feedback3");
 });
     </script>
 </body>

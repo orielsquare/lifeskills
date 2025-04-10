@@ -235,6 +235,7 @@ button.answer-btn.correct::after {
   border-collapse: separate;
   border-spacing: 10px; /* creates space between cells */
   text-align: center;
+  
 }
 
 .interest-table th
@@ -243,10 +244,32 @@ button.answer-btn.correct::after {
   border-radius: 12px; /* increase for more rounding */
 }
 .interest-table td {
-  padding: 2px;
+
   border-radius: 12px; /* increase for more rounding */
   font-size: 2em;
 }
+.nogaps{
+    border-spacing: 0px;
+}
+.nogaps td{
+    padding-top:5px;
+    padding-bottom:5px;
+    border-top:solid 5px #FEFCFD;
+    border-bottom:solid 5px #FEFCFD;
+    border-radius: 0px;
+}
+.nogaps:not(.noweeks) td:nth-child(2){
+     border-bottom-left-radius: 12px;
+     border-top-left-radius: 12px;
+    }
+.nogaps td:last-child{
+     border-bottom-right-radius: 12px;
+     border-top-right-radius: 12px;
+    }
+.nogaps.noweeks td:nth-child(1){
+     border-bottom-left-radius: 12px;
+     border-top-left-radius: 12px;
+    }
 
 
     .interest-table thead th {
