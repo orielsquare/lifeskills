@@ -174,7 +174,7 @@ button.answer-btn.correct::after {
         /*animations*/
         .fade-in-delayed {
     opacity: 0 !important; /* Ensure fully hidden */
-    transition: opacity 1s ease, transform 1s ease;
+    transition: opacity 1s ease;
     --fade-delay: 500ms; /* Default delay */
 }
 
