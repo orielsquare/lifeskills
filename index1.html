@@ -52,16 +52,20 @@
 <body>
     <audio id="chime-sound" src="static/chime.mp3" preload="auto"></audio>
     <div class="section" id="recap">
+        <div class="scalable">
         <div class="text-line title">Recap: Before you start</div><br/><div class="text-line">This is the first lesson about <strong>overdrafts</strong>.<br/><br/>To think about overdrafts, we need to know what it means to <strong>lend</strong> or <strong>borrow</strong> money, and especially what it means if you borrow money from a bank.</div>
         <button class="scroll-btn" onclick="scrollToSection('landing')">OK</button>
         </div>
+    </div>
     <div class="section timeline-anchor" id="landing" data-title="Landing page">
+        <div class="scalable">
         <div class="text-line title">Overdrafts: Level 1</div><div class="text-line fade-in">We're going to look at the words 'borrow', 'lend' and 'owe', and think about what it means to borrow or lend money.<br/></div><br/>
         <button class="scroll-btn" onclick="scrollToSection('recap')">Recap</button>
         <button  id="first-continue" class="scroll-btn">Let's go!</button><!--special case because the first click is caught by a global handler-->
         </div>
+    </div>
     <div class="section timeline-anchor" id="screen2" data-title="Ania wants to borrow a bike">
-        <div class="parallax-bg" style="background-image: url('talking-heads.jpg');"></div>
+        <div class="scalable">
         <div class="video-container">
         <video class="frameless-video" playsinline>
         <source src="videos/borrow1.mp4" type="video/mp4">
@@ -70,8 +74,9 @@
         <div class="text-line fade-in-delayed" style="--fade-delay: 5000ms" onclick="scrollToSection('borrow2')">Would you lend Ania your bike?</div>
         <div class = "fade-in-delayed" style="display: flex; gap: 1em; --fade-delay: 5000ms"><button class="scroll-btn" onclick="scrollToSection('borrow2')">Yes, of course</button><button class="scroll-btn" onclick="scrollToSection('borrow2')">I'm not sure</button></div>
     </div>
+</div>
     <div class="section timeline-anchor" id="borrow2" data-title="Darek lends his bike">
-        <div class="parallax-bg" style="background-image: url('talking-heads.jpg');"></div>
+        <div class="scalable">
         <div class="video-container">
         <video class="frameless-video" playsinline>
         <source src="videos/borrow2.mp4" type="video/mp4">
@@ -80,8 +85,10 @@
         <div class="text-line fade-in-delayed" style="--fade-delay: 5000ms" onclick="scrollToSection('borrow2')">Is Darek offering Ania a fair deal?</div>
         <div class = "fade-in-delayed" style="display: flex; gap: 1em; --fade-delay: 5000ms"><button class="scroll-btn" onclick="scrollToSection('borrow3')">Yes, he deserves something</button><button class="scroll-btn" onclick="scrollToSection('borrow3')">No, why should Ania get him anything?</button></div>
     </div>
+</div>
     <div class="section timeline-anchor" id="borrow3" data-title="Kiran owes Ania money">
-        <div class="parallax-bg" style="background-image: url('talking-heads.jpg');"></div>
+        <div class="scalable">
+
         <div class="video-container">
         <video class="frameless-video" playsinline>
         <source src="videos/borrow3.mp4" type="video/mp4">
@@ -89,7 +96,9 @@
     </div><br/><br/><br/>
         <button class="scroll-btn fade-in-delayed" style="--fade-delay: 5000ms" onclick="scrollToSection('question1')">Go on</button>
     </div>
+</div>
     <div class="section timeline-anchor" id="question1"  data-title="Why does Kiran owe money?">
+        <div class="scalable">
         <div class="pocket-image centre-left">
             <div class="image-frame" style="background-image: url('static/kiran.png');"></div>
             <div class="caption">Kiran</div>
@@ -104,8 +113,9 @@
         <button class="answer-btn" onclick="checkAnswer(this, 'retry',false)">Kiran bought Ania a cinema ticket</button>
         <button class="answer-btn" onclick="checkAnswer(this, 'retry',false)">Ania stole Kiran's pocket money</button>
 </div>
-    <div class="section timeline-anchor" id="question2"  data-title="Paying back some">
-
+</div>
+    <div class="section timeline-anchor" id="question2"  data-title="Paying some back">
+        <div class="scalable">
         <div class="text-line fade-in">The cinema ticket cost £8.00. Kiran has paid back £5.00 to Ania. How much does she still owe?</div>
         <br/>
         <div style="display: flex; gap: 1em;">
@@ -114,7 +124,9 @@
         <button class="answer-btn" onclick="checkAnswer(this, 'feedback2',false)">£5.00</button>
     </div>
 </div>
+</div>
 <div class="section" id="feedback2">
+    <div class="scalable">
     <div class="text-line fade-in">Kiran owed Ania £8, and then she paid back £5.<br/>£8.00 – £5.00 = £3.00<br/><br/>So Kiran still owes Ania £3.00.<br/><br/>
     </div>
     <div>
@@ -130,27 +142,15 @@
     </div>
 <br/><button class="scroll-btn fade-in" onclick="scrollToSection('question2')">OK, I'll try again</button>
 </div>
+</div>
 <div class="section timeline-anchor" id="payback_teaching" data-title="Paying back over time">
-    <div style="display: flex; gap: 1em;">
-    <div class="pocket-image bottom-left character-kiran">
-            <div class="image-frame" style="background-image: url('static/kiran.png');"></div>
-            <div class="caption">Kiran</div>
-            <div id="draggable-coin" class="poundcoin draggable" draggable="true"></div>
-        </div>
-    </div>
-        <div class="pocket-image bottom-right character-ania">
-            <div class="image-frame" style="background-image: url('static/ania.png');"></div>
-            <div class="caption">Ania</div>
-            <div style="display: flex; gap: 1em;">
-                <div class="poundcoin grey" data-index="0"></div>
-                <div class="poundcoin grey" data-index="1"></div>
-                <div class="poundcoin grey" data-index="2"></div>
-            </div>
-        </div>
+    <div class="scalable top">
+        <div>
     <div class="text-line">We know that Kiran still owes Ania £3.<br/>
 If she gives Ania £1 every week, it will take her 3 weeks to pay her back.<br/><br/>Drag or click the coins from Kiran to Ania.</div>
 <br/><br/>
-    <div style="width:50%">
+</div>
+<div style="width:50%">
         <table class="interest-table nogaps" style="font-size: 0.5em;">
             <thead><td class="week-label"></td><td class="blue" colspan="4"><strong>£3.00 owed</strong></td></thead>
             <tbody>    
@@ -174,8 +174,25 @@ If she gives Ania £1 every week, it will take her 3 weeks to pay her back.<br/>
         </table>
     </div>
 <br/><button id="coindrag_nextButton" class="scroll-btn hidden" onclick="scrollToSection('question3')">Next</button>
+<div style="display: flex; gap: 1em;">
+    <div class="pocket-image bottom-left character-kiran">
+            <div class="image-frame" style="background-image: url('static/kiran.png');"></div>
+            <div class="caption">Kiran</div>
+            <div id="draggable-coin" class="poundcoin draggable" draggable="true"></div>
+        </div>
+    </div>
+        <div class="pocket-image bottom-right character-ania">
+            <div class="image-frame" style="background-image: url('static/ania.png');"></div>
+            <div class="caption">Ania</div>
+            <div style="display: flex; gap: 1em;">
+                <div class="poundcoin grey" data-index="0"></div>
+                <div class="poundcoin grey" data-index="1"></div>
+                <div class="poundcoin grey" data-index="2"></div>
+            </div>
+        </div>
 </div>
-    <div class="section" id="question3">
+    <div class="section timeline-anchor" id="question3" data-title="paying back calculation">
+        <div class="scalable">
         <div class="text-line fade-in">You borrow £10 from a friend and pay them back £2 every week. How long will it take you to pay them back?</div></br>
         <div style="display: flex; gap: 1em;">
         <button class="answer-btn" onclick="checkAnswer(this, 'summative1',true)">5 weeks</button>
@@ -183,7 +200,10 @@ If she gives Ania £1 every week, it will take her 3 weeks to pay her back.<br/>
         <button class="answer-btn" onclick="checkAnswer(this, 'feedback3',false)">20 weeks</button>
     </div>
     </div>
+</div>
+</div>
     <div class="section" id="feedback3">
+        <div class="scalable">
     <div class="text-line fade-in">You borrowed £10. In the first week, you pay back £2, and you still owe £8.<br/><br/>Look at how this changes over time as you keep paying back £2 each week.</div>
 <br/><br/>
         <table class="interest-table fade-in nogaps" style="font-size: 0.5em;">
@@ -220,9 +240,11 @@ If she gives Ania £1 every week, it will take her 3 weeks to pay her back.<br/>
         </table>
 <br/><button class="scroll-btn fade-in" onclick="scrollToSection('question3')">OK, I'll try again</button>
 </div>
+</div>
 <div class="section timeline-anchor" id="summative1"  data-title="Question 1">
        
         <div class="parallax-bg" style="background-image: url('static/smoothies.jpg');"></div>
+        <div class="scalable">
         <div class="pocket-image bottom-left">
             <div class="image-frame" style="background-image: url('static/kiran.png');"></div>
             <div class="caption">Kiran</div>
@@ -238,8 +260,10 @@ If she gives Ania £1 every week, it will take her 3 weeks to pay her back.<br/>
         <button class="answer-btn" onclick="checkAnswer(this, 'summative2',true)">borrowed £6.00 from Kiran</button>
     </div>
 </div>
+</div>
 <div class="section timeline-anchor" id="summative2"  data-title="Question 2">
         <div class="parallax-bg" style="background-image: url('static/smoothies.jpg');"></div>
+        <div class="scalable">
         <div class="content-overlay right">
         <div class="text-line fade-in">Ania borrowed £6.00 from Kiran. The next day, Ania pays Kiran back £5.00. How much does she still owe?
 </div>
@@ -248,8 +272,10 @@ If she gives Ania £1 every week, it will take her 3 weeks to pay her back.<br/>
         <button class="answer-btn" onclick="checkAnswer(this, 'retry',false)">£3.00</button>
     </div>
 </div>
+</div>
 <div class="section timeline-anchor" id="summative3"  data-title="Question 3">
         <div class="parallax-bg" style="background-image: url('static/smoothies.jpg');"></div>
+        <div class="scalable">
         <div class="content-overlay">
         <div class="text-line fade-in">You borrow £35 from a friend and pay them back £5 every week. How long will it take you to pay them back?
 </div>
@@ -258,7 +284,9 @@ If she gives Ania £1 every week, it will take her 3 weeks to pay her back.<br/>
         <button class="answer-btn" onclick="checkAnswer(this, 'retry',false)">10 weeks</button>
     </div>
 </div>
+</div>
     <div class="section timeline-anchor" id="end" data-title="Summary">
+        <div class="scalable">
         <div class="text-line title">In this lesson:</div>
         <div class="text-line"><ul>
 <li>Ania’s brother Darek lent her his bike. To pay him back, she agreed to pump up the tyres and buy him a chocolate bar.</li>
@@ -267,6 +295,7 @@ If she gives Ania £1 every week, it will take her 3 weeks to pay her back.<br/>
 </div>
         <div><button class="reload-btn fade-in-delayed" onclick="location.reload()">↺</button></div>
     </div>
+</div>
     <div id="timeline">
       <div id="timeline-up" class="timeline-arrow">&#9650;</div>
       <div id="timeline-dots"></div> <!-- ⬅️ dots will go here -->
@@ -348,7 +377,7 @@ ania.addEventListener('click', deliverCoin);
   }
 });
     document.addEventListener("DOMContentLoaded", () => {
-        scrollToSection("feedback3");
+        scrollToSection("landing");
 });
     </script>
 </body>

@@ -14,18 +14,23 @@
 <body>
     <audio id="chime-sound" src="static/chime.mp3" preload="auto"></audio>
     <div class="section" id="recap">
+        <div class="scalable">
         <div class="text-line title">Recap: Overdrafts Level 2</div><br/><div class="text-line">Here’s a reminder of what you learnt at Level 2:<br/><ul><li>An overdraft is a form of borrowing from your bank.</li><li>If you have less than £0 in your account, you are overdrawn.</li><li>Banks charge interest on the amount you are overdrawn, and the interest rate is high.</li><li>Overdrafts can be arranged or unarranged.</li><li >Overdrafts are meant for short-term or emergency use.</li><li>You must be aged 18 or over to have an overdraft.</li></ul>
 </div><br/>
         <button class="scroll-btn fade-in" onclick="scrollToSection('landing')">OK</button>
         </div>
     </div>
+    </div>
     <div class="section timeline-anchor" id="landing" data-title="Landing page">
+        <div class="scalable">
         <div class="text-line title">Overdrafts: Level 3</div><br/><div class="text-line">Clear up Lisa’s misunderstanding about overdrafts and help Samuel decide what to do when he’s short of cash.<br/><br/>You’ll learn how interest is calculated.<br/><br/>You’ll use an interest calculator to work out how much an overdraft will cost.</div><br/>
         <button class="scroll-btn" onclick="scrollToSection('recap')">Recap</button>
         <button  id="first-continue" class="scroll-btn">Let's go!</button><!--special case because the first click is caught by a global handler-->
         </div>
     </div>
+    </div>
     <div class="section timeline-anchor" id="screen2" data-title="Samuel and Lisa">
+        <div class="scalable">
         <div class="video-container">
         <video class="frameless-video" playsinline>
         <source src="videos/overdraft.mp4" type="video/mp4">
@@ -33,16 +38,20 @@
     </div>
         <button class="scroll-btn fade-in" onclick="scrollToSection('screen3')">Next</button>
     </div>
+    </div>
 
     <div class="section" id="screen3">
+        <div class="scalable">
         <div class="text-line fade-in">What has Lisa not understood?</div>
         <button class="answer-btn" onclick="checkAnswer(this, 'retry',false)">That being overdrawn is against the law</button>
         <button class="answer-btn" onclick="checkAnswer(this, 'retry',false)">That a new phone can be very expensive</button>
         <button class="answer-btn" onclick="checkAnswer(this, 'screen4',true)">That an overdraft is borrowing from a bank</button>
     </div>
+    </div>
 
     <div class="section timeline-anchor" id="screen4" data-title="Lisa's overdraft">
         <div class="parallax-bg" style="background-image: url('static/lisa-phone.jpg');"></div>
+        <div class="scalable">
         <div class="content-overlay" style="min-width:50%">
         <div class="text-line fade-in">Lisa’s phone cost £650, but she only had £250 in her bank account.<br/><br/>She owes the bank £400.</div><br/>
         <table class="interest-table nogaps noweeks" style=" width:100%">
@@ -57,6 +66,7 @@
         <button class="scroll-btn fade-in" onclick="scrollToSection('screen5')">Next</button>
         </div>
     </div>
+    </div>
 
     <!--div class="section" id="lisaHowMuch">
         <div class="text-line fade-in">How much money is Lisa overdrawn by?</div>
@@ -65,6 +75,7 @@
         <button class="answer-btn" onclick="checkAnswer(this, 'retry',false)">£600</button>
     </div-->
     <div class="section timeline-anchor" id="screen5" data-title="Lisa's interest">
+        <div class="scalable">
         <div class="text-line fade-in">Lisa is overdrawn by £400. Every week that she is overdrawn, the bank charges her interest of 1%.<br/><br/>To find 1% of something, you can divide it by 100. Here, the maths is 400 ÷ 100 = 4.<br/><br/>So 1% of £400 is £4.<br/><br/>On the first week Lisa is overdrawn, the bank will add £4 to what she must pay back.<br/><br/>How much will Lisa owe the bank after <b>one</b> week?</div><br/>
         <div style="display: flex; gap: 1em;">
             <button class="answer-btn" onclick="checkAnswer(this, 'screen6',false)">£400</button>
@@ -74,7 +85,9 @@
         <br/>
 </div>
 </div>
+</div>
     <div class="section" id="screen6">
+        <div class="scalable">
         <div>
             <div class="text-line fade-in">Let’s work through it together.</div><br/>
             <div class="text-line fade-in">After one week, Lisa will owe the bank her original £400, plus 1% interest.<br/><br/>We need to add these together to work out the total she owes.</div>
@@ -97,8 +110,10 @@
         </div>
         <button class="scroll-btn fade-in" onclick="scrollToSection('screen5')">OK, I'll try again</button>
     </div>
+    </div>
 
     <div class="section timeline-anchor" id="screen7" data-title="After four weeks">
+        <div class="scalable">
     <div class="twocol" style="display: flex; gap: 2rem; align-items: flex-start;">
   <div class="left-col">
     <img id="lisa" src="static/lisa_thoughtful.png" style="max-width: 100%; height: auto;" />
@@ -154,15 +169,19 @@
     </div>
         <button class="scroll-btn fade-in-delayed" style="--fade-delay: 10500ms;" onclick="changeImageAndScroll('lisa','static/lisa_outraged.png', 'screen8')">Next</button>
     </div>
+    </div>
 
     <div class="section" id="screen8">
+        <div class="scalable">
         <div class="text-line fade-in">At the end of Week 4, Lisa owes £416.24.<br/><br/>She doesn't pay back any of her overdraft.<br/><br/>Roughly how much will she owe the bank at the end of Week 5?</div>
         <button class="answer-btn" onclick="checkAnswer(this, 'screen9',false)">1% interest is about £1, so £417</button>
         <button class="answer-btn" onclick="checkAnswer(this, 'screen10',true)">1% interest is about £4, so £420</button>
         <button class="answer-btn" onclick="checkAnswer(this, 'screen9',false)">1% interest is about £6, so £422</button>
         <br/>
     </div>
+    </div>
     <div class="section" id="screen9">
+        <div class="scalable">
         <div class="twocol" style="display: flex; gap: 2rem; align-items: flex-start;">
   <div class="left-col" style="width:350px;height:350px;">
     <div class="video-container"style="width:350px;height:350px;">
@@ -198,11 +217,15 @@
     </div>
     <button class="scroll-btn fade-in-delayed" style="--fade-delay: 1000ms" onclick="scrollToSection('screen8')">OK, I'll try again</button>
 </div>
+</div>
     <div class="section timeline-anchor" id="screen10" data-title="Typical interest rates">
+        <div class="scalable">
         <div class="text-line fade-in">You’ve just seen how 1% interest per week quickly adds up. Banks will tell you interest rates per year (the annual rate). But they calculate interest <b>per day</b> you are overdrawn.</div><br/><div class="text-line fade-in-delayed" style="--fade-delay: 2500ms;">Banks usually charge around 40% interest on overdrafts per year (annually). Banks call this EAR: <i>Equivalent Annual Rate</i>.</div>
         <button class="scroll-btn fade-in-delayed" style="--fade-delay: 2500ms;" onclick="scrollToSection('screen11')">Next</button>
     </div>
+    </div>
     <div class="section timeline-anchor" id="screen11" data-title="What Lisa's learnt">
+        <div class="scalable">
         <div class="video-container">
         <video class="frameless-video" playsinline>
         <source src="videos/thepennydrops.mp4" type="video/mp4">
@@ -210,7 +233,9 @@
         </div>
         <button class="scroll-btn" onclick="scrollToSection('screen12')">How should I decide?</button>
     </div>
+    </div>
     <div class="section timeline-anchor" id="screen12" data-title="Samuel's game">
+        <div class="scalable">
         <div class="video-container">
         <video class="frameless-video" playsinline>
         <source src="videos/cafe.mp4" type="video/mp4">
@@ -223,7 +248,9 @@
         <button class="scroll-btn" onclick="scrollToSection('screen13')">Hm, perhaps not…</button>
         </div>
     </div>
+    </div>
 <div class="section timeline-anchor" id="screen13" data-title="Pros and cons">
+    <div class="scalable">
     <div class="content-overlay rubric">
     Decide for each card whether it’s a reason for Samuel to use his overdraft, or a reason for him not to.<br/><br/>
     Drag each card left or right, or click a side to choose.
@@ -246,9 +273,11 @@
     </div>
   </div>
 </div>
+</div>
 
 
     <div class="section timeline-anchor" id="screen15"  data-title="Samuel's decision">
+        <div class="scalable">
         <div class="video-container square">
         <video class="frameless-video" playsinline>
         <source src="videos/solution.mp4" type="video/mp4">
@@ -256,11 +285,20 @@
         </div>
         <button class="scroll-btn" onclick="scrollToSection('screen16')">Continue</button>
     </div>
+    </div>
     <div class="section timeline-anchor" id="screen16"  data-title="Overdraft calculator">
         <div class="parallax-bg" style="background-image: url('static/game-controller.jpg');"></div>
+        <div class="scalable">
         <div id="SamCalcTarget" class="content-overlay contrast">
         <div class="text-line fade-in">Six days later, Samuel gets £140 wages from his part-time job paid into his bank. He is no longer overdrawn.</div><br/>
         <div class="text-line fade-in">Samuel borrowed £40 for 6 days.<br/><br/>Use the Overdraft Calculator, similar to many you can find online, to work out how much interest he is charged.</div>
+    </div>
+    <div class="content-overlay bottom-left-box contrast" id="calcanswer1">
+        <div class="text-line">Total interest</div><div class="input-group">
+          <span class="prefix">£</span>
+          <input id="Samcalc_answer" type="number" step="0.01" min="0" class="money-input showPennies" placeholder="0.00">
+        </div>
+        <button class="answer-btn reusable" onclick="if(document.getElementById('Samcalc_answer').value!=0){checkAnswer(this,'screen18',document.getElementById('Samcalc_answer').value==0.22,'screen17')}">Submit</button>
     </div>
     <div id="interestCalculator" class="content-overlay calculator right">
             <div class="calculator-section">
@@ -282,15 +320,10 @@
                 <input disabled id="aer" value="40%">
             </div>
         </div>
-        <div class="content-overlay bottom-box contrast" id="calcanswer1">
-        <div class="text-line">Total interest</div><div class="input-group">
-          <span class="prefix">£</span>
-          <input id="Samcalc_answer" type="number" step="0.01" min="0" class="money-input showPennies" placeholder="0.00">
-        </div>
-        <button class="answer-btn reusable" onclick="checkAnswer(this,'screen18',document.getElementById('Samcalc_answer').value==0.22,'screen17')">Submit</button>
     </div>
     </div>
     <div class="section" id="screen17">
+        <div class="scalable">
 <div class="text-line fade-in">Not quite!<br/>
 Samuel is borrowing £40, so the ‘amount borrowed’ is £40.<br/>
 He is borrowing it for 6 days, so the ‘number of days’ is 6.<br/>
@@ -299,8 +332,10 @@ Type that answer into the answer box.
 </div>
  <button class="scroll-btn" onclick="scrollToSection('screen16')">OK, I'll try again</button>
 </div>
+</div>
 
     <div class="section timeline-anchor" id="screen18"  data-title="What Samuel's learnt">
+        <div class="scalable">
         <div class="video-container square">
         <video class="frameless-video" playsinline>
         <source src="videos/worth_it.mp4" type="video/mp4">
@@ -308,16 +343,20 @@ Type that answer into the answer box.
         </div>
         <button class="scroll-btn" onclick="scrollToSection('final1')">Continue</button>
     </div>
+    </div>
     <div class="section timeline-anchor" id="final1" data-title="Question 1">
         <div class="parallax-bg" style="background-image: url('static/bank.jpg');"></div>
+        <div class="scalable">
         <div class="content-overlay">
         <div class="text-line fade-in">Overdrafts are intended for…</div>
         <button class="answer-btn" onclick="checkAnswer(this, 'retry',false)">long-term investments.</button>
         <button class="answer-btn" onclick="checkAnswer(this, 'final2',true)">short-term loans and emergencies.</button>
     </div>
 </div>
+</div>
     <div class="section timeline-anchor" id="final2"  data-title="Question 2">
         <div class="parallax-bg" style="background-image: url('static/bank.jpg');"></div>
+        <div class="scalable">
         <div class="content-overlay right">
         <div class="text-line fade-in">The interest rate on overdrafts is usually about…</div>
         <button class="answer-btn" onclick="checkAnswer(this, 'retry',false)">25%</button>
@@ -325,20 +364,24 @@ Type that answer into the answer box.
         <button class="answer-btn" onclick="checkAnswer(this, 'final3',true)">40%</button>
     </div>
 </div>
+</div>
     <div class="section timeline-anchor" id="final3"  data-title="Question 3">
         <div class="parallax-bg" style="background-image: url('static/bank.jpg');"></div>
+        <div class="scalable">
         <div id="final3Target" class="content-overlay">
         <div class="text-line fade-in">Sonia uses her overdraft to pay £700 for car repairs, overdrawn for 14 days.<br/><br/>How much interest will Sonia pay?<bf/><br/>Use the Overdraft Calculator to work the answer out.</div>
     </div>
-    <div class="content-overlay bottom-box" id="calcanswer2">
+    <div class="content-overlay bottom-left-box" id="calcanswer2">
         <div class="text-line">Total interest</div><div class="input-group">
           <span class="prefix">£</span>
           <input id="final3_answer" type="number" step="0.01" min="0" class="money-input showPennies" placeholder="0.00">
         </div>
-        <button class="answer-btn" onclick="checkAnswer(this,'end',document.getElementById('final3_answer').value==9.09)">Submit</button>
+        <button class="answer-btn reusable" onclick="if(document.getElementById('final3_answer').value!=0){checkAnswer(this,'end',document.getElementById('final3_answer').value==9.09)}">Submit</button>
+    </div>
     </div>
     </div>
     <div class="section timeline-anchor" id="end" data-title="Summary">
+        <div class="scalable">
         <div class="text-line title">In this lesson:</div>
         <div class="text-line"><ul>
 <li>Lisa learnt that her bank charges her interest when she uses her overdraft, because she is borrowing money.</li>
@@ -347,6 +390,7 @@ Type that answer into the answer box.
 </div>
         <div><button class="reload-btn fade-in-delayed" onclick="location.reload()">↺</button></div>
     </div>
+    </div>
     <div id="timeline">
       <div id="timeline-up" class="timeline-arrow">&#9650;</div>
       <div id="timeline-dots"></div> <!-- ⬅️ dots will go here -->
@@ -354,15 +398,12 @@ Type that answer into the answer box.
     </div>
     <script src="scripts/main.js"></script>
     <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        scrollToSection("landing");
-    });
         //sortdrag
     const cards = [
   "Samuel will get the game at the same time as his friends.",
   "Samuel may see spoilers for the game during the week he doesn’t have it.",
-  "If Samuel is paid next week, he will only be overdrawn for a short time.",
   "The game will still be available to buy next week.",
+  "If Samuel is paid next week, he will only be overdrawn for a short time.",
   "Samuel will be charged interest on the amount of money he overdraws."
 ];
 
@@ -442,7 +483,9 @@ cardElem.addEventListener('mousedown', (e) => {
 
 document.addEventListener('DOMContentLoaded', showNextCard);
 
-
+document.addEventListener("DOMContentLoaded", () => {
+        scrollToSection("landing");
+    });
     </script>
 </body>
 </html>

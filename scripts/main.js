@@ -36,6 +36,7 @@ const chime = document.getElementById("chime-sound");
         if (index !== -1) {
           if(dots[index].classList.contains("live")){
             //no change to live status
+            updateCurrentDot(dots[index]);
           } else{
             //another dot unlocked
             dots[index].classList.add("live");
@@ -319,6 +320,7 @@ document.addEventListener('keydown', (e) => {
         function scrollToSection(id){
             updateScreenOnScrollTo(id)
             document.getElementById(id).scrollIntoView({behavior:'smooth'});
+
         }
         function updateScreenOnScrollTo(id){
             currentSectionId = id;
@@ -389,7 +391,7 @@ document.addEventListener('keydown', (e) => {
         /**/
 function scaleAllSections() {
   document.querySelectorAll('.section').forEach(section => {
-    const content = section.querySelector('.video-container');
+    const content = section.querySelector('div.scalable');
     //if (!content) return;
     //content.style.transform = 'scale(1)';
     //content.style.transformOrigin = 'top center';
@@ -399,7 +401,7 @@ function scaleAllSections() {
 
     if (actual > available) {
       const scale = available / actual;
-      section.style.transform = `scale(${scale})`;
+      //section.style.transform = `scale(${scale})`;
       if(content){
         content.style.transform = `scale(${scale})`;
         }
