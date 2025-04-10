@@ -10,6 +10,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Overdrafts: Level 1</title>
     <link rel="stylesheet" href="static/main.css">
+    <style>
+        div.poundcoin{
+            background-image: url("static/pound.png");
+            width:75px;
+            height:75px;
+            position:relative;
+            background-size:cover;
+            transition: opacity 0.5s ease;
+            }
+        div.poundcoin.grey{
+          filter: grayscale(100%);
+          opacity: 0.3;
+        }
+        .poundcoin.live {
+          filter: none;
+          opacity: 1;
+        }
+        .poundcoin.draggable{
+            justify-self: center;
+            cursor: grab;
+        }
+        @keyframes fly-to-ania {
+          0% {
+            transform: translate(0, 0) scale(1);
+            opacity: 1;
+          }
+          100% {
+            transform: translate(300px, -20px) scale(0.8);
+            opacity: 0;
+          }
+        }
+
+        .poundcoin.fly {
+          animation: fly-to-ania 0.6s ease-in forwards;
+          pointer-events: none;
+        }
+
+    </style>
 </head>
 <body>
     <audio id="chime-sound" src="static/chime.mp3" preload="auto"></audio>
@@ -90,10 +128,48 @@
 </div>
 <br/><button class="scroll-btn fade-in" onclick="scrollToSection('question2')">OK, I'll try again</button>
 </div>
-<div class="section timeline-anchor" id="payback_teaching" data-title="paying back over time">
-    <br/><br/><br/><br/><br/>
-    <div class="text-line">to do - teaching acticity for paying back over time</div>
-<br/><br/><br/><br/><br/><br/><button class="scroll-btn" onclick="scrollToSection('question3')">Next</button>
+<div class="section" id="payback_teaching">
+    <div style="display: flex; gap: 1em;">
+    <div class="pocket-image bottom-left character-kiran">
+            <div class="image-frame" style="background-image: url('static/kiran.png');"></div>
+            <div class="caption">Kiran</div>
+            <div id="draggable-coin" class="poundcoin draggable" draggable="true"></div>
+        </div>
+    </div>
+        <div class="pocket-image bottom-right character-ania">
+            <div class="image-frame" style="background-image: url('static/ania.png');"></div>
+            <div class="caption">Ania</div>
+            <div style="display: flex; gap: 1em;">
+                <div class="poundcoin grey" data-index="0"></div>
+                <div class="poundcoin grey" data-index="1"></div>
+                <div class="poundcoin grey" data-index="2"></div>
+            </div>
+        </div>
+    <div class="text-line">We know that Kiran still owes Ania £3.<br/>
+If she gives Ania £1 every week, it will take her 3 weeks to pay her back.<br/><br/>Drag or click the coins from Kiran to Ania.</div>
+<br/><br/>
+    <div style="width:50%">
+        <table class="interest-table" style="font-size: 0.5em;">
+            <thead><td class="week-label"></td><td class="blue" colspan="4"><strong>£3.00 owed</strong></td></thead>
+            <tbody>    
+              <tr id="coindrag_week1" class="hidden">
+                <td class="week-label">Week 1</td>
+                <td class="blue" colspan="2" style="width:50%">£2.00 owed</td>
+                <td class="orange" colspan="1" style="width:25%;">£1.00 paid back</td>
+              </tr>
+              <tr id="coindrag_week2" class="hidden">
+                <td class="week-label">Week 2</td>
+                <td class="blue" colspan="1" style="width:25%">£1.00 owed</td>
+                <td class="orange" colspan="2">£2.00 paid back</td>
+              </tr>
+              <tr id="coindrag_week3" class="hidden">
+                <td class="week-label">Week 3</td>
+                <td class="orange" colspan="3">£3.00 paid back</td>
+              </tr>
+          </tbody>
+        </table>
+    </div>
+<br/><button id="coindrag_nextButton" class="scroll-btn hidden" onclick="scrollToSection('question3')">Next</button>
 </div>
     <div class="section" id="question3">
         <div class="text-line fade-in">You borrow £10 from a friend and pay them back £2 every week. How long will it take you to pay them back?</div></br>
@@ -104,7 +180,7 @@
     </div>
     </div>
     <div class="section" id="feedback3">
-    <div class="text-line fade-in">You borrowed £10. In the first week, you pay back £2, and you still owe £8.<br/><br/>Look at how this changes over time as you keep paying back £2 each week.
+    <div class="text-line fade-in">You borrowed £10. In the first week, you pay back £2, and you still owe £8.<br/><br/>Look at how this changes over time as you keep paying back £2 each week.</div>
 <br/><br/>
         <table class="interest-table fade-in" style="font-size: 0.5em;">
             <thead><td class="week-label"></td><td class="blue" colspan="5"><strong>£10.00 owed</strong></td></thead>
@@ -135,7 +211,6 @@
               </tr>
           </tbody>
         </table>
-</div>
 <br/><button class="scroll-btn fade-in" onclick="scrollToSection('question3')">OK, I'll try again</button>
 </div>
 <div class="section timeline-anchor" id="summative1"  data-title="Question 1">
@@ -192,8 +267,81 @@
     </div>
     <script src="scripts/main.js"></script>
     <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const kiran = document.querySelector('.character-kiran');
+const ania = document.querySelector('.character-ania');
+
+function deliverCoin() {
+  if (delivered < aniaCoins.length) {
+    // Trigger fly animation
+    draggableCoin.classList.add('fly');
+
+    setTimeout(() => {
+      // Reset position
+      draggableCoin.classList.remove('fly');
+
+      // Reveal next Ania coin
+      const coin = aniaCoins[delivered];
+      coin.classList.remove('grey');
+      coin.classList.add('live');
+      updateVisibleItems(++delivered);
+    }, 600); // match the duration of the fly animation
+  }
+}
+
+kiran.addEventListener('click', deliverCoin);
+ania.addEventListener('click', deliverCoin);
+
+  const draggableCoin = document.getElementById('draggable-coin');
+  const aniaCoins = document.querySelectorAll('.bottom-right .poundcoin.grey');
+  let delivered = 0;
+
+  // Setup drag
+  draggableCoin.addEventListener('dragstart', (e) => {
+    e.dataTransfer.setData('text/plain', 'coin');
+    setTimeout(() => {
+      draggableCoin.style.opacity = '0'; // fade out while dragging
+    }, 0);
+  });
+
+  draggableCoin.addEventListener('dragend', () => {
+    draggableCoin.style.opacity = '1'; // fade back if not dropped
+  });
+
+  const dropTarget = document.querySelector('.bottom-right');
+  dropTarget.addEventListener('dragover', (e) => {
+    e.preventDefault(); // allow drop
+  });
+
+  dropTarget.addEventListener('drop', (e) => {
+    e.preventDefault();
+
+    if (delivered < aniaCoins.length) {
+      const coin = aniaCoins[delivered];
+      coin.classList.remove('grey');
+      coin.classList.add('live');
+
+      // Animate coin reset
+      draggableCoin.style.opacity = '0';
+      setTimeout(() => {
+        draggableCoin.style.opacity = '1';
+      }, 300);
+
+      updateVisibleItems(++delivered);
+      
+    }
+  });
+  function updateVisibleItems(delivered){
+    document.getElementById(`coindrag_week${delivered}`).classList.remove("hidden");
+      if (delivered === 3) {
+        draggableCoin.style.display = 'none';
+        document.getElementById(`coindrag_nextButton`).classList.remove("hidden");
+
+      }
+  }
+});
     document.addEventListener("DOMContentLoaded", () => {
-        scrollToSection("landing");
+        scrollToSection("payback_teaching");
 });
     </script>
 </body>
