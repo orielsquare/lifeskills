@@ -63,7 +63,8 @@
               </tr>
           </tbody>
         </table>
-        <button class="scroll-btn fade-in" onclick="scrollToSection('screen5')">Next</button>
+        <div class="centerer">
+        <button class="scroll-btn" onclick="scrollToSection('screen5')">Next</button></div>
         </div>
     </div>
     </div>
@@ -111,9 +112,8 @@
         <button class="scroll-btn fade-in" onclick="scrollToSection('screen5')">OK, I'll try again</button>
     </div>
     </div>
-
     <div class="section timeline-anchor" id="screen7" data-title="After four weeks">
-        <div class="scalable">
+        <div class="scalable top">
     <div class="twocol" style="display: flex; gap: 2rem; align-items: flex-start;">
   <div class="left-col">
     <img id="lisa" src="static/lisa_thoughtful.png" style="max-width: 100%; height: auto;" />
@@ -302,7 +302,7 @@
     </div>
     <div id="interestCalculator" class="content-overlay calculator right">
             <div class="calculator-section">
-                <label for="overdraft">Amount borrowed<span class="hint"><br/>Put the amount <strong>Samuel borrowed</strong> here:</span></label>
+                <label for="overdraft">Amount borrowed</label><span class="hint"><br/>Put the amount <strong>Samuel borrowed</strong> here:</span>
                 <div class="input-group">
                       <span class="prefix">£</span>
                       <input id="overdraft" type="number" class="money-input" value="10" min="0" max="750" step="5" placeholder="0">
@@ -310,10 +310,12 @@
                 <input type="range" id="overdraftRange" value="10" min="0" max="750" step="5">
             </div>
             <div class="calculator-section">
-                <label for="days">Number of days<span class="hint"><br/>Put the number of <strong>days</strong> he borrowed it for here:</label>
+                <label for="days">Number of days</label><span class="hint"><br/>Put the number of <strong>days</strong> he borrowed it for here:</span>
                 <input type="number" id="days" value="0" min="0" max="28">
                 <input type="range" id="daysRange" value="0" min="0" max="28">
-                <div class="results" id="results"><span class = "hint contrast">Look here for the answer:</span><br/>Total interest: <span id="calculatorResult">£0.00</span></div>
+                <br/><br/>
+                <span class = "hint">Look here for the answer:</span>
+                <div class="results" id="results">Total interest: <span id="calculatorResult">£0.00</span></div></span>
             </div>
             <div class="calculator-section">
                 <label for="days">Interest rate (EAR)</label>
@@ -323,17 +325,17 @@
     </div>
     </div>
     <div class="section" id="screen17">
+        <div class="parallax-bg" style="background-image: url('static/game-controller.jpg');"></div>
         <div class="scalable">
-<div class="text-line fade-in">Not quite!<br/>
+<div class="content-overlay contrast" style="width:60%"><div class="text-line" style="max-width:unset">Not quite!<br/>
 Samuel is borrowing £40, so the ‘amount borrowed’ is £40.<br/>
-He is borrowing it for 6 days, so the ‘number of days’ is 6.<br/>
-The calculator shows you how much interest he will be charged.<br/>
-Type that answer into the answer box.
+He is borrowing it for 6 days, so the ‘number of days’ is 6.<br/><br/>
+The calculator shows you how much interest he will be charged. Type that answer into the answer box.</div>
+<div class="centerer">
+ <button class="scroll-btn" onclick="scrollToSection('screen16')" >OK, I'll try again</button></div>
+ </div>
 </div>
- <button class="scroll-btn" onclick="scrollToSection('screen16')">OK, I'll try again</button>
 </div>
-</div>
-
     <div class="section timeline-anchor" id="screen18"  data-title="What Samuel's learnt">
         <div class="scalable">
         <div class="video-container square">
@@ -484,7 +486,7 @@ cardElem.addEventListener('mousedown', (e) => {
 document.addEventListener('DOMContentLoaded', showNextCard);
 
 document.addEventListener("DOMContentLoaded", () => {
-        scrollToSection("landing");
+        scrollToSection("screen7");
     });
     </script>
 </body>
