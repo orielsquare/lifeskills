@@ -507,7 +507,12 @@ div.pocket-image.centre-left{
 }
 div.pocket-image.centre-right{
     right:10%;
-}div.pocket-image.upper-right{
+}
+div.pocket-image.upper-left{
+    left:10%;
+    top:10%;
+}
+div.pocket-image.upper-right{
     right:10%;
     top:10%;
 }

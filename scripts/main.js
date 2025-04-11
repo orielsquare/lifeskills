@@ -147,10 +147,13 @@ document.addEventListener('keydown', (e) => {
     animatedElements.forEach(el => observer.observe(el));
 
     // Autoplay videos when in view
+    var currentVideo;
     const videoObserver = new IntersectionObserver(entries => {
+        currentVideo = null;
         entries.forEach(entry => {
             const video = entry.target;
             if (entry.isIntersecting && userInteracted) {
+                currentVideo = video;
                 video.pause();               // Pause just in case
                 video.currentTime = 0;       // Reset
                 video.play().catch(err => {
@@ -161,10 +164,39 @@ document.addEventListener('keydown', (e) => {
             }
         });
     }, { threshold: 0.5 });
-
     document.querySelectorAll('.frameless-video').forEach(video => {
         videoObserver.observe(video);
-    });
+// Click toggles play/pause
+video.addEventListener("click", () => {
+  if (video.paused) {
+    video.play();
+  } else {
+    video.pause();
+  }
+});
+
+// Spacebar toggles play/pause
+document.addEventListener("keydown", (e) => {
+  if (currentVideo==video && e.code === "Space") {
+    e.preventDefault(); // stop page scrolling
+    if (video.paused) {
+      video.play();
+    } else {
+      video.pause();
+    }
+  }
+});
+
+// Double-click to restart
+video.addEventListener("dblclick", () => {
+  video.currentTime = 0;
+  if (video.paused) {
+      video.play();
+    }
+});
+});
+
+   /* */
     document.querySelectorAll('.showPennies').forEach(input => {
       input.addEventListener('change', () => {
         const value = parseFloat(input.value);
