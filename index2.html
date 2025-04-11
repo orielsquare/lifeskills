@@ -113,9 +113,10 @@
     </div>
     <div class="section timeline-anchor" id="screen7" data-title="After four weeks">
         <div class="scalable">
-    <div class="twocol" style="display: flex; gap: 2rem; align-items: flex-start;">
+    <div class="twocol" style="display: flex; gap: 2rem; align-items: flex-start">
   <div class="left-col">
     <img id="lisa" src="static/lisa_thoughtful.png" style="max-width: 100%; height: auto;" />
+    <div class="centerer" styl="width:33%"><button class="scroll-btn fade-in-delayed" style="--fade-delay: 9000ms;" onclick="changeImageAndScroll('lisa','static/lisa_outraged.png', 'screen8')">Next</button></div>
   </div>
   <div class="right-col" style="flex: 1;">
             <div class="text-line fade-in">Lisa meets Samuel four weeks after she buys the phone. How much does she owe now?</div><br/>
@@ -163,8 +164,7 @@
       </tr>
     </tbody>
   </table>
-  <div class="text-line fade-in-delayed" style="--fade-delay: 9000ms; margin-top:15px;">The 1% interest is charged on the <strong>total amount</strong> Lisa owes. Every week the interest added is a bit more. This is <strong>compound interest</strong>.</div>
-  <button class="scroll-btn fade-in-delayed" style="--fade-delay: 9000ms;" onclick="changeImageAndScroll('lisa','static/lisa_outraged.png', 'screen8')">Next</button>
+  <div class="text-line fade-in-delayed" style="--fade-delay: 9000ms; margin-top:15px; width:">The 1% interest is charged on the <strong>total amount</strong> Lisa owes. Every week the interest added is a bit more. This is <strong>compound interest</strong>.</div>
         </div>
     </div>
         
@@ -288,7 +288,7 @@
     <div class="section timeline-anchor" id="screen16"  data-title="Overdraft calculator">
         <div class="parallax-bg" style="background-image: url('static/game-controller.jpg');"></div>
         <div class="scalable">
-        <div id="SamCalcTarget" class="content-overlay contrast">
+        <div id="SamCalcTarget" class="content-overlay contrast" style="width:50%;left:0px">
         <div class="text-line fade-in">Six days later, Samuel gets £140 wages from his part-time job paid into his bank. He is no longer overdrawn.</div><br/>
         <div class="text-line fade-in">Samuel borrowed £40 for 6 days.<br/><br/>Use the Overdraft Calculator, similar to many you can find online, to work out how much interest he is charged.</div>
     </div>
@@ -369,8 +369,8 @@ The calculator shows you how much interest he will be charged. Type that answer 
     <div class="section timeline-anchor" id="final3"  data-title="Question 3">
         <div class="parallax-bg" style="background-image: url('static/bank.jpg');"></div>
         <div class="scalable">
-        <div id="final3Target" class="content-overlay">
-        <div class="text-line fade-in">Sonia uses her overdraft to pay £700 for car repairs, overdrawn for 14 days.<br/><br/>How much interest will Sonia pay?<bf/><br/>Use the Overdraft Calculator to work the answer out.</div>
+        <div id="final3Target" class="content-overlay"  style="width:40%;left:10%">
+        <div class="text-line fade-in">Sonia uses her overdraft to pay £700 for car repairs, overdrawn for 14 days.<br/><br/>How much interest will Sonia pay?<br/><br/>Use the Overdraft Calculator to work the answer out.</div>
     </div>
     <div class="content-overlay bottom-left-box" id="calcanswer2">
         <div class="text-line">Total interest</div><div class="input-group">
@@ -383,8 +383,9 @@ The calculator shows you how much interest he will be charged. Type that answer 
     </div>
     <div class="section timeline-anchor" id="end" data-title="Summary">
         <div class="scalable">
-        <div class="text-line title">In this lesson:</div>
-        <div class="text-line"><ul>
+            <br/>
+        <div class="text-line title" style="padding-top:20px">In this lesson:</div>
+        <div class="text-line" style="width:75%; max-width:unset"><ul>
 <li>Lisa learnt that her bank charges her interest when she uses her overdraft, because she is borrowing money.</li>
 <li>Sam used his overdraft to buy a video game. He paid it off after 6 days, when he got paid from his part-time job.</li>
 <li>You learnt how to use an overdraft calculator to work out how much interest you might be charged on an overdraft.</li></ul>
